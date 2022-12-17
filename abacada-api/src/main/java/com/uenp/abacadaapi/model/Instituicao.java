@@ -1,13 +1,20 @@
 package com.uenp.abacadaapi.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+
 public class Instituicao {
+    
+    @Transient
+    public static final String SEQUENCE_NAME = "users_sequence";
+    
+    @Id
     private Long id;
     private String nome;
     private String email;
     private String senha;
 
-    public Instituicao(Long id, String nome, String email, String senha) {
-        this.id = id;
+    public Instituicao(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;

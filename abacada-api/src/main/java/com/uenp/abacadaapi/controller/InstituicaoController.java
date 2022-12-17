@@ -1,5 +1,6 @@
 package com.uenp.abacadaapi.controller;
 
+import com.uenp.abacadaapi.controller.services.SequenceGeneratorService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ public class InstituicaoController {
     @Autowired
     private InstituicaoRepository instituicaoRepository;
     
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
+    
     @GetMapping
     public List<Instituicao> ListarInstituicoes() {
         return instituicaoRepository.findAll();
@@ -24,6 +28,7 @@ public class InstituicaoController {
     
     @PostMapping
     public Instituicao CadastrarInstituicoes(@RequestBody Instituicao instituicao) {
+        instituicao.setId(sequenceGeneratorService.generateSequence(Instituicao.SEQUENCE_NAME));
         return instituicaoRepository.save(instituicao);
     }
     
