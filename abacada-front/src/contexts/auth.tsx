@@ -8,12 +8,13 @@ export const AuthContext = createContext({});
 function AuthProvider({children}: any) {
   const [users, setUsers] = useState<usersType[]>([]);
   const [user, setUser] = useState<userType>();
+  const [updateUsers, setUpdateUsers] = useState(false);
 
   useEffect(() => {
     api.get("/instituicao")
-      .then(res => setUsers(res.data))
+      .then(res => {setUsers(res.data); console.log("atualizou");})
       .catch(error => console.log(error));
-  }, []);
+  }, [updateUsers]);
 
   const signin = (email: string, password: string) => {
     const index = users.findIndex(u => u.email == email);
@@ -32,8 +33,25 @@ function AuthProvider({children}: any) {
 
   };
 
-  const signup = () => {
-    //faz o cadastro
+  const signup = (institution: string, email: string, password: string, passwordConfirmation: string) => {
+    if (password === passwordConfirmation) {
+      api.post("/instituicao", {
+        nome: institution,
+        email: email,
+        senha: password,
+      })
+        .then(() => {
+          setUpdateUsers(!updateUsers);
+          alert("Cadastro realizado com sucesso");
+        })
+        .catch(()=> {
+          alert("O cadastro não pôde ser concluído");
+        });
+        return "";
+    }
+    else {
+      return "Confirme a senha corretamente";
+    }
   };
 
   //const signout = () => {};
