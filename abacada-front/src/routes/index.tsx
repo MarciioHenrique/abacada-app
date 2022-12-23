@@ -1,17 +1,20 @@
 import React from "react";
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { AuthContextType } from "../@types/types";
 import Home from "../pages/home";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 
 
 function RoutesApp() {
-  const Private = ({Item}: any) => {
-    const signed = false;
-    return signed ? <Item /> : <Signin />;
-  };
+  const { signed } = useAuth() as AuthContextType;
 
+  const Private = ({Item}: any) => {
+    const Signed = signed;
+    return Signed ? <Item /> : <Signin />;
+  };
 
   return (
     <BrowserRouter>

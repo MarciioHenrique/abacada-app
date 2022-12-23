@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { AuthContextType } from "../../@types/typeContext";
+import { AuthContextType } from "../../@types/types";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
@@ -20,12 +20,12 @@ export default function Signin() {
 
     const res: any = signin(email, password);
 
-    if (res) {
-      setError(res);
-      return;
+    if (res == "") {
+      navigate("/home");
     }
-
-    navigate("/home");
+    else {
+      setError(res);
+    }
   };
 
   return (
@@ -42,7 +42,7 @@ export default function Signin() {
                   name="email"
                   className="input"
                   placeholder="Digite seu E-mail"
-                  onChange={(e: React.FormEvent) => [setPassword((e.target as HTMLInputElement).value), setError("")]}
+                  onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
           <label className="label">Senha</label>
@@ -50,7 +50,7 @@ export default function Signin() {
                   name="senha"
                   className="input"
                   placeholder="Digite sua senha"
-                  onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
+                  onChange={(e: React.FormEvent) => [setPassword((e.target as HTMLInputElement).value), setError("")]}
             ></input>
 
           <label className="labelError">{error}</label>
