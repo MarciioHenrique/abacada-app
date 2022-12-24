@@ -21,7 +21,7 @@ export default function Signin() {
     const res: any = signin(email, password);
 
     if (res == "") {
-      navigate("/home");
+      navigate("/teachers");
     }
     else {
       setError(res);

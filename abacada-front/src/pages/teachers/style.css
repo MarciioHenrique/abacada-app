@@ -1,0 +1,21 @@
+.background {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #F0F2F5;
+}
+
+.content {
+  height: 500px;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  filter: drop-shadow(0px 0px 6px darkgrey);
+  display: flex;
+  flex-direction: column;
+}

@@ -6,13 +6,14 @@ import { AuthContextType } from "../@types/types";
 import Home from "../pages/home";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
+import Teachers from "../pages/teachers";
 
 
 function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
 
   const Private = ({Item}: any) => {
-    const Signed = signed;
+    const Signed = true;
     return Signed ? <Item /> : <Signin />;
   };
 
@@ -21,6 +22,7 @@ function RoutesApp() {
       <Fragment>
         <Routes>
           <Route path="/home" element={<Private Item={Home} />} />
+          <Route path="/teachers" element={<Private Item={Teachers} />} />
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<Signin />} />
