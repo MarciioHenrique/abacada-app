@@ -5,8 +5,8 @@ import "./style.css";
 function Teachers() {
   return (
     <div className="background">
-      <Card/>
-      
+      <Card name="Marcio"/>
+      <Card name="Juninho"/>
     </div>
   );
 }

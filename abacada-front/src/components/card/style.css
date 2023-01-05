@@ -1,17 +1,10 @@
-.background {
+.cardContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: blueviolet;
 }
 
-.image {
-  height: 7rem;
-  width: 7rem;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: aqua;
+.imageContainer {
+  border-radius: 360px;
+  overflow: hidden;
 }

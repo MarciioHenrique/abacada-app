@@ -32,7 +32,7 @@
 
 .content {
   width: 100%;
-  max-width: 350px;
+  max-width: 250px;
   border-radius: 10px;
   padding: 20px;
   background-color: white;
@@ -86,7 +86,7 @@
   border-radius: 5px;
   cursor: pointer;
   color: white;
-  background: #1D3557;
+  background: #FFF;
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;

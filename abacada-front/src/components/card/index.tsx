@@ -1,15 +1,18 @@
 import React from "react";
 import "./style.css";
 
-function Card() {
+function Card(props: {name: string}) {
   return (
-    <div className="background">
-      <div className="image">
-        Imagem
+    <div className="card">
+      <div className="cardContent">
+        <div className="imageContainer">
+          <img src={require("../../assets/user1.png") }/>
+        </div>
+        <div className="name">
+          {props.name}
+        </div>
       </div>
-      <div className="name">
-        Marcio
-      </div>
+
     </div>
   );
 }
