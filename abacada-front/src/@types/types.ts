@@ -16,3 +16,9 @@ export interface userType {
   email: string,
   password: string,
 }
+
+export interface teachersType {
+  id: number,
+  nome: string,
+  instituicao: string,
+}
