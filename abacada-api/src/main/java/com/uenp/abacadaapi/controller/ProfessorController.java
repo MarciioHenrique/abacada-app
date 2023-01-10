@@ -21,12 +21,12 @@ public class ProfessorController {
     private SequenceGeneratorService sequenceGeneratorService;
     
     @GetMapping
-    public List<Professor> ListarInstituicoes() {
+    public List<Professor> ListarProfessores() {
         return professorRepository.findAll();
     }
     
     @PostMapping
-    public Professor CadastrarInstituicoes(@RequestBody Professor professor) {
+    public Professor CadastrarProfessores(@RequestBody Professor professor) {
         professor.setId(sequenceGeneratorService.generateSequence(Professor.SEQUENCE_NAME));
         return professorRepository.save(professor);
     }
