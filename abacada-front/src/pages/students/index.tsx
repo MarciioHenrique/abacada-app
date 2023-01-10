@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/card";
 import api from "../../util/api";
-import { teachersType } from "../../@types/types";
+import { studentsType } from "../../@types/types";
 import "./style.css";
+import { useParams } from "react-router-dom";
 
 function Students() {
-  const [students, setStudents] = useState<teachersType[]>([]);
+  const { professor } = useParams();
+  const [students, setStudents] = useState<studentsType[]>([]);
+
   useEffect(() => {
-    api.get("/professor")
+    api.get("/aluno?professor="+professor)
       .then(res => setStudents(res.data))
       .catch(error => console.log(error));
   }, []);
@@ -16,10 +19,10 @@ function Students() {
     <div className="background">
       <div className="content">
         {students.map((student) =>
-          <Card key={student.id} name={student.nome}/>
+          <Card key={student.id} name={student.nome} situation="Aluno"/>
         )}
 
-        <Card name="Novo Aluno"/>
+        <Card name="Novo Aluno" situation=""/>
       </div>
 
     </div>

@@ -22,3 +22,9 @@ export interface teachersType {
   nome: string,
   instituicao: string,
 }
+
+export interface studentsType {
+  id: number,
+  nome: string,
+  professor: string,
+}

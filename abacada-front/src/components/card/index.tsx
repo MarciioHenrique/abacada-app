@@ -2,11 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-function Card(props: {name: string}) {
+function Card(props: {name: string, situation: string}) {
   const navigate = useNavigate();
+
   function handleClick() {
-    navigate("/alunos");
+    if(props.situation == "Professor")
+      navigate("/alunos/"+props.name);
+
+    if(props.situation == "Aluno")
+      navigate("/home");
   }
+
   return (
     <div className="card">
       <div className="cardContent" onClick={handleClick}>
@@ -17,7 +23,6 @@ function Card(props: {name: string}) {
           {props.name}
         </div>
       </div>
-
     </div>
   );
 }
