@@ -1,0 +1,15 @@
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.imageContainer {
+  border-radius: 360px;
+  overflow: hidden;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+}
