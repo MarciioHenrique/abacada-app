@@ -29,18 +29,18 @@ export default function Signin() {
   };
 
   return (
-    <div className="background">
-      <div className="background-left">
+    <div className="backgroundSignin">
+      <div className="background-leftSignin">
         <img src={require("../../assets/Logo.png")}/>
       </div>
-      <div className="background-right">
-        <div className="content">
-          <label className="labelTitle">Login</label>
+      <div className="background-rightSignin">
+        <div className="contentSignin">
+          <label className="labelTitleSignin">Login</label>
 
-          <label className="label">Email</label>
+          <label className="labelSignin">Email</label>
           <input  type="email"
                   name="email"
-                  className="input"
+                  className="inputSignin"
                   placeholder="Digite seu E-mail"
                   onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
           ></input>
@@ -48,17 +48,17 @@ export default function Signin() {
           <label className="label">Senha</label>
           <input  type="password"
                   name="senha"
-                  className="input"
+                  className="inputSignin"
                   placeholder="Digite sua senha"
                   onChange={(e: React.FormEvent) => [setPassword((e.target as HTMLInputElement).value), setError("")]}
             ></input>
 
-          <label className="labelError">{error}</label>
-          <input type="submit" value="Enviar" className="button" onClick={handleLogin}></input>
+          <label className="labelErrorSignin">{error}</label>
+          <input type="submit" value="Enviar" className="buttonSignin" onClick={handleLogin}></input>
         </div>
 
-        <div className="bottomContent">
-          <label className="bottomLabel">
+        <div className="bottomContentSignin">
+          <label className="bottomLabelSignin">
             Não possui cadastro? <Link to="/signup" style={{textDecoration: "none"}}>Clique aqui</Link>
           </label>
 

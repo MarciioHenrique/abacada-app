@@ -35,50 +35,50 @@ export default function Signup() {
   };
 
   return (
-    <div className="background">
-      <div className="background-left">
+    <div className="backgroundSignup">
+      <div className="background-leftSignup">
         <img src={require("../../assets/Logo.png")}/>
       </div>
-      <div className="background-right">
-        <div className="content">
-          <label className="labelTitle">Cadastro</label>
+      <div className="background-rightSignup">
+        <div className="contentSignup">
+          <label className="labelTitleSignup">Cadastro</label>
 
-          <label className="label">Instituição</label>
+          <label className="labelSignup">Instituição</label>
           <input  type="text"
                   name="nome"
-                  className="input"
+                  className="inputSignup"
                   placeholder="Digite a Instituição"
                   onChange={(e: React.FormEvent) => [setInstitution((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="label">Email</label>
+          <label className="labelSignup">Email</label>
           <input  type="email"
                   name="email"
-                  className="input"
+                  className="inputSignup"
                   placeholder="Digite seu E-mail"
                   onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="label">Senha</label>
+          <label className="labelSignup">Senha</label>
           <input  type="password"
                   name="senha"
-                  className="input"
+                  className="inputSignup"
                   placeholder="Digite sua senha"
                   onChange={(e: React.FormEvent) => [setPassword((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="label">Confirme a senha</label>
+          <label className="labelSignup">Confirme a senha</label>
           <input  type="password"
                   name="senha"
-                  className="input"
+                  className="inputSignup"
                   placeholder="Digite sua senha"
                   onChange={(e: React.FormEvent) => [setPasswordConfirmation((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="labelError">{error}</label>
-          <div className="buttonsContainer">
-            <input type="submit" value="Voltar" className="buttonVoltar" onClick={handleComeBack}></input>
-            <input type="submit" value="Enviar" className="button" onClick={handleSignUp}></input>
+          <label className="labelErrorSignup">{error}</label>
+          <div className="buttonsContainerSignup">
+            <input type="submit" value="Voltar" className="buttonVoltarSignup" onClick={handleComeBack}></input>
+            <input type="submit" value="Enviar" className="buttonSignup" onClick={handleSignUp}></input>
           </div>
 
         </div>

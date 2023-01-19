@@ -1,4 +1,4 @@
-.background {
+.backgroundStudents {
   position: absolute;
   display: flex;
   align-items: center;
@@ -8,7 +8,7 @@
   background-color: #F0F2F5;
 }
 
-.content {
+.contentStudents {
   min-height: 100px;
   max-height: 500px;
   min-width: 100px;

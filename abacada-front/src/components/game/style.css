@@ -1,4 +1,4 @@
-.card {
+.backgroundGame {
 
   display: flex;
   flex-direction: row;
@@ -10,7 +10,7 @@
   gap: 10px;
 }
 
-.imageGameContainer {
+.imageContainerGame {
   width: 35%;
   height: 100%;
 }
@@ -22,7 +22,7 @@
 
 }
 
-.dataContainer {
+.dataContainerGame {
   width: 65%;
   display: flex;
   flex-direction: column;

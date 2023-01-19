@@ -16,8 +16,8 @@ function Students() {
   }, []);
 
   return (
-    <div className="background">
-      <div className="content">
+    <div className="backgroundStudents">
+      <div className="contentStudents">
         {students.map((student) =>
           <Card key={student.id} name={student.nome} situation="Aluno"/>
         )}

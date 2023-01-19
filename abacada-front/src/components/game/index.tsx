@@ -9,11 +9,11 @@ function Game(props: {name: string, description: string, image: string}) {
 
   return (
 
-      <div className="card" onClick={handleClick}>
-        <div className="imageGameContainer">
+      <div className="backgroundGame" onClick={handleClick}>
+        <div className="imageContainerGame">
         <img src={require(`../../assets/${props.image}`)} className="imageGame"/>
         </div>
-        <div className="dataContainer">
+        <div className="dataContainerGame">
           <div className="titleGame">
             {props.name}
           </div>

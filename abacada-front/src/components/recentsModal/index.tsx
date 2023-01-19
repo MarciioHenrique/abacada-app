@@ -35,7 +35,7 @@ function RecentsModal({onClose = () => {console.log("vazia");}}) {
     return (
       <div>
         <Game key={game.key} name={game.name} description={game.description} image={game.image}/>
-        <div className="recentsInformation">
+        <div className="informationRecents">
           <div>
             Tempo jogado: 01h e 12min
           </div>
@@ -51,14 +51,14 @@ function RecentsModal({onClose = () => {console.log("vazia");}}) {
   }
 
   return (
-    <div className="recentsContainer">
-      <div className="recentsContent">
-        <div className="recentsHeader">
-          <img src={require("../../assets/Fechar.png")} className="recentsClose" onClick={onClose}/>
-          <h2 className="recentsTitle">RECENTES</h2>
+    <div className="containerRecents">
+      <div className="contentRecents">
+        <div className="headerRecents">
+          <img src={require("../../assets/Fechar.png")} className="closeRecents" onClick={onClose}/>
+          <h2 className="titleRecents">RECENTES</h2>
         </div>
-        <h3 className="recentsSubtitle">JOGOS</h3>
-        <div className="recentsGames">
+        <h3 className="subtitleRecents">JOGOS</h3>
+        <div className="gamesRecents">
           {games.map((game) => renderGame(game))}
         </div>
 

@@ -14,12 +14,12 @@ function Card(props: {name: string, situation: string}) {
   }
 
   return (
-    <div className="card">
-      <div className="cardContent" onClick={handleClick}>
-        <div className="imageContainer">
+    <div>
+      <div className="contentCard" onClick={handleClick}>
+        <div className="imageContainerCard">
           <img src={require("../../assets/user1.png") }/>
         </div>
-        <div className="name">
+        <div className="nameCard">
           {props.name}
         </div>
       </div>

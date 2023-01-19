@@ -3,7 +3,7 @@
   font-family: 'Roboto';
 }
 
-.background {
+.backgroundSignin {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -11,7 +11,7 @@
   background-color: aqua;
 }
 
-.background-left {
+.background-leftSignin {
   height: 100%;
   width: 30%;
   background-color: #457B9D;
@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-.background-right {
+.background-rightSignin {
   height: 100%;
   width: 70%;
   background-color: #F0F2F5;
@@ -30,7 +30,7 @@
   flex-direction: column;
 }
 
-.content {
+.contentSignin {
   width: 100%;
   max-width: 250px;
   border-radius: 10px;
@@ -41,7 +41,7 @@
   flex-direction: column;
 }
 
-.input {
+.inputSignin {
   box-sizing: border-box;
   outline: none;
   border: none;
@@ -56,7 +56,7 @@
   margin-bottom: 15px;
 }
 
-.labelTitle {
+.labelTitleSignin {
   align-self: center;
   font-size: 20px;
   font-weight: 600;
@@ -64,17 +64,17 @@
   text-transform: uppercase;
 }
 
-.label {
+.labelSignin {
   margin-bottom: 2px;
 }
 
-.labelError {
+.labelErrorSignin {
   font-size: 14px;
   color: red;
   margin-bottom: 10px;
 }
 
-.button {
+.buttonSignin {
   height: 100%;
   line-height: 40px;
   width: 100%;
@@ -86,19 +86,19 @@
   border-radius: 5px;
   cursor: pointer;
   color: white;
-  background: #FFF;
+  background: #1D3557;
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.bottomContent {
+.bottomContentSignin {
   position: absolute;
   bottom: 0;
   color: #1D3557;
 }
 
-.bottomLabel {
+.bottomLabelSignin {
   color: #1D3557;
 }

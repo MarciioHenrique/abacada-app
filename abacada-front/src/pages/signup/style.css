@@ -3,7 +3,7 @@
   font-family: 'Roboto';
 }
 
-.background {
+.backgroundSignup {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -11,7 +11,7 @@
   background-color: aqua;
 }
 
-.background-left {
+.background-leftSignup {
   height: 100%;
   width: 30%;
   background-color: #457B9D;
@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-.background-right {
+.background-rightSignup {
   height: 100%;
   width: 70%;
   background-color: #F0F2F5;
@@ -30,7 +30,7 @@
   flex-direction: column;
 }
 
-.content {
+.contentSignup {
   width: 100%;
   max-width: 350px;
   border-radius: 10px;
@@ -42,7 +42,7 @@
 
 }
 
-.input {
+.inputSignup {
   box-sizing: border-box;
   outline: none;
   border: none;
@@ -57,7 +57,7 @@
   margin-bottom: 15px;
 }
 
-.labelTitle {
+.labelTitleSignup {
   align-self: center;
   font-size: 20px;
   font-weight: 600;
@@ -65,23 +65,23 @@
   text-transform: uppercase;
 }
 
-.label {
+.labelSignup {
   margin-bottom: 2px;
 }
 
-.labelError {
+.labelErrorSignup {
   font-size: 14px;
   color: red;
   margin-bottom: 10px;
 }
 
-.buttonsContainer {
+.buttonsContainerSignup {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
 
-.button, .buttonVoltar {
+.buttonSignup, .buttonVoltarSignup {
   height: 100%;
   line-height: 40px;
   width: 100%;

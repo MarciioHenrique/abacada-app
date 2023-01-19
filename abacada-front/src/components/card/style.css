@@ -1,11 +1,11 @@
-.cardContent {
+.contentCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
 }
 
-.imageContainer {
+.imageContainerCard {
   border-radius: 360px;
   overflow: hidden;
 }

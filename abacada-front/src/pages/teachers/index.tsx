@@ -13,8 +13,8 @@ function Teachers() {
   }, []);
 
   return (
-    <div className="background">
-      <div className="content">
+    <div className="backgroundTeachers">
+      <div className="contentTeachers">
         {teachers.map((teacher) =>
           <Card key={teacher.id} name={teacher.nome} situation="Professor"/>
         )}
