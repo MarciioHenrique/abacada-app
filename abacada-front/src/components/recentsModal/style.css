@@ -1,0 +1,63 @@
+.recentsContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.recentsContent {
+  background-color: #fff;
+  box-shadow: 4px 4px 26px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  width: 40%;
+  height: 70%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.recentsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1vh;
+  margin-right: 1vw;
+}
+
+.recentsClose {
+  position: absolute;
+  align-self: flex-end;
+  width: 32px;
+  cursor: pointer;
+}
+
+.recentsSubtitle {
+  margin-top: 1vh;
+  margin-left: 1vw;
+}
+
+.recentsGames {
+  margin-left: 1vw;
+  width: 100%;
+}
+
+.recentsInformation {
+  width: 100%;
+  margin-left: -1vw;
+  margin-top: -1vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.line {
+  width: 90%;
+  border: 1px solid #589DD0;
+  margin-top: 1vh;
+}
