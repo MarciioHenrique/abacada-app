@@ -1,29 +1,29 @@
 import React from "react";
 import "./style.css";
 
-function Game(props: {name: string, description: string}) {
+function Game(props: {name: string, description: string, image: string}) {
 
   function handleClick() {
     console.log("clicou");
   }
 
   return (
-    <div className="card">
-      <div className="cardContent" onClick={handleClick}>
-        <div className="imageContainer">
-          <img src={require("../../assets/user1.png") }/>
+
+      <div className="card" onClick={handleClick}>
+        <div className="imageGameContainer">
+        <img src={require(`../../assets/${props.image}`)} className="imageGame"/>
         </div>
         <div className="dataContainer">
-          <div>
+          <div className="titleGame">
             {props.name}
           </div>
-          <div>
+          <div className="descriptionGame">
             {props.description}
           </div>
 
         </div>
       </div>
-    </div>
+
   );
 }
 
