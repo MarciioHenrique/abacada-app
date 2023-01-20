@@ -4,6 +4,7 @@ import { AuthContextType } from "../../@types/types";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
+//pagina de login
 export default function Signin() {
   const { signin } = useAuth() as AuthContextType;
   const navigate = useNavigate();

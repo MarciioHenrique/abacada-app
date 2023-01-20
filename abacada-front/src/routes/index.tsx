@@ -9,13 +9,13 @@ import Signup from "../pages/signup";
 import Teachers from "../pages/teachers";
 import Students from "../pages/students";
 
-
+//cria todas as rotas da aplicação
 function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
 
   const Private = ({Item}: any) => {
-    const Signed = true;
-    return Signed ? <Item /> : <Signin />;
+    //const Signed = true;
+    return signed ? <Item /> : <Signin />;
   };
 
   return (

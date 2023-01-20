@@ -5,6 +5,7 @@ import { studentsType } from "../../@types/types";
 import "./style.css";
 import { useParams } from "react-router-dom";
 
+//pagina dos alunos
 function Students() {
   const { professor } = useParams();
   const [students, setStudents] = useState<studentsType[]>([]);

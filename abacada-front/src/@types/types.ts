@@ -1,3 +1,5 @@
+//Aqui são definidos os tipos dos métodos que serão utilizados para uma maior segurança e menor chance de erros do código
+
 export interface AuthContextType {
   signed: boolean,
   signout: () => void;

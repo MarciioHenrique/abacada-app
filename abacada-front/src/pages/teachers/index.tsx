@@ -4,6 +4,7 @@ import api from "../../util/api";
 import { teachersType } from "../../@types/types";
 import "./style.css";
 
+//pagina dos professores
 function Teachers() {
   const [teachers, setTeachers] = useState<teachersType[]>([]);
   useEffect(() => {

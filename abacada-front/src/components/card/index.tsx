@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
+//Componente Card vai pegar as informações do aluno/professor e mostrar na tela
 function Card(props: {name: string, situation: string}) {
   const navigate = useNavigate();
 

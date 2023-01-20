@@ -1,8 +1,8 @@
-
 package com.uenp.abacadaapi.model;
 
 import org.springframework.data.annotation.Id;
 
+//modelo que faz a sequencia do ID, provavelmente não vai ser utilizada
 public class DatabaseSequence {
 
     @Id

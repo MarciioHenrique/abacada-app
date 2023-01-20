@@ -2,8 +2,9 @@ import React from "react";
 import Game from "../game";
 import "./style.css";
 
+//Cria o modal dos jogos recentes
 // eslint-disable-next-line react/prop-types
-function RecentsModal({onClose = () => {console.log("vazia");}}) {
+function RecentsModal({onClose = () => {console.log("vazia");}}): JSX.Element {
   const games = [
     {
       key: 1,
@@ -45,9 +46,7 @@ function RecentsModal({onClose = () => {console.log("vazia");}}) {
         </div>
         <div className="line"></div>
       </div>
-
     );
-
   }
 
   return (

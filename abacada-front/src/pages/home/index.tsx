@@ -3,6 +3,7 @@ import Game from "../../components/game";
 import RecentsModal from "../../components/recentsModal";
 import "./style.css";
 
+//pagina home
 function Home() {
   const games = [
     {

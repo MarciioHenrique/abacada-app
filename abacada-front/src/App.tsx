@@ -1,11 +1,16 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
+import AuthProvider from "./contexts/auth";
+import RoutesApp from "./routes";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Olá</h1>
-    </div>
-  );
-}
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
-export default App;
+root.render(
+  <React.StrictMode>
+    <AuthProvider>
+      <RoutesApp />
+    </AuthProvider>
+  </React.StrictMode>
+);

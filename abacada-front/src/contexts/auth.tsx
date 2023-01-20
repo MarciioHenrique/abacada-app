@@ -5,6 +5,7 @@ import { usersType, userType } from "../@types/types";
 
 export const AuthContext = createContext({});
 
+// cria o contexto de usuario, permitindo que os dados sejam utilizados dentro da aplicação
 function AuthProvider({children}: any) {
   const [users, setUsers] = useState<usersType[]>([]);
   const [user, setUser] = useState<userType>();

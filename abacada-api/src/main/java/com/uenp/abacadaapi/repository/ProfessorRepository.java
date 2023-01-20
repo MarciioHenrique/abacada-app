@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.uenp.abacadaapi.repository;
 
 import com.uenp.abacadaapi.model.Professor;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+//faz a conexão com o repositorio do MongoDB para os professores
 public interface ProfessorRepository extends MongoRepository<Professor, Long>{
     
 }

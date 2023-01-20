@@ -3,7 +3,7 @@ package com.uenp.abacadaapi.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 
-
+//modelo do professor com todos os seus dados e metodos
 public class Professor {
     
     @Transient
