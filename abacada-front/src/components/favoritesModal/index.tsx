@@ -2,9 +2,9 @@ import React from "react";
 import GameCard from "../gameCard";
 import "./style.css";
 
-//Cria o modal dos jogos recentes
+//Cria o modal dos jogos favoritos
 // eslint-disable-next-line react/prop-types
-function RecentsModal({onClose = () => {console.log("vazia");}}): JSX.Element {
+function FavoritesModal({onClose = () => {console.log("vazia");}}): JSX.Element {
   const games = [
     {
       key: 1,
@@ -36,7 +36,7 @@ function RecentsModal({onClose = () => {console.log("vazia");}}): JSX.Element {
     return (
       <div>
         <GameCard key={game.key} name={game.name} description={game.description} image={game.image}/>
-        <div className="informationRecents">
+        <div className="informationFavorites">
           <div>
             Tempo jogado: 01h e 12min
           </div>
@@ -50,14 +50,14 @@ function RecentsModal({onClose = () => {console.log("vazia");}}): JSX.Element {
   }
 
   return (
-    <div className="containerRecents">
-      <div className="contentRecents">
-        <div className="headerRecents">
-          <img src={require("../../assets/Fechar.png")} className="closeRecents" onClick={onClose}/>
-          <h2 className="titleRecents">RECENTES</h2>
+    <div className="containerFavorites">
+      <div className="contentFavorites">
+        <div className="headerFavorites">
+          <img src={require("../../assets/Fechar.png")} className="closeFavorites" onClick={onClose}/>
+          <h2 className="titleFavorites">RECENTES</h2>
         </div>
-        <h3 className="subtitleRecents">JOGOS</h3>
-        <div className="gamesRecents">
+        <h3 className="subtitleFavorites">JOGOS</h3>
+        <div className="gamesFavorites">
           {games.map((game) => renderGame(game))}
         </div>
 
@@ -66,4 +66,4 @@ function RecentsModal({onClose = () => {console.log("vazia");}}): JSX.Element {
   );
 }
 
-export default RecentsModal;
+export default FavoritesModal;

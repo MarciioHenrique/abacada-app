@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import Game from "../../components/game";
+import GameCard from "../../components/gameCard";
 import RecentsModal from "../../components/recentsModal";
+import FavoritesModal from "../../components/favoritesModal";
+import Game from "../../components/game";
 import "./style.css";
 
 //pagina home
@@ -33,6 +35,8 @@ function Home() {
   ];
 
   const [isRecentsVisible, setIsRecentsVisible] = useState(false);
+  const [isFavoritesVisible, setIsFavoritesVisible] = useState(false);
+  const [isGameVisible, setIsGameVisible] = useState(false);
 
   return (
     <div className="fundo">
@@ -46,26 +50,32 @@ function Home() {
         </div>
         <div className="gamesContainer">
           <label className="title">JOGOS</label>
-          <div className="games">
+          <div className="games" onClick={() => setIsGameVisible(true)}>
             {games.map((game) =>
-              <Game key={game.key} name={game.name} description={game.description} image={game.image}/>
+              <GameCard key={game.key} name={game.name} description={game.description} image={game.image}/>
             )}
           </div>
         </div>
       </div>
       <div className="barraLateralDireita">
         <div className="superior">
-          <img src={require("../../assets/Favoritos.png")} className="imagesD"/>
+          <img  src={require("../../assets/Favoritos.png")}
+                className="imagesD"
+                onClick={() => setIsFavoritesVisible(true)}
+          />
           <img src={require("../../assets/Perfil.png")} className="imagesD"/>
         </div>
         <div className="inferior">
-          <img src={require("../../assets/Recentes.png")}
-              className="recentes"
-              onClick={() => setIsRecentsVisible(true)}/>
+          <img  src={require("../../assets/Recentes.png")}
+                className="recentes"
+                onClick={() => setIsRecentsVisible(true)}
+          />
         </div>
 
       </div>
       {isRecentsVisible ? <RecentsModal onClose={ () => setIsRecentsVisible(false)}/> : null}
+      {isGameVisible ? <Game onClose={ () => setIsGameVisible(false)}/> : null}
+      {isFavoritesVisible ? <FavoritesModal onClose={ () => setIsFavoritesVisible(false)}/> : null}
     </div>
   );
 }

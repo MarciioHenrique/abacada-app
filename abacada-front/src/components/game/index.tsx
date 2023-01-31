@@ -1,26 +1,17 @@
 import React from "react";
+import Iframe from "react-iframe";
 import "./style.css";
 
-//O componente Game pega os dados dos jogos e os renderiza na tela
-function Game(props: {name: string, description: string, image: string}) {
-
-  function handleClick() {
-    alert("clicou");
-  }
+//Cria o modal dos jogos recentes
+// eslint-disable-next-line react/prop-types
+function Game({onClose = () => {console.log("vazia");}}): JSX.Element {
 
   return (
-    <div className="backgroundGame" onClick={handleClick}>
-      <div className="imageContainerGame">
-        <img src={require(`../../assets/${props.image}`)} className="imageGame"/>
-      </div>
-      <div className="dataContainerGame">
-        <div className="titleGame">
-          {props.name}
-        </div>
-        <div className="descriptionGame">
-          {props.description}
-        </div>
-      </div>
+    <div className="containerGame">
+      <img src={require("../../assets/Fechar.png")} className="closeGame" onClick={onClose}/>
+      <Iframe url="https://abacada-game1.netlify.app/"
+              width="100%"
+              height="100%"/>
     </div>
   );
 }
