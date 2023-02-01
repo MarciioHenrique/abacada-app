@@ -15,12 +15,17 @@ function Teachers() {
 
   return (
     <div className="backgroundTeachers">
-      <div className="contentTeachers">
-        {teachers.map((teacher) =>
-          <Card key={teacher.id} name={teacher.nome} situation="Professor"/>
-        )}
+      <div className="background-leftTeachers">
+        <img src={require("../../assets/Logo.png")}/>
+      </div>
+      <div className="background-rightTeachers">
+        <div className="contentTeachers">
+          {teachers.map((teacher) =>
+            <Card key={teacher.id} name={teacher.nome} situation="Professor"/>
+          )}
 
-        <Card name="Novo Professor" situation=""/>
+          <Card name="Novo Professor" situation=""/>
+        </div>
       </div>
 
     </div>

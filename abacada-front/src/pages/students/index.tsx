@@ -18,13 +18,19 @@ function Students() {
 
   return (
     <div className="backgroundStudents">
-      <div className="contentStudents">
-        {students.map((student) =>
-          <Card key={student.id} name={student.nome} situation="Aluno"/>
-        )}
-
-        <Card name="Novo Aluno" situation=""/>
+      <div className="background-leftStudents">
+        <img src={require("../../assets/Logo.png")}/>
       </div>
+      <div className="background-rightStudents">
+        <div className="contentStudents">
+          {students.map((student) =>
+            <Card key={student.id} name={student.nome} situation="Aluno"/>
+          )}
+
+          <Card name="Novo Aluno" situation=""/>
+        </div>
+      </div>
+
 
     </div>
   );
