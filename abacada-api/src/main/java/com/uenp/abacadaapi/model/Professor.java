@@ -1,16 +1,12 @@
 package com.uenp.abacadaapi.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 
 //modelo do professor com todos os seus dados e metodos
 public class Professor {
-    
-    @Transient
-    public static final String SEQUENCE_NAME = "users_sequence";
-    
+
     @Id
-    private Long id;
+    private Integer registro;
     private String nome;
     private String instituicao;
 
@@ -19,12 +15,12 @@ public class Professor {
         this.instituicao = instituicao;
     }
 
-    public Long getId() {
-        return id;
+    public Integer getRegistro() {
+        return registro;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRegistro(Integer registro) {
+        this.registro = registro;
     }
 
     public String getNome() {
