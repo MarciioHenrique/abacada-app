@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,20 +26,35 @@ public class AlunoController {
     @Autowired
     private MongoTemplate mongoTemplate;
     
-    @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
-    
     @GetMapping
-    public List<Aluno> ListarAlunos(@RequestParam(value = "professor") String prof) {
+    public List<Aluno> listarAlunos(@RequestParam(value = "professor") String professor) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("professor").is(prof));
+        query.addCriteria(Criteria.where("professor").is(professor));
         List<Aluno> alunos = mongoTemplate.find(query, Aluno.class);
         return alunos;
     }
     
     @PostMapping
-    public Aluno CadastrarAlunos(@RequestBody Aluno aluno) {
-        aluno.setId(sequenceGeneratorService.generateSequence(Aluno.SEQUENCE_NAME));
-        return alunoRepository.save(aluno);
+    public String cadastrarAluno(@RequestBody Aluno aluno) {
+        if (aluno.getRegistro().toString().length() == 0 || aluno.getNome().length() == 0 || aluno.getProfessor().length() == 0) {
+            return "Por favor, digite dados válidos";
+        }
+
+        if (alunoRepository.existsById(aluno.getRegistro())) {
+            return "Esse aluno já está cadastrado";
+        }
+        else {
+            alunoRepository.save(aluno);
+            return "Aluno cadastrado com sucesso";
+        }
+    }
+    
+    @DeleteMapping
+    public String excluirAluno(@RequestParam(value = "registro") Integer registro) {
+        if(alunoRepository.existsById(registro)) {
+            alunoRepository.deleteById(registro);
+            return "Aluno excluído";
+        }
+        return "Aluno não encontrado";
     }
 }

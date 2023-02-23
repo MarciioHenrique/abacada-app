@@ -1,34 +1,31 @@
 package com.uenp.abacadaapi.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+
 
 //modelo do aluno com todos os seus dados e metodos
 public class Aluno {
     
-    @Transient
-    public static final String SEQUENCE_NAME = "users_sequence";
-    
     @Id
-    private Long id;
+    private Integer registro;
     private String nome;
     private String professor;
     //colocar os jogos
 
-    public Aluno(Long id, String nome, String professor) {
-        this.id = id;
+    public Aluno(Integer registro, String nome, String professor) {
+        this.registro = registro;
         this.nome = nome;
         this.professor = professor;
     }
 
-    public Long getId() {
-        return id;
+    public Integer getRegistro() {
+        return registro;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRegistro(Integer registro) {
+        this.registro = registro;
     }
-
+    
     public String getNome() {
         return nome;
     }
