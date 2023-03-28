@@ -38,7 +38,7 @@ export default function Signup() {
   return (
     <div className="backgroundSignup">
       <div className="background-leftSignup">
-        <img src={require("../../assets/Logo.png")}/>
+        <img src={require("../../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightSignup">
         <div className="contentSignup">

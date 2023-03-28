@@ -4,43 +4,30 @@ import org.springframework.data.annotation.Id;
 
 ////modelo da Instituicao com todos os seus dados e metodos
 public class Instituicao {
-
-    private String nome;
+    private String instituicao;
     @Id
-    private String email;
-    private String senha;
+    private Usuario usuario;
 
-    public Instituicao(String nome, String email, String senha) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
+    public Instituicao(String instituicao, Usuario usuario) {
+        this.instituicao = instituicao;
+        this.usuario = usuario;
     }
 
-    public String getNome() {
-        return nome;
+    public String getInstituicao() {
+        return instituicao;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
     }
 
-    public String getEmail() {
-        return email;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
-    
-  
-  
+
 }

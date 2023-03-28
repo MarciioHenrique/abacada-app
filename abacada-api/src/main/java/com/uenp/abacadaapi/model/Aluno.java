@@ -9,10 +9,10 @@ public class Aluno {
     @Id
     private Integer registro;
     private String nome;
-    private String professor;
+    private Professor professor;
     //colocar os jogos
 
-    public Aluno(Integer registro, String nome, String professor) {
+    public Aluno(Integer registro, String nome, Professor professor) {
         this.registro = registro;
         this.nome = nome;
         this.professor = professor;
@@ -34,11 +34,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getProfessor() {
+    public Professor getProfessor() {
         return professor;
     }
 
-    public void setProfessor(String professor) {
+    public void setProfessor(Professor professor) {
         this.professor = professor;
     }
     

@@ -8,9 +8,9 @@ public class Professor {
     @Id
     private Integer registro;
     private String nome;
-    private String instituicao;
+    private Instituicao instituicao;
 
-    public Professor(String nome, String instituicao) {
+    public Professor(String nome, Instituicao instituicao) {
         this.nome = nome;
         this.instituicao = instituicao;
     }
@@ -31,11 +31,11 @@ public class Professor {
         this.nome = nome;
     }
 
-    public String getInstituicao() {
+    public Instituicao getInstituicao() {
         return instituicao;
     }
 
-    public void setInstituicao(String instituicao) {
+    public void setInstituicao(Instituicao instituicao) {
         this.instituicao = instituicao;
     }
     

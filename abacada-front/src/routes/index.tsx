@@ -14,8 +14,8 @@ function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
 
   const Private = ({Item}: any) => {
-    //const Signed = true;
-    return signed ? <Item /> : <Signin />;
+    const Signed = true;
+    return Signed ? <Item /> : <Signin />;
   };
 
   return (

@@ -9,6 +9,7 @@ export const AuthContext = createContext({});
 function AuthProvider({children}: any) {
   const [users, setUsers] = useState<usersType[]>([]);
   const [user, setUser] = useState<userType>();
+  const [error, setError] = useState("");
   const [updateUsers, setUpdateUsers] = useState(false);
 
   useEffect(() => {
@@ -17,20 +18,22 @@ function AuthProvider({children}: any) {
       .catch(error => console.log(error));
   }, [updateUsers]);
 
-  const signin = (email: string, password: string) => {
-    const index = users.findIndex(u => u.email == email);
-    if (index == -1) {
-      return "Digite o email e/ou senha corretamente";
-    }
-    else {
-      if (users[index].senha == password) {
-        setUser({email, password});
+  const signin = (email: string, senha: string) => {
+    api.post("/login", {
+      "email": email,
+      "senha": senha
+    })
+      .then(res => {
+        console.log(res);
+        setUser(res.data);
         return "";
-      }
-      else {
-        return "Digite o email e/ou senha corretamente";
-      }
-    }
+      })
+      .catch(res => {
+        console.log(JSON.stringify(res.response.data.message));
+        setError(JSON.stringify(res.response.data.message));
+        return JSON.stringify(res.response.data.message);
+      });
+
 
   };
 

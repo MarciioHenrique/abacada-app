@@ -13,15 +13,16 @@ export default function Signin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       setError("Preencha todos os campos");
       return;
     }
 
-    const res: any = signin(email, password);
-
+    const res: any = await signin(email, password);
+    console.log(res);
     if (res == "") {
+      console.log("entrou");
       navigate("/teachers");
     }
     else {
@@ -32,7 +33,7 @@ export default function Signin() {
   return (
     <div className="backgroundSignin">
       <div className="background-leftSignin">
-        <img src={require("../../assets/Logo.png")}/>
+        <img src={require("../../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightSignin">
         <div className="contentSignin">
@@ -46,7 +47,7 @@ export default function Signin() {
                   onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="label">Senha</label>
+          <label className="labelSignin">Senha</label>
           <input  type="password"
                   name="senha"
                   className="inputSignin"
