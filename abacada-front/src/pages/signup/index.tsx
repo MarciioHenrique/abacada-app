@@ -20,14 +20,13 @@ export default function Signup() {
       setError("Preencha todos os campos");
       return;
     }
-
-    const res: any = signup(institution, email, password, passwordConfirmation);
-
-    if (res == "") {
-      navigate("/");
+    if (password === passwordConfirmation) {
+      signup(institution, email, password, passwordConfirmation)
+        .then((resolve) => navigate("/teachers"))
+        .catch((reject) => setError(reject));
     }
     else {
-      setError(res);
+      setError("Confirme a senha corretamente");
     }
   };
 

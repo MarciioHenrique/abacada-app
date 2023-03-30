@@ -13,21 +13,19 @@ export default function Signin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     if (!email || !password) {
       setError("Preencha todos os campos");
       return;
     }
 
-    const res: any = await signin(email, password);
-    console.log(res);
-    if (res == "") {
-      console.log("entrou");
-      navigate("/teachers");
-    }
-    else {
-      setError(res);
-    }
+    signin(email, password)
+      .then((resolve) => {
+        navigate("/teachers");
+      })
+      .catch((reject) => {
+        setError(reject);
+      });
   };
 
   return (

@@ -3,8 +3,8 @@
 export interface AuthContextType {
   signed: boolean,
   signout: () => void;
-  signin: (email: string, password: string) => void;
-  signup: (institution: string,email: string, password: string, passwordConfirmation: string) => void;
+  signin: (email: string, password: string) => Promise<string>;
+  signup: (institution: string,email: string, password: string, passwordConfirmation: string) => Promise<string>;
 }
 
 export interface usersType {
