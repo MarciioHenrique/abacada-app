@@ -19,8 +19,8 @@ function AuthProvider({children}: any) {
           setUser(res.data);
           resolve("");
         })
-        .catch(res => {
-          reject(JSON.stringify(res.response.data.message));
+        .catch(error => {
+          reject(JSON.stringify(error.response.data.message));
         });
     });
   };

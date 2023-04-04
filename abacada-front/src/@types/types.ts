@@ -1,6 +1,7 @@
 //Aqui são definidos os tipos dos métodos que serão utilizados para uma maior segurança e menor chance de erros do código
 
 export interface AuthContextType {
+  user: usersType,
   signed: boolean,
   signout: () => void;
   signin: (email: string, password: string) => Promise<string>;
@@ -8,10 +9,11 @@ export interface AuthContextType {
 }
 
 export interface usersType {
-  id: number,
-  nome: string,
-  email: string,
-  senha: string,
+  instituicao: string,
+  usuario: {
+    email: string,
+    senha: string,
+  } 
 }
 
 export interface userType {
@@ -20,9 +22,15 @@ export interface userType {
 }
 
 export interface teachersType {
-  id: number,
+  registro: number,
   nome: string,
-  instituicao: string,
+  instituicao: {
+    instituicao: string,
+    usuario: {
+      email: string,
+      senha: string
+    }
+  }
 }
 
 export interface studentsType {
