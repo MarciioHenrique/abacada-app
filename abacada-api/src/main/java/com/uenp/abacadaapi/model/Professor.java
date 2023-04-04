@@ -38,6 +38,4 @@ public class Professor {
     public void setInstituicao(Instituicao instituicao) {
         this.instituicao = instituicao;
     }
-    
-    
 }

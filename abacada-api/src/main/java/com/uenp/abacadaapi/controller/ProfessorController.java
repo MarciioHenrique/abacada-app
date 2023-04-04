@@ -4,12 +4,8 @@ import com.uenp.abacadaapi.model.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.uenp.abacadaapi.repository.ProfessorRepository;
 import com.uenp.abacadaapi.services.ProfessorServices;
 import java.util.List;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,16 +21,13 @@ public class ProfessorController {
     private ProfessorServices services;
 
     @GetMapping
-    public ResponseEntity<List<Professor>> listarProfessores() {
-        return ResponseEntity.ok(services.listarProfessores());
+    public ResponseEntity<List<Professor>> listarProfessores(@RequestParam(name = "instituicao") String instituicao) {
+        return ResponseEntity.ok(services.listarProfessores(instituicao));
     }
     
     @PostMapping
     public ResponseEntity<Professor> cadastrarProfessor(@RequestBody Professor professor) {
-        if (services.verificaInstituicao(professor.getInstituicao())) {
-            return ResponseEntity.ok(services.cadastrarProfessor(professor));
-        }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(services.cadastrarProfessor(professor));
     }
     
     @DeleteMapping
