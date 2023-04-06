@@ -58,3 +58,20 @@
   gap: 2vw;
   padding-bottom: 2vh;
 }
+
+@media screen and (max-width: 480px) {
+  .backgroundTeachers {
+    flex-direction: column;
+  }
+  .background-leftTeachers {
+    height: 30vh;
+    width: 100vw;
+  }
+  .background-rightTeachers {
+    height: 70vh;
+    width: 100vw;
+  }
+  .containerTeachers {
+    min-width: 240px;
+  }
+}
