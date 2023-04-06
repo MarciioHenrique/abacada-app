@@ -24,17 +24,11 @@ export interface userType {
 export interface teachersType {
   registro: number,
   nome: string,
-  instituicao: {
-    instituicao: string,
-    usuario: {
-      email: string,
-      senha: string
-    }
-  }
+  instituicao: usersType
 }
 
 export interface studentsType {
-  id: number,
+  registro: number,
   nome: string,
-  professor: string,
+  professor: teachersType,
 }

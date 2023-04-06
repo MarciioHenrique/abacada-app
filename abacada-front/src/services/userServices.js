@@ -8,4 +8,12 @@ export default new class userServices {
                 .catch(error => reject(error.response.data.message));
         });      
     }
+
+    getStudents(professor) {
+        return new Promise((resolve, reject) => {
+            api.get("/aluno?registroProfessor="+professor)
+                .then(res => resolve(res.data))
+                .catch(error => reject(error.response.data.message));
+        });
+    }
 };

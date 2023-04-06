@@ -30,10 +30,10 @@ function Teachers() {
           </div>
           <div className="contentTeachers">
             {teachers.map((teacher) =>
-              <Card key={teacher.registro} name={teacher.nome} situation="Professor"/>
+              <Card key={teacher.registro} registro={teacher.registro} nome={teacher.nome} situation="Professor"/>
             )}
             
-            <Card name="Novo Professor" situation=""/>
+            <Card registro={0} nome="Novo Professor" situation=""/>
           </div>
           
         </div>

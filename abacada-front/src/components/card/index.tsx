@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 //Componente Card vai pegar as informações do aluno/professor e mostrar na tela
-function Card(props: {name: string, situation: string}) {
+function Card(props: {registro: number, nome: string, situation: string}) {
   const navigate = useNavigate();
 
   function handleClick() {
     if(props.situation == "Professor")
-      navigate("/alunos/"+props.name);
+      navigate("/alunos/"+props.registro);
 
     if(props.situation == "Aluno")
       navigate("/home");
@@ -21,7 +21,7 @@ function Card(props: {name: string, situation: string}) {
           <img src={require("../../assets/user1.png") }/>
         </div>
         <div className="nameCard">
-          {props.name}
+          {props.nome}
         </div>
       </div>
     </div>

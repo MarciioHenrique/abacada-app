@@ -4,30 +4,37 @@ import api from "../../util/api";
 import { studentsType } from "../../@types/types";
 import "./style.css";
 import { useParams } from "react-router-dom";
+import userServices from "../../services/userServices";
 
 //pagina dos alunos
 function Students() {
   const { professor } = useParams();
   const [students, setStudents] = useState<studentsType[]>([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    api.get("/aluno?professor="+professor)
-      .then(res => setStudents(res.data))
-      .catch(error => console.log(error));
+    userServices.getStudents(professor)
+      .then(res => setStudents(res))
+      .catch(error => setError(error));
   }, []);
 
   return (
     <div className="backgroundStudents">
       <div className="background-leftStudents">
-        <img src={require("../../assets/Logo.png")}/>
+        <img src={require("../../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightStudents">
-        <div className="contentStudents">
-          {students.map((student) =>
-            <Card key={student.id} name={student.nome} situation="Aluno"/>
-          )}
+        <div className="containerStudents">
+        <div className="labelTitleStudents">
+            <label>Alunos</label>
+          </div>
+          <div className="contentStudents">
+            {students.map((student) =>
+              <Card key={student.registro} registro={student.registro} nome={student.nome} situation="Aluno"/>
+            )}
 
-          <Card name="Novo Aluno" situation=""/>
+            <Card registro={0} nome="Novo Aluno" situation=""/>
+          </div>
         </div>
       </div>
 
