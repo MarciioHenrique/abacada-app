@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import Card from "../../components/card";
 import userServices from "../../services/userServices";
-import useAuth from "../../hooks/useAuth";
 import { AuthContext } from "../../contexts/auth";
 import { AuthContextType, teachersType } from "../../@types/types";
 import "./style.css";

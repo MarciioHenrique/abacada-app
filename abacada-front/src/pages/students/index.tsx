@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/card";
-import api from "../../util/api";
 import { studentsType } from "../../@types/types";
 import "./style.css";
 import { useParams } from "react-router-dom";
