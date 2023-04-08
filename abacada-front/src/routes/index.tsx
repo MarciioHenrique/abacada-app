@@ -8,6 +8,7 @@ import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import Teachers from "../pages/teachers";
 import Students from "../pages/students";
+import AddTeacher from "../pages/addTeacher";
 
 //cria todas as rotas da aplicação
 function RoutesApp() {
@@ -25,6 +26,7 @@ function RoutesApp() {
           <Route path="/home" element={<Private Item={Home} />} />
           <Route path="/teachers" element={<Private Item={Teachers} />} />
           <Route path="/alunos/:professor" element={<Private Item={Students} />} />
+          <Route path="/addProfessor" element={<Private Item={AddTeacher} />} />
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<Signin />} />

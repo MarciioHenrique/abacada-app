@@ -32,7 +32,7 @@ function Teachers() {
               <Card key={teacher.registro} registro={teacher.registro} nome={teacher.nome} situation="Professor"/>
             )}
             
-            <Card registro={0} nome="Novo Professor" situation=""/>
+            <Card registro={0} nome="Novo Professor" situation="AddProfessor" />
           </div>
           
         </div>

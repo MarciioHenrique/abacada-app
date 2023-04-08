@@ -16,4 +16,22 @@ export default new class userServices {
                 .catch(error => reject(error.response.data.message));
         });
     }
+
+    addTeacher(registro, nome, instituicao) {
+        return new Promise((resolve, reject) => {
+            api.post("/professor",{
+                "registro": registro,
+                "nome": nome,
+                "instituicao": {
+                    "instituicao": instituicao.instituicao,
+                    "usuario": {
+                        "email": instituicao.usuario.email,
+                        "senha": instituicao.usuario.senha
+                    }
+                }
+            })
+                .then(res => resolve(res.data))
+                .catch(error => reject(error.response.data.message));
+        });
+    }
 };

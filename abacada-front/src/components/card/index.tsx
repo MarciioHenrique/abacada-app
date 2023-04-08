@@ -7,11 +7,22 @@ function Card(props: {registro: number, nome: string, situation: string}) {
   const navigate = useNavigate();
 
   function handleClick() {
-    if(props.situation == "Professor")
-      navigate("/alunos/"+props.registro);
-
-    if(props.situation == "Aluno")
-      navigate("/home");
+    switch (props.situation) {
+      case "Professor":
+        navigate("/alunos/"+props.registro);
+        break;
+      case "Aluno":
+        navigate("/home");
+        break;
+      case "AddProfessor":
+        navigate("/addProfessor");
+        break;
+      case "AddAluno":
+        navigate("/addAluno");
+        break;
+      default:
+        break;
+    }
   }
 
   return (
