@@ -18,7 +18,7 @@ function Card(props: {registro: number, nome: string, situation: string}) {
         navigate("/addProfessor");
         break;
       case "AddAluno":
-        navigate("/addAluno");
+        navigate("/addAluno/"+props.registro);
         break;
       default:
         break;

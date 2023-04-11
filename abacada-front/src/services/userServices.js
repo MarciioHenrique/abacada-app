@@ -17,6 +17,14 @@ export default new class userServices {
         });
     }
 
+    getTeacher(registro) {
+        return new Promise((resolve, reject) => {
+            api.get("/professor/"+registro)
+                .then(res => resolve(res?.data))
+                .then(error => reject(error?.response?.data?.message));
+        });
+    }
+
     addTeacher(registro, nome, instituicao) {
         return new Promise((resolve, reject) => {
             api.post("/professor",{
@@ -34,4 +42,27 @@ export default new class userServices {
                 .catch(error => reject(error.response.data.message));
         });
     }
+
+    addStudent(registro, nome, professor) {
+        return new Promise((resolve, reject) => {
+            api.post("/aluno",{
+                "registro": registro,
+                "nome": nome,
+                "professor": {
+                    "registro": professor.registro,
+                    "nome": professor.nome,
+                    "instituicao": {
+                        "instituicao": professor.instituicao.instituicao,
+                        "usuario": {
+                            "email": professor.instituicao.usuario.email,
+                            "senha": professor.instituicao.usuario.senha
+                        }
+                    }
+                }
+            })
+                .then(res => resolve(res.data))
+                .catch(error => reject(error.response.data.message));
+        });
+    }
+
 };

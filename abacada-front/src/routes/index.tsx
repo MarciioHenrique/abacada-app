@@ -9,13 +9,14 @@ import Signup from "../pages/signup";
 import Teachers from "../pages/teachers";
 import Students from "../pages/students";
 import AddTeacher from "../pages/addTeacher";
+import AddStudent from "../pages/addStudent";
 
 //cria todas as rotas da aplicação
 function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
 
   const Private = ({Item}: any) => {
-    const Signed = true;
+    const Signed = signed;
     return Signed ? <Item /> : <Signin />;
   };
 
@@ -27,6 +28,7 @@ function RoutesApp() {
           <Route path="/teachers" element={<Private Item={Teachers} />} />
           <Route path="/alunos/:professor" element={<Private Item={Students} />} />
           <Route path="/addProfessor" element={<Private Item={AddTeacher} />} />
+          <Route path="/addAluno/:professor" element={<Private Item={AddStudent} />} />
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<Signin />} />

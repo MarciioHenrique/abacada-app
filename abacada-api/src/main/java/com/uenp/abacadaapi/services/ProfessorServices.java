@@ -24,6 +24,15 @@ public class ProfessorServices {
     @Autowired
     private MongoTemplate mongoTemplate;
     
+    public Professor listarProfessor(Integer registro) {
+        if(verificaID(registro)) {
+            Optional<Professor> professor = repository.findById(registro);
+            return professor.get();
+        }
+        throw new BadRequestException("Registro não encontrado");
+        
+    } 
+    
     public List<Professor> listarProfessores(String instituicao) {
         Query query = new Query();
         query.addCriteria(Criteria.where("instituicao.instituicao").is(instituicao));
