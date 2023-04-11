@@ -4,44 +4,56 @@ import RecentsModal from "../../components/recentsModal";
 import FavoritesModal from "../../components/favoritesModal";
 import Game from "../../components/game";
 import "./style.css";
+import useAuth from "../../hooks/useAuth";
+import { AuthContextType } from "../../@types/types";
+import { useNavigate } from "react-router-dom";
 
 //pagina home
 function Home() {
   const games = [
     {
       key: 1,
-      name: "One Piece",
-      description: "Um pirata com uma tripulação que quer ser o Rei dos Piratas",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
     {
       key: 2,
-      name: "Naruto",
-      description: "Uma criança que tem o sonho de ser Hokage",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
     {
       key: 3,
-      name: "Hunter X Hunter",
-      description: "Uma criança que quer se tornar caçador para encontrar o seu pai",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
     {
       key: 4,
-      name: "Kimetsu no Yaiba",
-      description: "Uma criança que quer salvar sua irmã e matar todos os demônios",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
   ];
 
+  const navigate = useNavigate();
+  const { signout } = useAuth() as AuthContextType;
   const [isRecentsVisible, setIsRecentsVisible] = useState(false);
   const [isFavoritesVisible, setIsFavoritesVisible] = useState(false);
   const [isGameVisible, setIsGameVisible] = useState(false);
 
+  const exit = () => {
+    signout;
+    navigate("/");
+  };
+
   return (
     <div className="fundo">
       <div className="barraLateralEsquerda">
-        <img src={require("../../assets/Exit.png")} className="imagesE"/>
+        <img  src={require("../../assets/Exit.png")} 
+              className="imagesE"
+              onClick={exit}/>
         <img src={require("../../assets/Config.png")} className="imagesE"/>
       </div>
       <div className="tela">

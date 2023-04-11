@@ -2,6 +2,7 @@ import React from "react";
 import api from "../util/api";
 import { createContext,useState } from "react";
 import {userType } from "../@types/types";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
@@ -10,6 +11,7 @@ function AuthProvider({children}: any) {
   const [user, setUser] = useState<userType>();
 
   const signin = (email: string, senha: string) => {
+    console.log(user);
     return new Promise((resolve, reject) => {
       api.post("/login", {
         "email": email,
@@ -17,6 +19,7 @@ function AuthProvider({children}: any) {
       })
         .then(res => {
           setUser(res.data);
+          console.log(user);
           resolve("");
         })
         .catch(error => {
@@ -25,13 +28,13 @@ function AuthProvider({children}: any) {
     });
   };
 
-  const signup = (institution: string, email: string, password: string, passwordConfirmation: string) => {
+  const signup = (institution: string, email: string, senha: string) => {
     return new Promise((resolve, reject) => {
       api.post("/cadastro", {
         instituicao: institution,
         usuario: {
           email: email,
-          senha: password,
+          senha: senha,
         } 
       })
         .then(res => {
@@ -44,11 +47,13 @@ function AuthProvider({children}: any) {
     }); 
   };
 
-  //const signout = () => {};
+  const signout = () => {
+    setUser(undefined);
+  };
 
 
   return <AuthContext.Provider
-    value={{user, signed: !!user, signin, signup}}
+    value={{user, signed: !!user, signin, signup, signout}}
   >{children}</AuthContext.Provider>;
 }
 

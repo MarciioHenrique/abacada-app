@@ -4,8 +4,8 @@ export interface AuthContextType {
   user: usersType,
   signed: boolean,
   signout: () => void;
-  signin: (email: string, password: string) => Promise<string>;
-  signup: (institution: string,email: string, password: string, passwordConfirmation: string) => Promise<string>;
+  signin: (email: string, senha: string) => Promise<string>;
+  signup: (institution: string,email: string, senha: string) => Promise<string>;
 }
 
 export interface usersType {
@@ -18,7 +18,7 @@ export interface usersType {
 
 export interface userType {
   email: string,
-  password: string,
+  senha: string,
 }
 
 export interface teachersType {

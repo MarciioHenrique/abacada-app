@@ -21,7 +21,7 @@ export default function Signup() {
       return;
     }
     if (password === passwordConfirmation) {
-      signup(institution, email, password, passwordConfirmation)
+      signup(institution, email, password)
         .then((resolve) => navigate("/teachers"))
         .catch((reject) => setError(reject));
     }
