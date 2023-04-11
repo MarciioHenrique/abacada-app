@@ -8,10 +8,14 @@ import userServices from "../../services/userServices";
 //pagina dos alunos
 function Students() {
   const { professor } = useParams();
+  const registroProfessor = parseInt(professor || "-1");
   const [students, setStudents] = useState<studentsType[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if(registroProfessor == -1) {
+      setError("Professor não encontrado");
+    }
     userServices.getStudents(professor)
       .then(res => setStudents(res))
       .catch(error => setError(error));
@@ -32,7 +36,7 @@ function Students() {
               <Card key={student.registro} registro={student.registro} nome={student.nome} situation="Aluno"/>
             )}
 
-            <Card registro={0} nome="Novo Aluno" situation="AddAluno"/>
+            <Card registro={registroProfessor} nome="Novo Aluno" situation="AddAluno"/>
           </div>
         </div>
       </div>
