@@ -11,7 +11,6 @@ function AuthProvider({children}: any) {
   const [user, setUser] = useState<userType>();
 
   const signin = (email: string, senha: string) => {
-    console.log(user);
     return new Promise((resolve, reject) => {
       api.post("/login", {
         "email": email,
@@ -19,7 +18,6 @@ function AuthProvider({children}: any) {
       })
         .then(res => {
           setUser(res.data);
-          console.log(user);
           resolve("");
         })
         .catch(error => {

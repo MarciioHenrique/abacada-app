@@ -54,7 +54,7 @@ export default function Signin() {
             ></input>
 
           <label className="labelErrorSignin">{error}</label>
-          <input type="submit" value="Enviar" className="buttonSignin" onClick={handleLogin}></input>
+          <input type="submit" value="Entrar" className="buttonSignin" onClick={handleLogin}></input>
         </div>
 
         <div className="bottomContentSignin">

@@ -8,26 +8,26 @@ function RecentsModal({onClose = () => {console.log("vazia");}}): JSX.Element {
   const games = [
     {
       key: 1,
-      name: "One Piece",
-      description: "Um pirata com uma tripulação que quer ser o Rei dos Piratas",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
     {
       key: 2,
-      name: "Naruto",
-      description: "Uma criança que tem o sonho de ser Hokage",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
     {
       key: 3,
-      name: "Hunter X Hunter",
-      description: "Uma criança que quer se tornar caçador para encontrar o seu pai",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
     {
       key: 4,
-      name: "Kimetsu no Yaiba",
-      description: "Uma criança que quer salvar sua irmã e matar todos os demônios",
+      name: "Título do Jogo",
+      description: "Descrição do Jogo",
       image: "jogo1.jpeg",
     },
   ];
