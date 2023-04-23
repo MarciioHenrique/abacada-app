@@ -20,11 +20,12 @@ export default function Signin() {
     }
 
     signin(email, password)
-      .then((resolve) => {
+      .then((res) => {
+        sessionStorage.setItem("instituicao", JSON.stringify(res));
         navigate("/teachers");
       })
-      .catch((reject) => {
-        setError(reject);
+      .catch((error) => {
+        setError(error);
       });
   };
 

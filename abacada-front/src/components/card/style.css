@@ -3,9 +3,20 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+
 }
 
 .imageContainerCard {
+  display: flex;
+  flex-direction: column;
   border-radius: 360px;
   overflow: hidden;
+
+}
+
+.optionsCard {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

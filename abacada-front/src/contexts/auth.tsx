@@ -18,7 +18,7 @@ function AuthProvider({children}: any) {
       })
         .then(res => {
           setUser(res.data);
-          resolve("");
+          resolve(res.data);
         })
         .catch(error => {
           reject(JSON.stringify(error.response.data.message));

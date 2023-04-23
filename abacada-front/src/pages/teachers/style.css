@@ -29,15 +29,16 @@
 }
 
 .containerTeachers {
-  min-height: 30%;
-  max-height: 70%;
-  min-width: 30%;
-  max-width: 40%;
+  min-height: 30vh;
+  max-height: 70vh;
+  min-width: 30vw;
+  max-width: 40vw;
   border-radius: 10px;
   background-color: white;
   filter: drop-shadow(0px 0px 6px darkgrey);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .labelTitleTeacher {
@@ -51,12 +52,44 @@
 }
 
 .contentTeachers {
+  height: 80%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   gap: 2vw;
   padding-bottom: 2vh;
+  overflow: auto;
+}
+
+.contentTeachers::-webkit-scrollbar {
+  width: 8px;
+}
+
+.contentTeachers::-webkit-scrollbar-thumb {
+  background-color: #1D3557;
+  border-radius: 20px;
+}
+
+.containerButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.button {
+  line-height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background: #1D3557;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 480px) {

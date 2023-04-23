@@ -65,4 +65,12 @@ export default new class userServices {
         });
     }
 
+    deleteTeacher(professor) {
+        return new Promise((resolve, reject) => {
+            api.delete("/professor?registro="+professor)
+                .then(res => resolve(res.data))
+                .catch(error => reject(error.response.data.message));
+        });
+    }
+
 };
