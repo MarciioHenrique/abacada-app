@@ -16,7 +16,7 @@ function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
 
   const Private = ({Item}: any) => {
-    const Signed = signed;
+    const Signed = true;
     return Signed ? <Item /> : <Signin />;
   };
 
@@ -26,9 +26,9 @@ function RoutesApp() {
         <Routes>
           <Route path="/home" element={<Private Item={Home} />} />
           <Route path="/teachers" element={<Private Item={Teachers} />} />
-          <Route path="/alunos/:professor" element={<Private Item={Students} />} />
+          <Route path="/alunos" element={<Private Item={Students} />} />
           <Route path="/addProfessor" element={<Private Item={AddTeacher} />} />
-          <Route path="/addAluno/:professor" element={<Private Item={AddStudent} />} />
+          <Route path="/addAluno" element={<Private Item={AddStudent} />} />
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<Signin />} />

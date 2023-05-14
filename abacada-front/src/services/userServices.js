@@ -25,12 +25,13 @@ export default new class userServices {
         });
     }
 
-    addTeacher(registro, nome, instituicao) {
+    addTeacher(nome, email, instituicao) {
         return new Promise((resolve, reject) => {
             api.post("/professor",{
-                "registro": registro,
                 "nome": nome,
+                "email": email,
                 "instituicao": {
+                    "id": instituicao.id,
                     "instituicao": instituicao.instituicao,
                     "usuario": {
                         "email": instituicao.usuario.email,
@@ -43,14 +44,16 @@ export default new class userServices {
         });
     }
 
-    addStudent(registro, nome, professor) {
+    addStudent(nome, heroi, nivel, professor) {
         return new Promise((resolve, reject) => {
             api.post("/aluno",{
-                "registro": registro,
                 "nome": nome,
+                "heroi": heroi,
+                "nivel": nivel,
                 "professor": {
                     "registro": professor.registro,
                     "nome": professor.nome,
+                    "email": professor.email,
                     "instituicao": {
                         "instituicao": professor.instituicao.instituicao,
                         "usuario": {
@@ -73,4 +76,27 @@ export default new class userServices {
         });
     }
 
+    deleteStudent(aluno) {
+        return new Promise((resolve, reject) => {
+            api.delete("/aluno?registro="+aluno)
+                .then(res => resolve(res.data))
+                .catch(error => reject(error.response.data.message));
+        });
+    }
+
+    getJogos() {
+        return new Promise((resolve, reject) => {
+            api.get("/jogo")
+                .then(res => resolve(res?.data))
+                .then(error => reject(error?.response?.data?.message));   
+        });
+    }
+
+    getHistorico() {
+        return new Promise((resolve, reject) => {
+            api.get("/historico")
+                .then(res => resolve(res?.data))
+                .then(error => reject(error?.response?.data?.message));   
+        });
+    }
 };

@@ -7,23 +7,24 @@ import userServices from "../../services/userServices";
 
 //pagina de cadastro de aluno
 export default function AddStudent() {
-  const { professor } = useParams();
+  const professor = sessionStorage.getItem("professor");
   const navigate = useNavigate();
 
-  const [registro, setRegistro] = useState("");
   const [nome, setNome] = useState("");
+  const [heroi, setHeroi] = useState("");
+  const [nivel, setNivel] = useState("");
   const [error, setError] = useState("");
 
   const handleAddStudent = () => {
-    if (!registro || !nome) {
+    if (!nome || !heroi || !nivel) {
       setError("Preencha todos os campos");
       return;
     }
 
     userServices.getTeacher(professor)
       .then(res => {
-        userServices.addStudent(registro, nome, res)
-          .then(res => navigate("/alunos/"+professor))
+        userServices.addStudent(nome, heroi, nivel, res)
+          .then(res => navigate("/alunos"))
           .catch(error => setError(error));
       
       })
@@ -31,7 +32,7 @@ export default function AddStudent() {
   };
 
   const handleComeBack = () => {
-    navigate("/alunos/"+professor);
+    navigate("/alunos");
   };
 
   return (
@@ -43,20 +44,28 @@ export default function AddStudent() {
         <div className="contentAddStudent">
           <label className="labelTitleAddStudent">Cadastro de Aluno</label>
 
-          <label className="labelAddStudent">Registro</label>
-          <input  type="number"
-                  name="registro"
-                  className="inputAddStudent"
-                  placeholder="Digite o Registro"
-                  onChange={(e: React.FormEvent) => [setRegistro((e.target as HTMLInputElement).value), setError("")]}
-          ></input>
-
           <label className="labelAddStudent">Nome</label>
           <input  type="text"
                   name="nome"
                   className="inputAddStudent"
-                  placeholder="Digite o Nome"
+                  placeholder="Digite o Registro"
                   onChange={(e: React.FormEvent) => [setNome((e.target as HTMLInputElement).value), setError("")]}
+          ></input>
+
+          <label className="labelAddStudent">Heroi</label>
+          <input  type="text"
+                  name="heroi"
+                  className="inputAddStudent"
+                  placeholder="Digite o Heroi"
+                  onChange={(e: React.FormEvent) => [setHeroi((e.target as HTMLInputElement).value), setError("")]}
+          ></input>
+
+          <label className="labelAddStudent">Nivel</label>
+          <input  type="text"
+                  name="nivel"
+                  className="inputAddStudent"
+                  placeholder="Digite o Nivel"
+                  onChange={(e: React.FormEvent) => [setNivel((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
           <label className="labelErrorAddStudent">{error}</label>
