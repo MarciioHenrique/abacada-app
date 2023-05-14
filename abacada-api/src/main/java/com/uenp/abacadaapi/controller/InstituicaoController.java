@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uenp.abacadaapi.model.Instituicao;
 import com.uenp.abacadaapi.model.Usuario;
 import com.uenp.abacadaapi.services.InstituicaoServices;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +31,7 @@ public class InstituicaoController {
     }
     
     @PostMapping("/login")
-    public ResponseEntity<?> Login(@RequestBody Usuario usuario) {
+    public ResponseEntity<Instituicao> Login(@RequestBody Usuario usuario) {
         return ResponseEntity.ok(services.login(usuario));
     }    
     
@@ -39,12 +41,7 @@ public class InstituicaoController {
     }
     
     @DeleteMapping("/instituicao")
-    public ResponseEntity<List<Instituicao>> excluirInstituicoes(@RequestBody(required = false) Usuario usuario) {
-        if (usuario == null) {
-            return ResponseEntity.ok(services.excluirInstituicoes());
-        } else {
-            return ResponseEntity.ok(services.excluirInstituicao(usuario));
-        }
-        
+    public ResponseEntity<Optional<Instituicao>> excluirInstituicoes(@RequestParam(name = "id") String id) {
+        return ResponseEntity.ok(services.excluirInstituicao(id));
     }
 }

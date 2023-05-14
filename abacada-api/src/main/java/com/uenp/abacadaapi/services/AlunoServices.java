@@ -25,7 +25,7 @@ public class AlunoServices {
     @Autowired
     private MongoTemplate mongoTemplate;
     
-    public List<Aluno> listarAlunos(Integer registroProfessor) {
+    public List<Aluno> listarAlunos(String registroProfessor) {
         Query query = new Query();
         query.addCriteria(Criteria.where("professor.registro").is(registroProfessor));
         List<Aluno> alunos = mongoTemplate.find(query, Aluno.class);
@@ -33,13 +33,11 @@ public class AlunoServices {
     }
     
     public Aluno cadastrarAluno(Aluno aluno) {
-        if (aluno.getRegistro() == null || aluno.getNome().length() == 0 || aluno.getProfessor().getRegistro() == null || 
+        if (aluno.getNome().length() == 0 || aluno.getHeroi().length() == 0 ||
+            aluno.getNivel().length() == 0 || aluno.getProfessor().getRegistro() == null || 
             aluno.getProfessor().getNome().length() == 0 || aluno.getProfessor().getInstituicao().getUsuario().getEmail().length() == 0 ||
             aluno.getProfessor().getInstituicao().getInstituicao().length() == 0 ||  aluno.getProfessor().getInstituicao().getUsuario().getSenha().length() == 0) {
             throw new BadRequestException("Digite os dados corretamente");
-        }
-        if (alunoRepository.existsById(aluno.getRegistro())) {
-            throw new BadRequestException("Registro em uso");
         }
         
         if (!professorRepository.existsById(aluno.getProfessor().getRegistro())) {
@@ -47,6 +45,7 @@ public class AlunoServices {
         }
         Optional<Professor> professor = professorRepository.findById(aluno.getProfessor().getRegistro());
         if (!aluno.getProfessor().getNome().equals(professor.get().getNome()) ||
+            !aluno.getProfessor().getEmail().equals(professor.get().getEmail()) ||
             !aluno.getProfessor().getInstituicao().getInstituicao().equals(professor.get().getInstituicao().getInstituicao()) ||
             !aluno.getProfessor().getInstituicao().getUsuario().getEmail().equals(professor.get().getInstituicao().getUsuario().getEmail()) ||
             !aluno.getProfessor().getInstituicao().getUsuario().getSenha().equals(professor.get().getInstituicao().getUsuario().getSenha())) {
@@ -56,10 +55,11 @@ public class AlunoServices {
         return aluno;
     }
 
-    public List<Aluno> excluirAluno(Integer registro) {
+    public Optional<Aluno> excluirAluno(String registro) {
         if(alunoRepository.existsById(registro)) {
+            Optional<Aluno> alunoDeletado = alunoRepository.findById(registro);
             alunoRepository.deleteById(registro);
-            return alunoRepository.findAll();
+            return alunoDeletado;
         }
         throw new BadRequestException("Registro não encontrado");
     }

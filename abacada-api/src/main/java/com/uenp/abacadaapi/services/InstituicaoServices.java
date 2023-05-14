@@ -9,6 +9,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.uenp.abacadaapi.repository.InstituicaoRepository;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 
 @Service
@@ -17,12 +20,17 @@ public class InstituicaoServices {
     @Autowired
     private InstituicaoRepository repository;
     
-    public Optional<Instituicao> login(Usuario usuario) {
-        if (!verificaSeExiste(usuario)) {
+    @Autowired
+    private MongoTemplate mongoTemplate;
+    
+    public Instituicao login(Usuario usuario) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("usuario").is(usuario));
+        Instituicao instituicao = mongoTemplate.findOne(query, Instituicao.class);
+        if (instituicao == null ){
             throw new ResourceNotFoundException("Usuario não encontrado");
         }
-        Optional<Instituicao> user = listarInstituicaoPorID(usuario);
-        return user;
+        return instituicao;
     }
     
     public Instituicao cadastrarInstituicao(Instituicao instituicao) {
@@ -34,10 +42,6 @@ public class InstituicaoServices {
             throw new BadRequestException("email inválido");
         }
         
-        if (verificaSeExiste(instituicao.getUsuario())) {
-            throw new BadRequestException("Usuário já cadastrado");
-        }
-        
         if (verificaEmail(instituicao.getUsuario().getEmail())) {
             throw new BadRequestException("email já cadastrado");
         }
@@ -47,29 +51,16 @@ public class InstituicaoServices {
     public List<Instituicao> listarInstituicoes() {
         return repository.findAll();
     }
-    
-    public Optional<Instituicao> listarInstituicaoPorID(Usuario usuario) {
-        return repository.findById(usuario);
-    }
-    
-    public List<Instituicao> excluirInstituicao(Usuario usuario) {
-        if (!verificaSeExiste(usuario)) {
+
+    public Optional<Instituicao> excluirInstituicao(String id) {
+        if (!verificaSeExiste(id)) {
             throw new BadRequestException("Usuário não existe");
         }
-        repository.deleteById(usuario);
-        return repository.findAll();
+        Optional<Instituicao> instituicaoDeleted = repository.findById(id);
+        repository.deleteById(id);
+        return instituicaoDeleted;
     }
-    
-    public List<Instituicao> excluirInstituicoes() {
-        repository.deleteAll();
-        return repository.findAll();
-    }
-    
-    public boolean verificaSeExiste(Usuario usuario) {
-        Optional<Instituicao> instituicao = listarInstituicaoPorID(usuario);
-        return instituicao.isPresent();
-    }
-    
+
     public boolean verificaEmail(String email) {
         List<Instituicao> instituicoes = listarInstituicoes();
         for (Instituicao i : instituicoes) {
@@ -78,6 +69,18 @@ public class InstituicaoServices {
             }
         }
         return false;
+    }
+
+    public boolean verificaSeExiste(String id) {
+        Optional<Instituicao> instituicao = repository.findById(id);
+        if (instituicao.isPresent()) {
+            return true;
+        }
+        return false;
+    }
+
+    Optional<Instituicao> listarInstituicaoPorID(String id) {
+        return repository.findById(id);
     }
     
 }

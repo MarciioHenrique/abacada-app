@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uenp.abacadaapi.services.ProfessorServices;
 import jakarta.websocket.server.PathParam;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class ProfessorController {
     private ProfessorServices services;
     
     @GetMapping("/{registro}")
-    public ResponseEntity<Professor> listarProfessor(@PathVariable(name = "registro") Integer registro) {
+    public ResponseEntity<Professor> listarProfessor(@PathVariable(name = "registro") String registro) {
         return ResponseEntity.ok(services.listarProfessor(registro));
     }
 
@@ -38,7 +39,7 @@ public class ProfessorController {
     }
     
     @DeleteMapping
-    public ResponseEntity<List<Professor>> excluirProfessor(@RequestParam(name = "registro") Integer registro) {
+    public ResponseEntity<Optional<Professor>> excluirProfessor(@RequestParam(name = "registro") String registro) {
         return ResponseEntity.ok(services.excluirProfessor(registro));
     }
 }

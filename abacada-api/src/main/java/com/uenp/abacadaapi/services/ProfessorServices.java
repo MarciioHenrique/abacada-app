@@ -24,8 +24,8 @@ public class ProfessorServices {
     @Autowired
     private MongoTemplate mongoTemplate;
     
-    public Professor listarProfessor(Integer registro) {
-        if(verificaID(registro)) {
+    public Professor listarProfessor(String registro) {
+        if(repository.existsById(registro)) {
             Optional<Professor> professor = repository.findById(registro);
             return professor.get();
         }
@@ -41,38 +41,30 @@ public class ProfessorServices {
     }
         
     public Professor cadastrarProfessor(Professor professor) {
-        if (professor.getRegistro() == null || professor.getNome().length() == 0 ||
-            professor.getInstituicao().getInstituicao().length() == 0 ||
+        System.out.println(professor.getRegistro());
+        if (professor.getNome().length() == 0 ||
+            professor.getEmail().length() == 0 || professor.getInstituicao().getInstituicao().length() == 0 ||
             professor.getInstituicao().getUsuario().getEmail().length() == 0 || professor.getInstituicao().getUsuario().getSenha().length() == 0) {
             throw new BadRequestException("Dados inválidos");
         }
         if (!verificaInstituicao(professor.getInstituicao())) {
             throw new ResourceNotFoundException("Instituição não encontrada");
         }
-        if (verificaID(professor.getRegistro())) {
-            throw new BadRequestException("Registro em uso");
-        }
         return repository.save(professor);
     }
     
-    public List<Professor> excluirProfessor(Integer registro) {
-        if (!verificaID(registro)) {
+    public Optional<Professor> excluirProfessor(String registro) {
+        if (!repository.existsById(registro)) {
             throw new BadRequestException("Registro não encontrado");
         }
+        Optional<Professor> professorDeletado = repository.findById(registro);
         repository.deleteById(registro);
-        return repository.findAll();
-    }
-    
-    public boolean verificaID(int id) {
-        if (repository.existsById(id)) {
-            return true;
-        }
-        return false;
+        return professorDeletado;
     }
     
     public boolean verificaInstituicao(Instituicao instituicao) {
-        if (instituicaoServices.verificaSeExiste(instituicao.getUsuario())) {
-            Optional<Instituicao> i = instituicaoServices.listarInstituicaoPorID(instituicao.getUsuario());
+        if (instituicaoServices.verificaSeExiste(instituicao.getId())) {
+            Optional<Instituicao> i = instituicaoServices.listarInstituicaoPorID(instituicao.getId());
             if (i.get().getInstituicao().equals(instituicao.getInstituicao()) && i.get().getUsuario().getSenha().equals(instituicao.getUsuario().getSenha())) {
                 return true;
             }

@@ -7,22 +7,26 @@ import org.springframework.data.annotation.Id;
 public class Aluno {
     
     @Id
-    private Integer registro;
+    private String registro;
     private String nome;
+    private String heroi;
+    private String nivel;
     private Professor professor;
     //colocar os jogos
 
-    public Aluno(Integer registro, String nome, Professor professor) {
+    public Aluno(String registro, String nome, String heroi, String nivel, Professor professor) {
         this.registro = registro;
         this.nome = nome;
+        this.heroi = heroi;
+        this.nivel = nivel;
         this.professor = professor;
     }
 
-    public Integer getRegistro() {
+    public String getRegistro() {
         return registro;
     }
 
-    public void setRegistro(Integer registro) {
+    public void setRegistro(String registro) {
         this.registro = registro;
     }
     
@@ -33,6 +37,23 @@ public class Aluno {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getHeroi() {
+        return heroi;
+    }
+
+    public void setHeroi(String heroi) {
+        this.heroi = heroi;
+    }
+
+    public String getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+    }
+    
 
     public Professor getProfessor() {
         return professor;

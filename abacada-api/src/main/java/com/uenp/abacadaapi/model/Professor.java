@@ -6,20 +6,22 @@ import org.springframework.data.annotation.Id;
 public class Professor {
 
     @Id
-    private Integer registro;
+    private String registro;
     private String nome;
+    private String email;
     private Instituicao instituicao;
 
-    public Professor(String nome, Instituicao instituicao) {
+    public Professor(String nome, String email, Instituicao instituicao) {
         this.nome = nome;
+        this.email = email;
         this.instituicao = instituicao;
     }
 
-    public Integer getRegistro() {
+    public String getRegistro() {
         return registro;
     }
 
-    public void setRegistro(Integer registro) {
+    public void setRegistro(String registro) {
         this.registro = registro;
     }
 
@@ -29,6 +31,14 @@ public class Professor {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Instituicao getInstituicao() {

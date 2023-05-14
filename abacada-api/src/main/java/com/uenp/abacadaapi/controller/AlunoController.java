@@ -30,7 +30,7 @@ public class AlunoController {
     private AlunoServices services;
 
     @GetMapping
-    public ResponseEntity<List<Aluno>> listarAlunos(@RequestParam(value = "registroProfessor") Integer registroProfessor) {
+    public ResponseEntity<List<Aluno>> listarAlunos(@RequestParam(value = "registroProfessor") String registroProfessor) {
         return ResponseEntity.ok(services.listarAlunos(registroProfessor));
     }
     
@@ -40,7 +40,7 @@ public class AlunoController {
     }
     
     @DeleteMapping
-    public ResponseEntity<List<Aluno>> excluirAluno(@RequestParam(value = "registro") Integer registro) {
+    public ResponseEntity<Optional<Aluno>> excluirAluno(@RequestParam(value = "registro") String registro) {
         return ResponseEntity.ok(services.excluirAluno(registro));
     }
 }
