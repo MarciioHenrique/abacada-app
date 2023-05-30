@@ -17,6 +17,10 @@ public class JogoServices {
         return repository.findAll();
     }
     
+    public Optional<Jogo> listarJogoPorId(String id) {
+        return repository.findById(id);
+    }
+    
     public Jogo cadastrarJogo(Jogo jogo) {
         return repository.save(jogo);
     }

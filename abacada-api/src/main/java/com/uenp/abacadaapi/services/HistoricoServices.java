@@ -1,9 +1,11 @@
 
 package com.uenp.abacadaapi.services;
 
+import com.uenp.abacadaapi.exception.ResourceNotFoundException;
 import com.uenp.abacadaapi.model.Historico;
 import com.uenp.abacadaapi.repository.HistoricoRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -27,5 +29,17 @@ public class HistoricoServices {
     
     public Historico addHistorico(Historico historico) {
         return repository.save(historico);
+    }
+    
+    public Historico alterarHistorico(String id, Historico historicoUpdate) {
+        Optional<Historico> historico = repository.findById(id);
+        if(historico.isPresent()) {
+            Historico historicoAlterado = historico.get();
+            historicoAlterado.setTempoMin(historicoUpdate.getTempoMin());
+            historicoAlterado.setTempoSeg(historicoUpdate.getTempoSeg());
+            historicoAlterado.setConcluido(historicoUpdate.getConcluido());
+            return repository.save(historicoAlterado);
+        }
+        throw new ResourceNotFoundException("id não encontrado");
     }
 }

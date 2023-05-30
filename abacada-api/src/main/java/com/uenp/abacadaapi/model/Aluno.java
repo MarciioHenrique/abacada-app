@@ -9,12 +9,12 @@ public class Aluno {
     @Id
     private String registro;
     private String nome;
-    private String heroi;
+    private Heroi heroi;
     private String nivel;
     private Professor professor;
     //colocar os jogos
 
-    public Aluno(String registro, String nome, String heroi, String nivel, Professor professor) {
+    public Aluno(String registro, String nome, Heroi heroi, String nivel, Professor professor) {
         this.registro = registro;
         this.nome = nome;
         this.heroi = heroi;
@@ -38,11 +38,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getHeroi() {
+    public Heroi getHeroi() {
         return heroi;
     }
 
-    public void setHeroi(String heroi) {
+    public void setHeroi(Heroi heroi) {
         this.heroi = heroi;
     }
 

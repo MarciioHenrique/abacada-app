@@ -8,8 +8,8 @@ public class Historico {
     private String id;
     private Aluno aluno;
     private Jogo jogo;
-    private String horaInicio;
-    private String horaFim;
+    private String tempoMin;
+    private String tempoSeg;
     private Boolean concluido;
 
     public Historico() { }
@@ -18,8 +18,8 @@ public class Historico {
         this.id = id;
         this.aluno = aluno;
         this.jogo = jogo;
-        this.horaInicio = horaInicio;
-        this.horaFim = horaFim;
+        this.tempoMin = horaInicio;
+        this.tempoSeg = horaFim;
         this.concluido = concluido;
     }
 
@@ -47,20 +47,20 @@ public class Historico {
         this.jogo = jogo;
     }
 
-    public String getHoraInicio() {
-        return horaInicio;
+    public String getTempoMin() {
+        return tempoMin;
     }
 
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
+    public void setTempoMin(String tempoMin) {
+        this.tempoMin = tempoMin;
     }
 
-    public String getHoraFim() {
-        return horaFim;
+    public String getTempoSeg() {
+        return tempoSeg;
     }
 
-    public void setHoraFim(String horaFim) {
-        this.horaFim = horaFim;
+    public void setTempoSeg(String tempoSeg) {
+        this.tempoSeg = tempoSeg;
     }
 
     public Boolean getConcluido() {

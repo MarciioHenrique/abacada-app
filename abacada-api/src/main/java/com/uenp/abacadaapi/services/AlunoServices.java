@@ -32,8 +32,12 @@ public class AlunoServices {
         return alunos;
     }
     
+    public Optional<Aluno> listarAlunoPorId(String id) {
+        return alunoRepository.findById(id);
+    }
+    
     public Aluno cadastrarAluno(Aluno aluno) {
-        if (aluno.getNome().length() == 0 || aluno.getHeroi().length() == 0 ||
+        if (aluno.getNome().length() == 0 || aluno.getHeroi() == null ||
             aluno.getNivel().length() == 0 || aluno.getProfessor().getRegistro() == null || 
             aluno.getProfessor().getNome().length() == 0 || aluno.getProfessor().getInstituicao().getUsuario().getEmail().length() == 0 ||
             aluno.getProfessor().getInstituicao().getInstituicao().length() == 0 ||  aluno.getProfessor().getInstituicao().getUsuario().getSenha().length() == 0) {

@@ -20,6 +20,7 @@ import com.uenp.abacadaapi.repository.AlunoRepository;
 import com.uenp.abacadaapi.services.AlunoServices;
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 //metodos do caminho /aluno da api
 @RestController
@@ -32,6 +33,11 @@ public class AlunoController {
     @GetMapping
     public ResponseEntity<List<Aluno>> listarAlunos(@RequestParam(value = "registroProfessor") String registroProfessor) {
         return ResponseEntity.ok(services.listarAlunos(registroProfessor));
+    }
+    
+    @GetMapping("/{registro}")
+    public ResponseEntity<Optional<Aluno>> listarAlunoPorId(@PathVariable(value = "registro") String registro) {
+        return ResponseEntity.ok(services.listarAlunoPorId(registro));
     }
     
     @PostMapping
