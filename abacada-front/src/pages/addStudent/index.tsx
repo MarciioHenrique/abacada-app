@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { AuthContextType } from "../../@types/types";
+import React, { useContext, useEffect, useState } from "react";
+import { teachersType ,heroiType } from "../../@types/types";
 import { useNavigate, useParams } from "react-router-dom";
 import "./style.css";
 import { AuthContext } from "../../contexts/auth";
@@ -7,10 +7,12 @@ import userServices from "../../services/userServices";
 
 //pagina de cadastro de aluno
 export default function AddStudent() {
-  const professor = sessionStorage.getItem("professor");
+  const professorID = sessionStorage.getItem("professor");
   const navigate = useNavigate();
+  const [heroisList, setHeroisList] = useState<heroiType[]>([]);
 
   const [nome, setNome] = useState("");
+  const [professor, setProfessor] = useState<teachersType>();
   const [heroi, setHeroi] = useState("");
   const [nivel, setNivel] = useState("");
   const [error, setError] = useState("");
@@ -21,9 +23,9 @@ export default function AddStudent() {
       return;
     }
 
-    userServices.getTeacher(professor)
+    userServices.getHeroi(heroi)
       .then(res => {
-        userServices.addStudent(nome, heroi, nivel, res)
+        userServices.addStudent(nome, res, nivel, professor)
           .then(res => navigate("/alunos"))
           .catch(error => setError(error));
       
@@ -34,6 +36,16 @@ export default function AddStudent() {
   const handleComeBack = () => {
     navigate("/alunos");
   };
+
+  useEffect(() => {
+    userServices.getHerois()
+      .then(res => setHeroisList(res))
+      .catch(error => setError(error));
+
+    userServices.getTeacher(professorID)
+      .then(res => setProfessor(res))
+      .catch(error => setError(error));
+  },[]);
 
   return (
     <div className="backgroundAddStudent">
@@ -48,17 +60,16 @@ export default function AddStudent() {
           <input  type="text"
                   name="nome"
                   className="inputAddStudent"
-                  placeholder="Digite o Registro"
+                  placeholder="Digite o Nome"
                   onChange={(e: React.FormEvent) => [setNome((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
           <label className="labelAddStudent">Heroi</label>
-          <input  type="text"
-                  name="heroi"
-                  className="inputAddStudent"
-                  placeholder="Digite o Heroi"
-                  onChange={(e: React.FormEvent) => [setHeroi((e.target as HTMLInputElement).value), setError("")]}
-          ></input>
+          <select className="inputAddStudent" placeholder="Selecione o Herói" onChange={(e) => setHeroi(e.target.value)}>
+            {heroisList.map((heroi) => 
+              <option key={heroi.id} value={heroi.id}>{heroi.nome}</option>
+            )}
+          </select>
 
           <label className="labelAddStudent">Nivel</label>
           <input  type="text"

@@ -5,54 +5,84 @@
   flex-direction: row;
 }
 
-.barraLateralEsquerda {
-  width: 4vw;
-  border-right: 3px solid #F5F5F5;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .barraLateralDireita {
-  width: 8vw;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.barraLateralDireita .superior {
+.buttonsContainer {
+  width: 100%;
+  height: 15%;
   display: flex;
-  gap: 0.5vw;
+  justify-content: flex-end;
 }
 
-.barraLateralDireita .inferior {
+.buttonBox {
+  height: fit-content;
+  color: #1D3557;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2vw;
+  margin-top: 2vh;
+  cursor: pointer;
+}
+
+.imagesHome {
+  width: 40px;
+  height: 40px;
+}
+
+.imagesDescription {
+  cursor: pointer;
+}
+
+.historicoContainer {
+  color: #F5F5F5;
+  height: 85%;
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.recentes {
-  width: 80%;
-  margin-bottom: 2vh;
+.historico {
+  background: #1D3557;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  height: 80%;
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.historicoTitle {
   align-self: center;
-  cursor: pointer;
+  font-weight: 500;
+  font-size: 25px;
 }
 
-.imagesE {
+.historicoList {
   width: 100%;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  cursor: pointer;
+  height: 100%;
+  overflow: auto;
 }
 
-.imagesD {
-  width: 50%;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  cursor: pointer;
+.historicoList::-webkit-scrollbar {
+  width: 10px;
+}
+
+.historicoList::-webkit-scrollbar-thumb {
+
+  background-color: #F5F5F5;
+  border-radius: 20px;
 }
 
 .tela {
-  width: 86vw;
+  width: 70%;
   display: flex;
   flex-direction: column;
 }
@@ -76,11 +106,16 @@
   justify-content: center;
   font-weight: 700;
   font-size: 50px;
+  gap: 1vw;
 }
 
 .gamesContainer {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title {
@@ -89,9 +124,58 @@
   margin-left: 1vw;
 }
 
+.navigateBefore, .navigateNext {
+  position: absolute;
+  width: 35px;
+  height: 150px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transition: all ease 0.5s;
+}
+
+.navigateBefore {
+  left: 0;
+}
+
+.navigateNext {
+  right: 0;
+}
+
+.games:hover .navigateBefore, 
+.games:hover .navigateNext {
+  opacity: 1;
+}
+
 .games {
+  margin-left: 0.5vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  margin-bottom: 5vh;
+  transition: all ease 0.2s;
+}
+
+.footerContainer {
+  height: 10vh;
+  width: 100%;
+  margin-bottom: 1.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerContent {
+  background-color: #1D3557;
+  padding: 15px;
+  border-radius: 10px;
+  color: #F5F5F5;
+  font-weight: 500;
+  font-size: 25px;
+  cursor: pointer;
 }

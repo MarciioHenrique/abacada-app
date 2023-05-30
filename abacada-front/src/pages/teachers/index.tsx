@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/auth";
 import { AuthContextType, teachersType, usersType } from "../../@types/types";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import ConfirmationPopUp from "../../components/confirmationPopUp/Index";
 
 //pagina dos professores
 function Teachers() {
@@ -14,6 +15,7 @@ function Teachers() {
   const [error, setError] = useState("");
   const [isDeleteMode, setIsDeleteMode] = useState(false);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [isConfirmationPopUpVisible, setIsConfirmationPorpUpVisible] = useState(true);
 
   useEffect(() => {
     const instituicao: usersType = JSON.parse(sessionStorage.getItem("instituicao") || "{}");
@@ -34,7 +36,7 @@ function Teachers() {
           </div>
           <div className="contentTeachers">
             {teachers.map((teacher) =>
-              <Card key={teacher.registro} registro={teacher.registro} nome={teacher.nome} situation="Professor" delete={isDeleteMode} update={isUpdateMode}/>
+              <Card key={teacher.registro} id={teacher.registro} nome={teacher.nome} heroi={undefined} situation="Professor" delete={isDeleteMode} update={isUpdateMode}/>
             )}
           </div> 
           <div className="containerButtons">

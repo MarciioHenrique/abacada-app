@@ -35,7 +35,7 @@ function Students() {
           </div>
           <div className="contentStudents">
             {students.map((student) =>
-              <Card key={student.registro} id={student.registro} nome={student.nome} situation="Aluno" delete={isDeleteMode} update={isUpdateMode}/>
+              <Card key={student.registro} id={student.registro} nome={student.nome} heroi={student.heroi} situation="Aluno" delete={isDeleteMode} update={isUpdateMode}/>
             )}
           </div>
           <div className="containerButtons">

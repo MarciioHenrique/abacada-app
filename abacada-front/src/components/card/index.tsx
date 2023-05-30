@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import { heroiType } from "../../@types/types";
 import { BiPencil } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import userServices from "../../services/userServices";
 
 //Componente Card vai pegar as informações do aluno/professor e mostrar na tela
-function Card(props: {id: string, nome: string, situation: string, delete: boolean, update: boolean}) {
+function Card(props: {id: string, nome: string, heroi: heroiType | undefined , situation: string, delete: boolean, update: boolean}) {
   const navigate = useNavigate();
   const [isConfirmationPopUpVisible, setIsConfirmationPorpUpVisible] = useState(false);
 
@@ -57,7 +58,7 @@ function Card(props: {id: string, nome: string, situation: string, delete: boole
           {props.delete ? <AiOutlineDelete className="deleteMode" onClick={handleClickDelete} style={{visibility: "visible"}}/> : <AiOutlineDelete className="deleteMode" onClick={handleClickDelete} style={{visibility: "hidden"}}/>}
         </div>
         <div className="imageContainerCard">
-          <img src={require("../../assets/user1.png") }/>
+          {props.situation == "Professor" ? <img src={require("../../assets/user1.png") }/> : <img src={require(`../../assets/icons/${props.heroi?.icone}`)}/>}
         </div>
         <div className="nameCard">
           {props.nome}

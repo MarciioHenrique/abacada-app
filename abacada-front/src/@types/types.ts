@@ -29,10 +29,17 @@ export interface teachersType {
   instituicao: usersType
 }
 
+export interface heroiType {
+  id: string,
+  nome: string,
+  icone: string,
+  banner: string
+}
+
 export interface studentsType {
   registro: string,
   nome: string,
-  heroi: string,
+  heroi: heroiType,
   nivel: string,
   professor: teachersType,
 }
@@ -44,4 +51,19 @@ export interface jogoType {
   image: string,
   url: string,
   interno: boolean
+}
+
+export interface favoritoType {
+  id: string,
+  jogo: jogoType,
+  aluno: studentsType
+}
+
+export interface historicoType {
+  id: string,
+  aluno: studentsType,
+  jogo: jogoType,
+  tempoMin: string,
+  tempoSeg: string,
+  concluido: boolean
 }

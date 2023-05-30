@@ -10,6 +10,7 @@ import Teachers from "../pages/teachers";
 import Students from "../pages/students";
 import AddTeacher from "../pages/addTeacher";
 import AddStudent from "../pages/addStudent";
+import Jogo from "../pages/jogo";
 
 //cria todas as rotas da aplicação
 function RoutesApp() {
@@ -24,6 +25,7 @@ function RoutesApp() {
     <BrowserRouter>
       <Fragment>
         <Routes>
+          <Route path="/jogo" element={<Jogo />} />
           <Route path="/home" element={<Private Item={Home} />} />
           <Route path="/teachers" element={<Private Item={Teachers} />} />
           <Route path="/alunos" element={<Private Item={Students} />} />

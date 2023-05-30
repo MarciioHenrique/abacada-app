@@ -1,13 +1,20 @@
 .backgroundGameCard {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  cursor: pointer;
+  width: 90%;
+  height: 22%;
+  gap: 0.5vh;
+  margin-bottom: 1.5vh;
+}
 
+.upperContainer {
   display: flex;
   flex-direction: row;
-  cursor: pointer;
-  width: 40vw;
-  height: 18vh;
-  margin-top: 2vh;
-  margin-bottom: 3vh;
-  gap: 1vw;
+  width: 100%;
+  height: 80%;
+  gap: 0.5vw;
 }
 
 .imageContainerGameCard {
@@ -19,7 +26,6 @@
   width: 100%;
   height: 100%;
   border-radius: 16px;
-
 }
 
 .dataContainerGameCard {
@@ -34,9 +40,23 @@
 .titleGameCard {
   font-weight: 500;
   font-size: 18px;
-
 }
 
 .descriptionGameCard {
   font-size: 14px;
+}
+
+.lowerContainer {
+  height: 12%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0vw 1vw 0vw 1vw;
+}
+
+.line {
+  align-self: center;
+  width: 90%;
+  border: 1px solid #FFF;
+  margin-top: 1vh;
 }
