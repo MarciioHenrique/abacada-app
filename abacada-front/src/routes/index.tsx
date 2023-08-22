@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/auth/useAuth";
 import { AuthContextType } from "../@types/types";
 import Home from "../pages/home";
 import Signin from "../pages/signin";
