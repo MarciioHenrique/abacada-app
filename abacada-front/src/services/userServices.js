@@ -1,38 +1,6 @@
 import api from "../util/api";
 
 export default new class userServices {
-    getTeachers(instituicao) {
-        return new Promise((resolve, reject) => {
-            api.get("/professor?instituicao="+instituicao)
-                .then(res => resolve(res.data))
-                .catch(error => reject(error.response.data.message));
-        });      
-    }
-
-    getStudents(professor) {
-        return new Promise((resolve, reject) => {
-            api.get("/aluno?registroProfessor="+professor)
-                .then(res => resolve(res.data))
-                .catch(error => reject(error.response.data.message));
-        });
-    }
-
-    getAluno(registro) {
-        return new Promise((resolve, reject) => {
-            api.get("/aluno/"+registro)
-                .then(res => resolve(res.data))
-                .catch(error => reject(error.response.data.message));
-        });
-    }
-
-    getTeacher(registro) {
-        return new Promise((resolve, reject) => {
-            api.get("/professor/"+registro)
-                .then(res => resolve(res?.data))
-                .then(error => reject(error?.response?.data?.message));
-        });
-    }
-
     addTeacher(nome, email, instituicao) {
         return new Promise((resolve, reject) => {
             api.post("/professor",{
@@ -98,14 +66,6 @@ export default new class userServices {
         });
     }
 
-    getJogos() {
-        return new Promise((resolve, reject) => {
-            api.get("/jogo")
-                .then(res => resolve(res?.data))
-                .then(error => reject(error?.response?.data?.message));   
-        });
-    }
-
     getJogo(id) {
         return new Promise((resolve, reject) => {
             api.get("/jogo/"+id)
@@ -154,38 +114,6 @@ export default new class userServices {
                 "concluido": false
                 
             })
-                .then(res => resolve(res.data))
-                .catch(error => reject(error.response.data.message));
-        });
-    }
-
-    getHistorico(registroAluno) {
-        return new Promise((resolve, reject) => {
-            api.get("/historico?registro="+registroAluno)
-                .then(res => resolve(res.data))
-                .then(error => reject(error.response.data.message));   
-        });
-    }
-
-    getFavorito(registroAluno) {
-        return new Promise((resolve, reject) => {
-            api.get("/favorito?registro="+registroAluno)
-                .then(res => resolve(res.data))
-                .catch(error => reject(error.response.data.message));
-        });
-    }
-
-    getHeroi(heroiID) {
-        return new Promise((resolve, reject) => {
-            api.get("/heroi/"+heroiID)
-                .then(res => resolve(res.data))
-                .catch(error => reject(error.response.data.message));
-        });
-    }
-
-    getHerois() {
-        return new Promise((resolve, reject) => {
-            api.get("/heroi")
                 .then(res => resolve(res.data))
                 .catch(error => reject(error.response.data.message));
         });
