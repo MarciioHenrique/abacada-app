@@ -1,18 +1,25 @@
-import React, { useContext, useState } from "react";
-import { AuthContextType } from "../../@types/types";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContextType, teacherType } from "../../@types/types";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { AuthContext } from "../../contexts/auth";
 import userServices from "../../services/userServices";
+import { useTeacherMutate } from "../../hooks/teacher/useTeacherMutate";
 
 //pagina de cadastro de professor
 export default function AddTeacher() {
   const { user } = useContext(AuthContext) as AuthContextType;
+  const instituicao = JSON.parse(sessionStorage.getItem("instituicao") || "");
   const navigate = useNavigate();
+  const { mutate, isSuccess } = useTeacherMutate();
 
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
   const [error, setError] = useState("");
+
+  const handleComeBack = () => {
+    navigate("/teachers");
+  };
 
   const handleAddTeacher = () => {
     if (!nome || !email) {
@@ -20,15 +27,18 @@ export default function AddTeacher() {
       return;
     }
 
-    userServices.addTeacher(nome, email, user)
-      .then(res => navigate("/teachers"))
-      .catch(error => setError(error));
-    
+    const data = {
+      nome: nome,
+      email: email,
+      instituicao: instituicao
+    };
+
+    mutate(data);
   };
 
-  const handleComeBack = () => {
-    navigate("/teachers");
-  };
+  useEffect(() => {
+    handleComeBack();
+  },[isSuccess]);
 
   return (
     <div className="backgroundAddTeacher">

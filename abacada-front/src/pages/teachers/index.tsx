@@ -2,27 +2,19 @@ import React, { useEffect, useState, useContext } from "react";
 import Card from "../../components/card";
 import userServices from "../../services/userServices";
 import { AuthContext } from "../../contexts/auth";
-import { AuthContextType, teachersType, usersType } from "../../@types/types";
+import { AuthContextType, teacherType, usersType } from "../../@types/types";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import ConfirmationPopUp from "../../components/confirmationPopUp/Index";
+import ConfirmationPopUp from "../../components/confirmationModal/Index";
+import { useTeachersData } from "../../hooks/teacher/useTeachersData";
 
 //pagina dos professores
 function Teachers() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext) as AuthContextType;
-  const [teachers, setTeachers] = useState<teachersType[]>([]);
-  const [error, setError] = useState("");
+  const instituicao: usersType = JSON.parse(sessionStorage.getItem("instituicao") || "{}");
+  const {data: teachers} = useTeachersData(instituicao.instituicao);
   const [isDeleteMode, setIsDeleteMode] = useState(false);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
-  const [isConfirmationPopUpVisible, setIsConfirmationPorpUpVisible] = useState(true);
-
-  useEffect(() => {
-    const instituicao: usersType = JSON.parse(sessionStorage.getItem("instituicao") || "{}");
-    userServices.getTeachers(instituicao.instituicao)
-      .then(res => setTeachers(res))
-      .catch(error => setError(error));
-  }, [isDeleteMode, isUpdateMode]);
 
   return (
     <div className="backgroundTeachers">
@@ -35,13 +27,13 @@ function Teachers() {
             <label>Professores</label>
           </div>
           <div className="contentTeachers">
-            {teachers.map((teacher) =>
+            {teachers?.map((teacher) =>
               <Card key={teacher.registro} id={teacher.registro} nome={teacher.nome} heroi={undefined} situation="Professor" delete={isDeleteMode} update={isUpdateMode}/>
             )}
           </div> 
           <div className="containerButtons">
-            <input type="submit" value="Excluir" className="button" onClick={() => setIsDeleteMode(!isDeleteMode)}></input>
-            <input type="submit" value="Alterar" className="button" onClick={() => setIsUpdateMode(!isUpdateMode)}></input>
+            {/* <input type="submit" value="Excluir" className="button" onClick={() => setIsDeleteMode(!isDeleteMode)}></input>
+            <input type="submit" value="Alterar" className="button" onClick={() => setIsUpdateMode(!isUpdateMode)}></input> */}
             <input type="submit" value="Cadastrar" className="button" onClick={() => navigate("/addProfessor")}></input>
           </div>      
         </div> 

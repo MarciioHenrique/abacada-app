@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../hooks/auth/useAuth";
 import { AuthContextType } from "../../@types/types";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
@@ -58,12 +58,12 @@ export default function Signin() {
           <input type="submit" value="Entrar" className="buttonSignin" onClick={handleLogin}></input>
         </div>
 
-        <div className="bottomContentSignin">
+        {/* <div className="bottomContentSignin">
           <label className="bottomLabelSignin">
             Não possui cadastro? <Link to="/signup" style={{textDecoration: "none"}}>Clique aqui</Link>
           </label>
 
-        </div>
+        </div> */}
       </div>
     </div>
   );

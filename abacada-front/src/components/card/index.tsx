@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import { heroiType } from "../../@types/types";
+import { heroType } from "../../@types/types";
 import { BiPencil } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import userServices from "../../services/userServices";
 
 //Componente Card vai pegar as informações do aluno/professor e mostrar na tela
-function Card(props: {id: string, nome: string, heroi: heroiType | undefined , situation: string, delete: boolean, update: boolean}) {
+function Card(props: {id: string, nome: string, heroi: heroType | undefined , situation: string, delete: boolean, update: boolean}) {
   const navigate = useNavigate();
   const [isConfirmationPopUpVisible, setIsConfirmationPorpUpVisible] = useState(false);
 

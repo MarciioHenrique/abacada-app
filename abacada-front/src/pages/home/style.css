@@ -109,6 +109,11 @@
   gap: 1vw;
 }
 
+.banner {
+  width: 150px;
+  height: 150px;
+}
+
 .gamesContainer {
   height: 100%;
   width: 100%;
@@ -122,30 +127,6 @@
   font-weight: 500;
   font-size: 25px;
   margin-left: 1vw;
-}
-
-.navigateBefore, .navigateNext {
-  position: absolute;
-  width: 35px;
-  height: 150px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  cursor: pointer;
-  opacity: 0;
-  transition: all ease 0.5s;
-}
-
-.navigateBefore {
-  left: 0;
-}
-
-.navigateNext {
-  right: 0;
 }
 
 .games:hover .navigateBefore, 
@@ -167,7 +148,31 @@
   margin-bottom: 1.5vh;
   display: flex;
   align-items: center;
+  gap: 5vw;
+}
+
+.footerInputs {
+  height: 100%;
+  width: 40%;
+  margin-left: 1.5vw;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.footerSelects {
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  width: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  background-color: #F0F2F5;
 }
 
 .footerContent {

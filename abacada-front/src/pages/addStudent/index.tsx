@@ -1,51 +1,69 @@
 import React, { useContext, useEffect, useState } from "react";
-import { teachersType ,heroiType } from "../../@types/types";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
-import { AuthContext } from "../../contexts/auth";
-import userServices from "../../services/userServices";
+import { useTeacherData } from "../../hooks/teacher/useTeacherData";
+import { useHeroesData } from "../../hooks/hero/useHeroesData";
+import { useHeroData } from "../../hooks/hero/useHeroData";
+import { studentRequest } from "../../@types/types";
+import { useStudentMutate } from "../../hooks/student/useStudentMutate";
+import SuccessModal from "../../components/successModal/Index";
+import ErrorModal from "../../components/errorModal/Index";
 
 //pagina de cadastro de aluno
 export default function AddStudent() {
-  const professorID = sessionStorage.getItem("professor");
-  const navigate = useNavigate();
-  const [heroisList, setHeroisList] = useState<heroiType[]>([]);
-
   const [nome, setNome] = useState("");
-  const [professor, setProfessor] = useState<teachersType>();
   const [heroi, setHeroi] = useState("");
-  const [nivel, setNivel] = useState("");
+  const [vogal, setVogal] = useState("");
+  const [estagio, setEstagio] = useState("");
   const [error, setError] = useState("");
 
-  const handleAddStudent = () => {
-    if (!nome || !heroi || !nivel) {
-      setError("Preencha todos os campos");
-      return;
-    }
+  const vogais = ["A", "E", "I", "O", "U"];
+  const estagios = ["1", "2", "3", "4"];
 
-    userServices.getHeroi(heroi)
-      .then(res => {
-        userServices.addStudent(nome, res, nivel, professor)
-          .then(res => navigate("/alunos"))
-          .catch(error => setError(error));
-      
-      })
-      .catch(error => setError(error));
-  };
+  const navigate = useNavigate();
+  const teacherId = sessionStorage.getItem("professor");
+  const { data: heroes } = useHeroesData();
+  const { data: hero } = useHeroData(heroi);
+  const { data: teacher } = useTeacherData(teacherId || "");
+  const { mutate, isSuccess, isError } = useStudentMutate();
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+
+  let msgSuccess = "";
+  let msgError = "";
 
   const handleComeBack = () => {
     navigate("/alunos");
   };
 
-  useEffect(() => {
-    userServices.getHerois()
-      .then(res => setHeroisList(res))
-      .catch(error => setError(error));
+  const handleErrorModalOK = () => {
+    setIsErrorModalOpen(false);
+  };
 
-    userServices.getTeacher(professorID)
-      .then(res => setProfessor(res))
-      .catch(error => setError(error));
-  },[]);
+  const handleSuccessModalOK = () => {
+    setIsSuccessModalOpen(false);
+    handleComeBack();
+  };
+
+  const handleAddStudent = () => {
+    if ( !heroi || !vogal || !estagio) {
+      setError("Preencha todos os campos");
+      return;
+    }
+
+    const data: studentRequest = {
+      nome: nome,
+      heroi: hero,
+      vogal: vogal,
+      estagio: estagio,
+      professor: teacher
+    };
+
+    mutate(data);
+    msgSuccess = `O(a) aluno(a) ${nome} foi cadastrado(a) com sucesso`;
+    console.log(msgSuccess);
+    msgError = `O(a) aluno(a) ${nome} não pode ser cadastrado(a) com sucesso`;
+  };  
 
   return (
     <div className="backgroundAddStudent">
@@ -65,19 +83,28 @@ export default function AddStudent() {
           ></input>
 
           <label className="labelAddStudent">Heroi</label>
-          <select className="inputAddStudent" placeholder="Selecione o Herói" onChange={(e) => setHeroi(e.target.value)}>
-            {heroisList.map((heroi) => 
+          <select className="inputAddStudent" required defaultValue="" onChange={(e) => setHeroi(e.target.value)}>
+            <option value="" disabled>Selecione...</option>
+            {heroes?.map((heroi) => 
               <option key={heroi.id} value={heroi.id}>{heroi.nome}</option>
             )}
           </select>
 
-          <label className="labelAddStudent">Nivel</label>
-          <input  type="text"
-                  name="nivel"
-                  className="inputAddStudent"
-                  placeholder="Digite o Nivel"
-                  onChange={(e: React.FormEvent) => [setNivel((e.target as HTMLInputElement).value), setError("")]}
-          ></input>
+          <label className="labelAddStudent">Vogal</label>
+          <select className="inputAddStudent" required defaultValue="" onChange={(e) => setVogal(e.target.value)}>
+            <option value="" disabled>Selecione...</option>
+            {vogais.map((vogal) => 
+              <option key={vogal} value={vogal}>{vogal}</option>
+            )}
+          </select>
+
+          <label className="labelAddStudent">Estagio</label>
+          <select className="inputAddStudent" required defaultValue="" onChange={(e) => setEstagio(e.target.value)}>
+            <option value="" disabled>Selecione...</option>
+            {estagios.map((estagio) => 
+              <option key={estagio} value={estagio}>{estagio}</option>
+            )}
+          </select>
 
           <label className="labelErrorAddStudent">{error}</label>
           <div className="buttonsContainerAddStudent">
@@ -85,6 +112,24 @@ export default function AddStudent() {
             <input type="submit" value="Cadastrar" className="buttonAddStudent" onClick={handleAddStudent}></input>
           </div>
         </div>
+        {
+          isSuccess && 
+            <SuccessModal
+              isOpen={isSuccessModalOpen}
+              title="Confirmação de Cadastro"
+              message="O(A) aluno(a) foi cadastrado(a) com sucesso"
+              onOK={handleSuccessModalOK}
+            />
+        }
+        {
+          isError &&
+            <ErrorModal
+              isOpen={isErrorModalOpen}
+              title="Erro"
+              message="Não foi possível cadastrar o(a) aluno(a)"
+              onOK={handleErrorModalOK}
+            />
+        }
       </div>
     </div>
   );
