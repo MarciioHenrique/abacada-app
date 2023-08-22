@@ -22,29 +22,44 @@ export interface userType {
   senha: string,
 }
 
-export interface teachersType {
+export interface teacherType {
   registro: string,
   nome: string,
   email: string,
   instituicao: usersType
 }
 
-export interface heroiType {
+export interface teacherRequest {
+  nome: string,
+  email: string,
+  instituicao: usersType | null
+}
+
+export interface heroType {
   id: string,
   nome: string,
   icone: string,
   banner: string
 }
 
-export interface studentsType {
+export interface studentType {
   registro: string,
   nome: string,
-  heroi: heroiType,
-  nivel: string,
-  professor: teachersType,
+  heroi: heroType,
+  vogal: string,
+  estagio: string,
+  professor: teacherType,
 }
 
-export interface jogoType {
+export interface studentRequest {
+  nome: string,
+  heroi: heroType | undefined,
+  vogal: string,
+  estagio: string,
+  professor: teacherType | undefined,
+}
+
+export interface gameType {
   id: string,
   nome: string,
   descricao: string,
@@ -53,17 +68,52 @@ export interface jogoType {
   interno: boolean
 }
 
-export interface favoritoType {
+export interface favoriteType {
   id: string,
-  jogo: jogoType,
-  aluno: studentsType
+  jogo: gameType,
+  aluno: studentType
 }
 
-export interface historicoType {
+export interface historicType {
   id: string,
-  aluno: studentsType,
-  jogo: jogoType,
+  aluno: studentType,
+  jogo: gameType,
   tempoMin: string,
   tempoSeg: string,
   concluido: boolean
+}
+
+export interface historicRequest {
+  aluno: studentType | undefined,
+  jogo: gameType | undefined,
+  tempoMin: string,
+  tempoSeg: string,
+  concluido: boolean
+}
+
+export interface confirmationModalProps {
+  isOpen: boolean;
+  title: string;
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+export interface successModalProps {
+  isOpen: boolean;
+  title: string;
+  message: string;
+  onOK: () => void;
+}
+
+export interface errorModalProps {
+  isOpen: boolean;
+  title: string;
+  message: string;
+  onOK: () => void;
+}
+
+export interface gameModalProps {
+  //game: gameType;
+  onClose: () => void;
 }
