@@ -23,6 +23,12 @@ public class AlunoServices {
     private ProfessorRepository professorRepository;
     
     @Autowired
+    private HistoricoServices historicoServices;
+    
+    @Autowired
+    private FavoritoServices favoritosServices;
+    
+    @Autowired
     private MongoTemplate mongoTemplate;
     
     public List<Aluno> listarAlunos(String registroProfessor) {
@@ -37,8 +43,8 @@ public class AlunoServices {
     }
     
     public Aluno cadastrarAluno(Aluno aluno) {
-        if (aluno.getNome().length() == 0 || aluno.getHeroi() == null ||
-            aluno.getNivel().length() == 0 || aluno.getProfessor().getRegistro() == null || 
+        if (aluno.getNome().length() == 0 || aluno.getHeroi() == null || aluno.getVogal().length() == 0 ||
+            aluno.getEstagio().length() == 0 || aluno.getProfessor().getRegistro() == null || 
             aluno.getProfessor().getNome().length() == 0 || aluno.getProfessor().getInstituicao().getUsuario().getEmail().length() == 0 ||
             aluno.getProfessor().getInstituicao().getInstituicao().length() == 0 ||  aluno.getProfessor().getInstituicao().getUsuario().getSenha().length() == 0) {
             throw new BadRequestException("Digite os dados corretamente");
@@ -62,9 +68,20 @@ public class AlunoServices {
     public Optional<Aluno> excluirAluno(String registro) {
         if(alunoRepository.existsById(registro)) {
             Optional<Aluno> alunoDeletado = alunoRepository.findById(registro);
+            historicoServices.excluirHistoricoAluno(registro);
+            favoritosServices.excluirFavoritosAluno(registro);
             alunoRepository.deleteById(registro);
             return alunoDeletado;
         }
         throw new BadRequestException("Registro não encontrado");
+    }
+    
+    public void excluirAlunosProfessor(String registroProfessor) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("professor.registro").is(registroProfessor));
+        List<Aluno> alunos = mongoTemplate.find(query, Aluno.class);
+        for (int i = 0; i < alunos.size(); i++) {
+            alunoRepository.deleteById(alunos.get(i).getRegistro());
+        }
     }
 }

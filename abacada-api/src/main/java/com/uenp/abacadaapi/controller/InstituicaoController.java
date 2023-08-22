@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uenp.abacadaapi.model.Instituicao;
 import com.uenp.abacadaapi.model.Usuario;
 import com.uenp.abacadaapi.services.InstituicaoServices;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,13 +23,13 @@ public class InstituicaoController {
     private InstituicaoServices services;
     
     @GetMapping("/instituicao")
-    public List<Instituicao> listar(){
+    public List<Instituicao> listarInstituicoes(){
         return services.listarInstituicoes();
     }
     
     @PostMapping("/login")
     public ResponseEntity<Instituicao> Login(@RequestBody Usuario usuario) {
-        return ResponseEntity.ok(services.login(usuario));
+        return ResponseEntity.ok (services.login(usuario));
     }    
     
     @PostMapping("/cadastro")
@@ -41,7 +38,13 @@ public class InstituicaoController {
     }
     
     @DeleteMapping("/instituicao")
-    public ResponseEntity<Optional<Instituicao>> excluirInstituicoes(@RequestParam(name = "id") String id) {
-        return ResponseEntity.ok(services.excluirInstituicao(id));
+    public ResponseEntity<Void> excluirInstituicao(@RequestParam(name = "id") String id) {
+        boolean response = services.excluirInstituicao(id);
+        
+        if (response) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }  
     }
 }

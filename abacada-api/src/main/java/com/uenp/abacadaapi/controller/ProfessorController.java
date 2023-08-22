@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.uenp.abacadaapi.services.ProfessorServices;
-import jakarta.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +39,12 @@ public class ProfessorController {
     
     @DeleteMapping
     public ResponseEntity<Optional<Professor>> excluirProfessor(@RequestParam(name = "registro") String registro) {
-        return ResponseEntity.ok(services.excluirProfessor(registro));
+        boolean response = services.excluirProfessor(registro);
+        
+        if (response) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        } 
     }
 }

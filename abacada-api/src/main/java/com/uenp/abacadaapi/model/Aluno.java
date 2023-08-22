@@ -10,15 +10,17 @@ public class Aluno {
     private String registro;
     private String nome;
     private Heroi heroi;
-    private String nivel;
+    private String vogal;
+    private String estagio;
     private Professor professor;
-    //colocar os jogos
+    
 
-    public Aluno(String registro, String nome, Heroi heroi, String nivel, Professor professor) {
+    public Aluno(String registro, String nome, Heroi heroi, String vogal, String estagio, Professor professor) {
         this.registro = registro;
         this.nome = nome;
         this.heroi = heroi;
-        this.nivel = nivel;
+        this.vogal = vogal;
+        this.estagio = estagio;
         this.professor = professor;
     }
 
@@ -46,14 +48,21 @@ public class Aluno {
         this.heroi = heroi;
     }
 
-    public String getNivel() {
-        return nivel;
+    public String getVogal() {
+        return vogal;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setVogal(String vogal) {
+        this.vogal = vogal;
     }
-    
+
+    public String getEstagio() {
+        return estagio;
+    }
+
+    public void setEstagio(String estagio) {
+        this.estagio = estagio;
+    }
 
     public Professor getProfessor() {
         return professor;

@@ -8,16 +8,20 @@ public class Jogo {
     private String id;
     private String nome;
     private String descricao;
+    private String vogal;
+    private String estagio;
     private String image;
     private String url;
     private Boolean interno;
     
     public Jogo() { }
-
-    public Jogo(String id, String nome, String descricao, String image, String url, Boolean interno) {
+    
+    public Jogo(String id, String nome, String descricao, String vogal, String estagio, String image, String url, Boolean interno) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.vogal = vogal;
+        this.estagio = estagio;
         this.image = image;
         this.url = url;
         this.interno = interno;
@@ -47,6 +51,24 @@ public class Jogo {
         this.descricao = descricao;
     }
 
+    public String getVogal() {
+        return vogal;
+    }
+
+    public void setVogal(String vogal) {
+        this.vogal = vogal;
+    }
+
+    public String getEstagio() {
+        return estagio;
+    }
+
+    public void setEstagio(String estagio) {
+        this.estagio = estagio;
+    }
+
+    
+    
     public String getImage() {
         return image;
     }

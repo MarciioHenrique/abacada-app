@@ -26,6 +26,11 @@ public class JogoController {
         return ResponseEntity.ok(services.listarJogos());
     }
     
+    @GetMapping("/recomendados")
+    public ResponseEntity<List<Jogo>> listarJogosRecomendados(@RequestParam(value = "vogal") String vogal, @RequestParam(value = "estagio") String estagio){
+        return ResponseEntity.ok(services.listarJogosRecomendados(vogal, estagio));
+    }
+    
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Jogo>> listarJogoPorId(@PathVariable(value = "id") String id){
         return ResponseEntity.ok(services.listarJogoPorId(id));

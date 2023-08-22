@@ -28,4 +28,21 @@ public class FavoritoServices {
         return repository.insert(favorito);
     }
     
+    public boolean excluirFavorito(String id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
+    }
+    
+    public void excluirFavoritosAluno(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("aluno.registro").is(id));
+        List<Favorito> favoritos = mongoTemplate.find(query, Favorito.class);
+        for (int i = 0; i < favoritos.size(); i++) {
+            excluirFavorito(favoritos.get(i).getId());
+        }
+    }
+    
 }

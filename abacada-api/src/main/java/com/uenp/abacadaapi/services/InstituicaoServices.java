@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.uenp.abacadaapi.repository.InstituicaoRepository;
+import java.util.regex.Pattern;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -19,6 +20,9 @@ public class InstituicaoServices {
     
     @Autowired
     private InstituicaoRepository repository;
+    
+    //@Autowired
+    //private ProfessorServices professorServices;
     
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -45,6 +49,10 @@ public class InstituicaoServices {
         if (verificaEmail(instituicao.getUsuario().getEmail())) {
             throw new BadRequestException("email já cadastrado");
         }
+        
+        if(!verificaSenha(instituicao.getUsuario().getSenha())) {
+            throw new BadRequestException("senha inválida");
+        }
         return repository.save(instituicao);
     }
 
@@ -52,13 +60,13 @@ public class InstituicaoServices {
         return repository.findAll();
     }
 
-    public Optional<Instituicao> excluirInstituicao(String id) {
+    public boolean excluirInstituicao(String id) {
         if (!verificaSeExiste(id)) {
-            throw new BadRequestException("Usuário não existe");
+            return false;
         }
-        Optional<Instituicao> instituicaoDeleted = repository.findById(id);
+        //professorServices.excluirProfessoresInstituicao(id);
         repository.deleteById(id);
-        return instituicaoDeleted;
+        return true;
     }
 
     public boolean verificaEmail(String email) {
@@ -69,6 +77,19 @@ public class InstituicaoServices {
             }
         }
         return false;
+    }
+    
+    public boolean verificaSenha(String senha) {
+        Pattern pattern = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)$");
+        if (senha.length() < 6) {
+            return false;
+        }
+        else if (!pattern.matcher(senha).matches()) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     public boolean verificaSeExiste(String id) {

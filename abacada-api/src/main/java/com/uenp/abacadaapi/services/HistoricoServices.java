@@ -42,4 +42,21 @@ public class HistoricoServices {
         }
         throw new ResourceNotFoundException("id não encontrado");
     }
+    
+    public boolean excluirHistorico(String id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
+    }
+    
+    public void excluirHistoricoAluno(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("aluno.registro").is(id));
+        List<Historico> historicos = mongoTemplate.find(query, Historico.class);
+        for (int i = 0; i < historicos.size(); i++) {
+            excluirHistorico(historicos.get(i).getId());
+        }
+    }
 }

@@ -22,6 +22,9 @@ public class ProfessorServices {
     private InstituicaoServices instituicaoServices;
     
     @Autowired
+    private AlunoServices alunoServices;
+    
+    @Autowired
     private MongoTemplate mongoTemplate;
     
     public Professor listarProfessor(String registro) {
@@ -41,7 +44,6 @@ public class ProfessorServices {
     }
         
     public Professor cadastrarProfessor(Professor professor) {
-        System.out.println(professor.getRegistro());
         if (professor.getNome().length() == 0 ||
             professor.getEmail().length() == 0 || professor.getInstituicao().getInstituicao().length() == 0 ||
             professor.getInstituicao().getUsuario().getEmail().length() == 0 || professor.getInstituicao().getUsuario().getSenha().length() == 0) {
@@ -53,22 +55,34 @@ public class ProfessorServices {
         return repository.save(professor);
     }
     
-    public Optional<Professor> excluirProfessor(String registro) {
+    public boolean excluirProfessor(String registro) {
         if (!repository.existsById(registro)) {
-            throw new BadRequestException("Registro não encontrado");
+            return false;
         }
         Optional<Professor> professorDeletado = repository.findById(registro);
+        alunoServices.excluirAlunosProfessor(registro);
         repository.deleteById(registro);
-        return professorDeletado;
+        return true;
+    }
+    
+    public void excluirProfessoresInstituicao(String registroInstituicao) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("instituicao.registro").is(registroInstituicao));
+        List<Professor> professores = mongoTemplate.find(query, Professor.class);
+        for (int i = 0; i < professores.size(); i++) {
+            excluirProfessor(professores.get(i).getRegistro());
+        }
     }
     
     public boolean verificaInstituicao(Instituicao instituicao) {
         if (instituicaoServices.verificaSeExiste(instituicao.getId())) {
             Optional<Instituicao> i = instituicaoServices.listarInstituicaoPorID(instituicao.getId());
-            if (i.get().getInstituicao().equals(instituicao.getInstituicao()) && i.get().getUsuario().getSenha().equals(instituicao.getUsuario().getSenha())) {
+            if (i.get().getInstituicao().equals(instituicao.getInstituicao())) {
+                System.out.println("IGUAL");
                 return true;
             }
         }
+        System.out.println("DIFERENTE");
         return false;
     }
 }
