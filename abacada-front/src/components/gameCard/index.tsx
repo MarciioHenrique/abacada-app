@@ -4,6 +4,14 @@ import "./style.css";
 //O componente Game pega os dados dos jogos e os renderiza na tela
 function GameCard(props: {nome: string, descricao: string, image: string, url: string, tempoMin: string, tempoSeg: string, concluido: boolean}) {
 
+  let tempo = "";
+    if (props.tempoMin != "" && props.tempoSeg != "") {
+      tempo = "Tempo: "+props.tempoMin+"m "+props.tempoSeg+"s ";
+    }
+    else {
+      tempo = "Tempo: 0m 0s";
+    }
+
   return (
     <div className="backgroundGameCard">
       <div className="upperContainer">
@@ -21,7 +29,7 @@ function GameCard(props: {nome: string, descricao: string, image: string, url: s
       </div>
       <div className="lowerContainer">
         <div className="timeGameCard">
-          {"Tempo: " + props.tempoMin + "m " + props.tempoSeg + "s"}
+          {tempo}
         </div>
         <div className="conclusionGameCard">
           {props.concluido ? "Concluído: Sim" : "Concluído: Não"}
