@@ -74,6 +74,11 @@ export interface favoriteType {
   aluno: studentType
 }
 
+export interface favoriteRequest {
+  jogo: gameType | undefined,
+  aluno: studentType  | undefined
+}
+
 export interface historicType {
   id: string,
   aluno: studentType,
@@ -114,6 +119,7 @@ export interface errorModalProps {
 }
 
 export interface gameModalProps {
-  //game: gameType;
+  game: string | null;
+  onClickPlay: () => void;
   onClose: () => void;
 }

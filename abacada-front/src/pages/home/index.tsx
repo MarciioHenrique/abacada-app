@@ -34,6 +34,8 @@ function Home() {
 
   const [vogal, setVogal] = useState(student?.vogal);
   const [estagio, setEstagio] = useState(student?.estagio);
+  console.log(vogal);
+  console.log(estagio);
 
   const { data: games } = useGamesRecommendedData(vogal || undefined, estagio || undefined);
   const { mutate,  } = useHistoricMutate();
@@ -172,7 +174,7 @@ function Home() {
         </div>
 
       </div>
-      {isGameModalVisible ? <GameModal onClose={() => setIsGameModalVisible(false)}/> : null}
+      {isGameModalVisible ? <GameModal game={sessionStorage.getItem("jogo")} onClickPlay={() => setIsGameVisible(true)} onClose={() => setIsGameModalVisible(false)}/> : null}
       {isGameVisible ? <Game onClose={ () => setIsGameVisible(false)}/> : null}
     </div>
   );
