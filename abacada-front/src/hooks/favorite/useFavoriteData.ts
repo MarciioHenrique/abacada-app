@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import api from "../../util/api";
 import { favoriteType } from "../../@types/types";
 
-const fetchData = async (id: string): Promise<favoriteType[]> => {
+const fetchData = async (id: string | undefined): Promise<favoriteType[]> => {
     const response = await api.get<favoriteType[]>("/favorito?registro="+id);
     return response.data;
 };
 
-export function useFavoriteData(id: string) {
+export function useFavoriteData(id: string | undefined) {
     const query = useQuery({
         queryFn:() => fetchData(id),
         queryKey: ["favorite-data", id],

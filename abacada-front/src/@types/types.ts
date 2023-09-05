@@ -120,6 +120,7 @@ export interface errorModalProps {
 
 export interface gameModalProps {
   game: string | null;
+  favorites: favoriteType[] | undefined;
   onClickPlay: () => void;
   onClose: () => void;
 }
