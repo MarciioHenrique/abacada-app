@@ -28,17 +28,18 @@ function Home() {
 
   const registroAluno = sessionStorage.getItem("aluno");
   const idJogo = sessionStorage.getItem("jogo");
-  const { data: favorites } = useFavoriteData(registroAluno || "");
-  const { data: historic} = useHistoricData(registroAluno || "");
+  
   const { data: student } = useStudentData(registroAluno || undefined);
+  const { data: favorites } = useFavoriteData(student?.registro || undefined);
+  const { data: historic} = useHistoricData(student?.registro || undefined);
 
   const [vogal, setVogal] = useState(student?.vogal);
   const [estagio, setEstagio] = useState(student?.estagio);
-  console.log(vogal);
-  console.log(estagio);
+  // console.log(vogal);
+  // console.log(estagio);
 
   const { data: games } = useGamesRecommendedData(vogal || undefined, estagio || undefined);
-  const { mutate,  } = useHistoricMutate();
+  //const { mutate,  } = useHistoricMutate();
   
   const [isGameModalVisible, setIsGameModalVisible] = useState(false);
 
@@ -174,7 +175,7 @@ function Home() {
         </div>
 
       </div>
-      {isGameModalVisible ? <GameModal game={sessionStorage.getItem("jogo")} onClickPlay={() => setIsGameVisible(true)} onClose={() => setIsGameModalVisible(false)}/> : null}
+      {isGameModalVisible ? <GameModal game={sessionStorage.getItem("jogo")} favorites={favorites} onClickPlay={() => setIsGameVisible(true)} onClose={() => setIsGameModalVisible(false)}/> : null}
       {isGameVisible ? <Game onClose={ () => setIsGameVisible(false)}/> : null}
     </div>
   );
