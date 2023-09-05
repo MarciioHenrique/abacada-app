@@ -24,7 +24,7 @@ public class FavoritoServices {
         return favoritos;
     }
     
-    public Favorito addFavorito( Favorito favorito) {
+    public Favorito addFavorito(Favorito favorito) {
         return repository.insert(favorito);
     }
     
