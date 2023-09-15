@@ -50,9 +50,9 @@ public class InstituicaoServices {
             throw new BadRequestException("email já cadastrado");
         }
         
-        if(!verificaSenha(instituicao.getUsuario().getSenha())) {
-            throw new BadRequestException("senha inválida");
-        }
+        //if(!verificaSenha(instituicao.getUsuario().getSenha())) {
+        //    throw new BadRequestException("senha inválida");
+        //}
         return repository.save(instituicao);
     }
 

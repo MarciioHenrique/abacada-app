@@ -23,8 +23,8 @@ public class InstituicaoController {
     private InstituicaoServices services;
     
     @GetMapping("/instituicao")
-    public List<Instituicao> listarInstituicoes(){
-        return services.listarInstituicoes();
+    public ResponseEntity<List<Instituicao>> listarInstituicoes(){
+        return ResponseEntity.ok(services.listarInstituicoes());
     }
     
     @PostMapping("/login")
