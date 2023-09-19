@@ -35,9 +35,6 @@ function Home() {
 
   const [vogal, setVogal] = useState(student?.vogal);
   const [estagio, setEstagio] = useState(student?.estagio);
-  // console.log(vogal);
-  // console.log(estagio);
-
   const { data: games } = useGamesRecommendedData(vogal || undefined, estagio || undefined);
   //const { mutate,  } = useHistoricMutate();
   
@@ -91,6 +88,11 @@ function Home() {
     signout;
     navigate("/");
   };
+
+  useEffect(() => {
+    setEstagio(student?.estagio);
+    setVogal(student?.vogal);
+  }, [student]);
 
   return (
     <div className="fundo">
