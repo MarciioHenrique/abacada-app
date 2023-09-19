@@ -15,6 +15,10 @@ export function useGamesRecommendedData(vogal?: string, estagio?: string) {
         enabled: !!vogal && !!estagio
     });
 
+    useEffect(() => {
+        query.refetch();
+    }, [vogal, estagio]);
+
     return {
         ...query,
         data: query.data
