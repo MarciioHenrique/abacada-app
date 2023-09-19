@@ -6,8 +6,8 @@ import { useHeroesData } from "../../hooks/hero/useHeroesData";
 import { useHeroData } from "../../hooks/hero/useHeroData";
 import { studentRequest } from "../../@types/types";
 import { useStudentMutate } from "../../hooks/student/useStudentMutate";
-import SuccessModal from "../../components/successModal/Index";
-import ErrorModal from "../../components/errorModal/Index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //pagina de cadastro de aluno
 export default function AddStudent() {
@@ -26,23 +26,9 @@ export default function AddStudent() {
   const { data: hero } = useHeroData(heroi);
   const { data: teacher } = useTeacherData(teacherId || "");
   const { mutate, isSuccess, isError } = useStudentMutate();
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
-
-  let msgSuccess = "";
-  let msgError = "";
 
   const handleComeBack = () => {
     navigate("/alunos");
-  };
-
-  const handleErrorModalOK = () => {
-    setIsErrorModalOpen(false);
-  };
-
-  const handleSuccessModalOK = () => {
-    setIsSuccessModalOpen(false);
-    handleComeBack();
   };
 
   const handleAddStudent = () => {
@@ -60,10 +46,20 @@ export default function AddStudent() {
     };
 
     mutate(data);
-    msgSuccess = `O(a) aluno(a) ${nome} foi cadastrado(a) com sucesso`;
-    console.log(msgSuccess);
-    msgError = `O(a) aluno(a) ${nome} não pode ser cadastrado(a) com sucesso`;
   };  
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("isSuccess: ", isSuccess);
+      toast.success("Aluno(a) cadastrado(a) com sucesso!");
+    }
+  },[isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error("Aluno(a) não pôde ser cadastrado(a) com sucesso, tente novamente!");
+    }
+  },[isError]);
 
   return (
     <div className="backgroundAddStudent">
@@ -112,25 +108,8 @@ export default function AddStudent() {
             <input type="submit" value="Cadastrar" className="buttonAddStudent" onClick={handleAddStudent}></input>
           </div>
         </div>
-        {
-          isSuccess && 
-            <SuccessModal
-              isOpen={isSuccessModalOpen}
-              title="Confirmação de Cadastro"
-              message="O(A) aluno(a) foi cadastrado(a) com sucesso"
-              onOK={handleSuccessModalOK}
-            />
-        }
-        {
-          isError &&
-            <ErrorModal
-              isOpen={isErrorModalOpen}
-              title="Erro"
-              message="Não foi possível cadastrar o(a) aluno(a)"
-              onOK={handleErrorModalOK}
-            />
-        }
       </div>
+      <ToastContainer />
     </div>
   );
 }

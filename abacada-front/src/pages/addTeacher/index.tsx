@@ -5,13 +5,15 @@ import "./style.css";
 import { AuthContext } from "../../contexts/auth";
 import userServices from "../../services/userServices";
 import { useTeacherMutate } from "../../hooks/teacher/useTeacherMutate";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //pagina de cadastro de professor
 export default function AddTeacher() {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  // const { user } = useContext(AuthContext) as AuthContextType;
   const instituicao = JSON.parse(sessionStorage.getItem("instituicao") || "");
   const navigate = useNavigate();
-  const { mutate, isSuccess } = useTeacherMutate();
+  const { mutate, isSuccess, isError } = useTeacherMutate();
 
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
@@ -37,8 +39,17 @@ export default function AddTeacher() {
   };
 
   useEffect(() => {
-    handleComeBack();
+    if (isSuccess) {
+      console.log("isSuccess: ", isSuccess);
+      toast.success("Professor(a) cadastrado(a) com sucesso!");
+    }
   },[isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error("Professor(a) não pôde ser cadastrado(a) com sucesso, tente novamente!");
+    }
+  },[isError]);
 
   return (
     <div className="backgroundAddTeacher">
@@ -72,6 +83,7 @@ export default function AddTeacher() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
