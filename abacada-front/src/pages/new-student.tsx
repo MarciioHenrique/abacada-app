@@ -18,7 +18,7 @@ export default function AddStudent() {
   const [error, setError] = useState("");
 
   const vogais = ["A", "E", "I", "O", "U"];
-  const estagios = ["1", "2", "3", "4"];
+  const estagios = ["Sílaba", "Vogal", "Frase", "Texto"];
 
   const navigate = useNavigate();
   const teacherId = sessionStorage.getItem("professor");

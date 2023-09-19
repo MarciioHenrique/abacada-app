@@ -24,7 +24,7 @@ import { useHistoricMutate } from "../hooks/historic/useHistoricMutate";
 //pagina home
 function Home() {
   const vogais = ["A", "O", "U", "I", "E"];
-  const estagios = ["1", "2", "3", "4"];
+  const estagios = ["Sílaba", "Palavra", "Frase", "Texto"];
 
   const registroAluno = sessionStorage.getItem("aluno");
   const idJogo = sessionStorage.getItem("jogo");
@@ -141,7 +141,6 @@ function Home() {
               )}
             </select>
           </div>
-          
 
           <div className="footerContent">MOSTRAR JOGOS</div>
         </div>
