@@ -55,6 +55,16 @@
 
 }
 
+.titleGameModal {
+    font-weight: 800;
+    font-size: 28px;
+    
+}
+
+.descriptionGameModal {
+    font-size: 18px;
+}
+
 .rightInfoGameModal {
     height: 100%;
     width: 30%;

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContextType, teacherType } from "../../@types/types";
+import { AuthContextType, teacherType } from "../@types/types";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
-import { AuthContext } from "../../contexts/auth";
-import userServices from "../../services/userServices";
-import { useTeacherMutate } from "../../hooks/teacher/useTeacherMutate";
+import "../styles/pages/new-teacher.css";
+import { AuthContext } from "../contexts/auth";
+import userServices from "../services/userServices";
+import { useTeacherMutate } from "../hooks/teacher/useTeacherMutate";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -54,7 +54,7 @@ export default function AddTeacher() {
   return (
     <div className="backgroundAddTeacher">
       <div className="background-leftAddTeacher">
-        <img src={require("../../assets/Logo.png")} className="logoImage"/>
+        <img src={require("../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightAddTeacher">
         <div className="contentAddTeacher">

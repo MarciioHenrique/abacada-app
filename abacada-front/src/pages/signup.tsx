@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/auth/useAuth";
-import { AuthContextType } from "../../@types/types";
+import useAuth from "../hooks/auth/useAuth";
+import { AuthContextType } from "../@types/types";
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import "../styles/pages/signup.css";
 
 //pagina de cadastro
 export default function Signup() {
@@ -37,7 +37,7 @@ export default function Signup() {
   return (
     <div className="backgroundSignup">
       <div className="background-leftSignup">
-        <img src={require("../../assets/Logo.png")} className="logoImage"/>
+        <img src={require("../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightSignup">
         <div className="contentSignup">

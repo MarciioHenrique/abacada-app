@@ -1,0 +1,36 @@
+.gameRow--listarea {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.gameRow--list {
+    width: 9999px;
+    height: 150px;   
+    display: flex;
+    flex-direction: row;
+}
+
+.navigateBefore, .navigateNext {
+    position: absolute;
+    width: 35px;
+    height: 150px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition: all ease 0.5s;
+  }
+  
+  .navigateBefore {
+    left: 0;
+  }
+  
+  .navigateNext {
+    right: 0;
+  }

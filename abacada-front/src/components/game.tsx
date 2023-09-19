@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Iframe from "react-iframe";
-import "./style.css";
+import "../styles/components/game.css";
 
 //Cria o modal dos jogos recentes
 // eslint-disable-next-line react/prop-types
@@ -10,7 +10,7 @@ function Game({onClose = () => {console.log("vazia");}}): JSX.Element {
   const jogo = url+"?id="+idHistorico;
   return (
     <div className="containerGame">
-      <img src={require("../../assets/Fechar.png")} className="closeGame" onClick={onClose}/>
+      <img src={require("../assets/Fechar.png")} className="closeGame" onClick={onClose}/>
       <Iframe url={jogo}
               width="100%"
               height="100%"

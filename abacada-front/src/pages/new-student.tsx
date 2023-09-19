@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
-import { useTeacherData } from "../../hooks/teacher/useTeacherData";
-import { useHeroesData } from "../../hooks/hero/useHeroesData";
-import { useHeroData } from "../../hooks/hero/useHeroData";
-import { studentRequest } from "../../@types/types";
-import { useStudentMutate } from "../../hooks/student/useStudentMutate";
+import "../styles/pages/new-student.css";
+import { useTeacherData } from "../hooks/teacher/useTeacherData";
+import { useHeroesData } from "../hooks/hero/useHeroesData";
+import { useHeroData } from "../hooks/hero/useHeroData";
+import { studentRequest } from "../@types/types";
+import { useStudentMutate } from "../hooks/student/useStudentMutate";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -64,7 +64,7 @@ export default function AddStudent() {
   return (
     <div className="backgroundAddStudent">
       <div className="background-leftAddStudent">
-        <img src={require("../../assets/Logo.png")} className="logoImage"/>
+        <img src={require("../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightAddStudent">
         <div className="contentAddStudent">

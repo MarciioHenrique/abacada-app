@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/auth/useAuth";
-import { AuthContextType } from "../../@types/types";
+import useAuth from "../hooks/auth/useAuth";
+import { AuthContextType } from "../@types/types";
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import "../styles/pages/signin.css";
 
 //pagina de login
 export default function Signin() {
@@ -32,7 +32,7 @@ export default function Signin() {
   return (
     <div className="backgroundSignin">
       <div className="background-leftSignin">
-        <img src={require("../../assets/Logo.png")} className="logoImage"/>
+        <img src={require("../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightSignin">
         <div className="contentSignin">

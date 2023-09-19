@@ -1,6 +1,6 @@
 import React from "react";
-import "./style.css";
-import { confirmationModalProps } from "../../@types/types";
+import "../styles/components/confirmation-modal.css";
+import { confirmationModalProps } from "../@types/types";
 
 export default function ConfirmationModal(props: confirmationModalProps) {
     return (

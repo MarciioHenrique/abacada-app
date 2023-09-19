@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Card from "../../components/card";
-import { studentType } from "../../@types/types";
-import "./style.css";
+import Card from "../components/person-card";
+import { studentType } from "../@types/types";
+import "../styles/pages/students.css";
 import { useNavigate, unstable_HistoryRouter } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
-import { useStudentsData } from "../../hooks/student/useStudentsData";
+import { useStudentsData } from "../hooks/student/useStudentsData";
 
 //pagina dos alunos
 function Students() {
@@ -19,12 +19,12 @@ function Students() {
     <div className="backgroundStudents">
       <div className="background-leftStudents">
         
-        <img src={require("../../assets/Logo.png")} className="logoImage"/>
+        <img src={require("../assets/Logo.png")} className="logoImage"/>
       </div>
       <div className="background-rightStudents">
         <div className="containerStudents">
           <div className="labelTitleStudents">
-            <label>Alunos</label>
+            Alunos
           </div>
           <div className="contentStudents">
             {students?.map((student) =>

@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import GameCard from "../../components/gameCard";
-import Game from "../../components/game";
-import "./style.css";
-import useAuth from "../../hooks/auth/useAuth";
-import { AuthContextType, historicRequest } from "../../@types/types";
+import GameCard from "../components/game-card";
+import Game from "../components/game";
+import "../styles/pages/home.css";
+import useAuth from "../hooks/auth/useAuth";
+import { AuthContextType, historicRequest } from "../@types/types";
 import { useNavigate } from "react-router-dom";
-import userServices from "../../services/userServices";
+import userServices from "../services/userServices";
 import { CgProfile } from "react-icons/cg";
 import { BsGear } from "react-icons/bs";
 import { BiExit } from "react-icons/bi";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import GameImage from "../../components/gameImage";
-import GameModal from "../../components/gameModal";
-import { useGamesRecommendedData } from "../../hooks/game/useGamesRecommendedData";
-import { useFavoriteData } from "../../hooks/favorite/useFavoriteData";
-import { useHistoricData } from "../../hooks/historic/useHistoricData";
-import { useStudentData } from "../../hooks/student/useStudentData";
-import { useGameData } from "../../hooks/game/useGameData";
-import GameRow from "../../components/gameRow";
-import { useHistoricMutate } from "../../hooks/historic/useHistoricMutate";
+import GameImage from "../components/game-image";
+import GameModal from "../components/game-modal";
+import { useGamesRecommendedData } from "../hooks/game/useGamesRecommendedData";
+import { useFavoriteData } from "../hooks/favorite/useFavoriteData";
+import { useHistoricData } from "../hooks/historic/useHistoricData";
+import { useStudentData } from "../hooks/student/useStudentData";
+import { useGameData } from "../hooks/game/useGameData";
+import GameRow from "../components/game-row";
+import { useHistoricMutate } from "../hooks/historic/useHistoricMutate";
 
 //pagina home
 function Home() {
@@ -98,7 +98,7 @@ function Home() {
       <div className="tela">
         <div className="headerContainer">
           <div className="form">ABACADA
-            {student && <img src={require(`../../assets/banners/${student?.heroi.banner}`)} className="banner" /> }
+            {student && <img src={require(`../assets/banners/${student?.heroi.banner}`)} className="banner" /> }
           </div>
         </div>
         <div className="gamesContainer">

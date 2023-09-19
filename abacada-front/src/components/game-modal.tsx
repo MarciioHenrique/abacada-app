@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./style.css";
-import { favoriteRequest, favoriteType, gameModalProps } from "../../@types/types";
+import "../styles/components/game-modal.css";
+import { favoriteRequest, favoriteType, gameModalProps } from "../@types/types";
 import { AiOutlineStar, AiFillStar, AiOutlineCloseCircle } from "react-icons/ai";
-import { useGameData } from "../../hooks/game/useGameData";
-import { useFavoriteData } from "../../hooks/favorite/useFavoriteData";
-import { useStudentData } from "../../hooks/student/useStudentData";
-import { useFavoriteMutate } from "../../hooks/favorite/useFavoriteMutate";
-import { useDeleteFavoriteMutate } from "../../hooks/favorite/useDeleteFavoriteMutate";
+import { useGameData } from "../hooks/game/useGameData";
+import { useFavoriteData } from "../hooks/favorite/useFavoriteData";
+import { useStudentData } from "../hooks/student/useStudentData";
+import { useFavoriteMutate } from "../hooks/favorite/useFavoriteMutate";
+import { useDeleteFavoriteMutate } from "../hooks/favorite/useDeleteFavoriteMutate";
 
 function GameModal(props: gameModalProps) {
   const { data: student } = useStudentData(sessionStorage.getItem("aluno") || "");
@@ -59,23 +59,23 @@ function GameModal(props: gameModalProps) {
         <div className="dataGameModal">
           <AiOutlineCloseCircle className="closeGameModal" color="white" onClick={props.onClose}/>
           <div className="imageContainerGameModal"> 
-          { game?.image ? <img src={require(`../../assets/${game?.image}`)} alt="Imagem do Jogo" className="gameImageGameModal"/> : null }
+          { game?.image ? <img src={require(`../assets/${game?.image}`)} alt="Imagem do Jogo" className="gameImageGameModal"/> : null }
            
           </div>
           <div className="infoGameModal">
             <div className="leftInfoGameModal">
               <div className="titleGameModal">
-                <h2>{game?.nome}</h2>
+                {game?.nome}
               </div>
               <div className="descriptionGameModal">
-                <p>{game?.descricao}</p>
+                {game?.descricao}
               </div>
               <div className="manualGameModal">
-                <p style={{marginBottom: "1vh"}}>Como jogar:</p>
+                <p style={{marginBottom: "1vh", fontSize: 16}}>Como jogar:</p>
                 <ol>
-                  <li>Regra 1</li>
-                  <li>Regra 2</li>
-                  <li>Regra 3</li>
+                  <li style={{fontSize: 14}}>Regra 1</li>
+                  <li style={{fontSize: 14}}>Regra 2</li>
+                  <li style={{fontSize: 14}}>Regra 3</li>
                 </ol>
               </div>
             </div>

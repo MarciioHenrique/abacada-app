@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "../styles/components/game-card.css";
 
 //O componente Game pega os dados dos jogos e os renderiza na tela
 function GameCard(props: {nome: string, descricao: string, image: string, url: string, tempoMin: string, tempoSeg: string, concluido: boolean}) {
@@ -16,7 +16,7 @@ function GameCard(props: {nome: string, descricao: string, image: string, url: s
     <div className="backgroundGameCard">
       <div className="upperContainer">
         <div className="imageContainerGameCard">
-          <img src={require(`../../assets/${props.image}`)} className="imageGameCard"/>
+          <img src={require(`../assets/${props.image}`)} className="imageGameCard"/>
         </div>
         <div className="dataContainerGameCard">
           <div className="titleGameCard">
