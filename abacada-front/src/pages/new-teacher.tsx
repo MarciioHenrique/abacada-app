@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContextType, teacherType } from "../@types/types";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/new-teacher.css";
-import { AuthContext } from "../contexts/auth";
-import userServices from "../services/userServices";
 import { useTeacherMutate } from "../hooks/teacher/useTeacherMutate";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //pagina de cadastro de professor
-export default function AddTeacher() {
+export default function NewTeacher() {
   // const { user } = useContext(AuthContext) as AuthContextType;
   const instituicao = JSON.parse(sessionStorage.getItem("instituicao") || "");
   const navigate = useNavigate();
@@ -23,7 +20,7 @@ export default function AddTeacher() {
     navigate("/teachers");
   };
 
-  const handleAddTeacher = () => {
+  const handleNewTeacher = () => {
     if (!nome || !email) {
       setError("Preencha todos os campos");
       return;
@@ -52,34 +49,34 @@ export default function AddTeacher() {
   },[isError]);
 
   return (
-    <div className="backgroundAddTeacher">
-      <div className="background-leftAddTeacher">
+    <div className="background-new-teacher">
+      <div className="background-left-new-teacher">
         <img src={require("../assets/Logo.png")} className="logoImage"/>
       </div>
-      <div className="background-rightAddTeacher">
-        <div className="contentAddTeacher">
-          <label className="labelTitleAddTeacher">Cadastro de Professor</label>
+      <div className="background-right-new-teacher">
+        <div className="content-new-teacher">
+          <label className="label-title-new-teacher">Cadastro de Professor</label>
 
-          <label className="labelAddTeacher">Nome</label>
+          <label className="label-new-teacher">Nome</label>
           <input  type="text"
                   name="nome"
-                  className="inputAddTeacher"
+                  className="input-new-teacher"
                   placeholder="Digite o Nome"
                   onChange={(e: React.FormEvent) => [setNome((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="labelAddTeacher">Email</label>
+          <label className="label-new-teacher">Email</label>
           <input  type="email"
                   name="email"
-                  className="inputAddTeacher"
+                  className="input-new-teacher"
                   placeholder="Digite o Email"
                   onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="labelErrorAddTeacher">{error}</label>
-          <div className="buttonsContainerAddTeacher">
-            <input type="submit" value="Voltar" className="buttonVoltarAddTeacher" onClick={handleComeBack}></input>
-            <input type="submit" value="Cadastrar" className="buttonAddTeacher" onClick={handleAddTeacher}></input>
+          <label className="label-error-new-teacher">{error}</label>
+          <div className="buttons-container-new-teacher">
+            <input type="submit" value="Voltar" className="button-go-back-new-teacher" onClick={handleComeBack}></input>
+            <input type="submit" value="Cadastrar" className="button-new-teacher" onClick={handleNewTeacher}></input>
           </div>
         </div>
       </div>

@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import Card from "../components/person-card";
-import userServices from "../services/userServices";
-import { AuthContext } from "../contexts/auth";
-import { AuthContextType, teacherType, usersType } from "../@types/types";
+import { usersType } from "../@types/types";
 import "../styles/pages/teachers.css";
 import { useNavigate } from "react-router-dom";
 import { useTeachersData } from "../hooks/teacher/useTeachersData";
@@ -16,21 +14,21 @@ function Teachers() {
   const [isUpdateMode, setIsUpdateMode] = useState(false);
 
   return (
-    <div className="backgroundTeachers">
-      <div className="background-leftTeachers">
-        <img src={require("../assets/Logo.png")} className="logoImage"/>
+    <div className="background-teachers">
+      <div className="background-left-teachers">
+        <img src={require("../assets/Logo.png")} className="logo-image"/>
       </div>
-      <div className="background-rightTeachers">
-        <div className="containerTeachers">
-          <div className="labelTitleTeacher">
+      <div className="background-right-teachers">
+        <div className="container-teachers">
+          <div className="label-title-teachers">
             Professores
           </div>
-          <div className="contentTeachers">
+          <div className="content-teachers">
             {teachers?.map((teacher) =>
               <Card key={teacher.registro} id={teacher.registro} nome={teacher.nome} heroi={undefined} situation="Professor" delete={isDeleteMode} update={isUpdateMode}/>
             )}
           </div> 
-          <div className="containerButtons">
+          <div className="container-buttons-teachers">
             {/* <input type="submit" value="Excluir" className="button" onClick={() => setIsDeleteMode(!isDeleteMode)}></input>
             <input type="submit" value="Alterar" className="button" onClick={() => setIsUpdateMode(!isUpdateMode)}></input> */}
             <input type="submit" value="Cadastrar" className="button" onClick={() => {console.log("Clicou");navigate("/addProfessor");}}></input>

@@ -1,4 +1,4 @@
-.backgroundSignin {
+.background-signin {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 
-.background-leftSignin {
+.background-left-signin {
   height: 100vh;
   width: 30vw;
   background-color: #457B9D;
@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-.background-rightSignin {
+.background-right-signin {
   height: 100vh;
   width: 70vw;
   background-color: #F0F2F5;
@@ -25,11 +25,11 @@
   flex-direction: column;
 }
 
-.logoImage {
+.logo-image {
   width: 50%;
 }
 
-.contentSignin {
+.content-signin {
   width: 30%;
   min-width: 280px;
   border-radius: 10px;
@@ -40,7 +40,7 @@
   flex-direction: column;
 }
 
-.inputSignin {
+.input-signin {
   box-sizing: border-box;
   outline: none;
   border: none;
@@ -55,7 +55,7 @@
   margin-bottom: 15px;
 }
 
-.labelTitleSignin {
+.label-title-signin {
   align-self: center;
   font-size: 20px;
   font-weight: 800;
@@ -63,18 +63,18 @@
   text-transform: uppercase;
 }
 
-.labelSignin {
+.label-signin {
   margin-bottom: 0.5vh;
 }
 
-.labelErrorSignin {
+.label-error-signin {
   font-size: 14px;
   font-weight: 600;
   color: red;
   margin-bottom: 10px;
 }
 
-.buttonSignin {
+.button-signin {
   height: 100%;
   line-height: 40px;
   width: 100%;
@@ -91,29 +91,29 @@
   letter-spacing: 1px;
 }
 
-.bottomContentSignin {
+.bottom-content-signin {
   position: absolute;
   bottom: 0;
   margin-bottom: 1vh;
 }
 
-.bottomLabelSignin {
+.bottom-label-signin {
   color: #1D3557;
 }
 
 @media screen and (max-width: 480px) {
-  .backgroundSignin {
+  .background-signin {
     flex-direction: column;
   }
-  .background-leftSignin {
+  .background-left-signin {
     height: 30vh;
     width: 100vw;
   }
-  .background-rightSignin {
+  .background-right-signin {
     height: 70vh;
     width: 100vw;
   }
-  .contentSignin {
+  .content-signin {
     min-width: 240px;
   }
 }

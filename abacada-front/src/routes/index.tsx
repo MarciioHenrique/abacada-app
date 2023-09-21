@@ -15,9 +15,8 @@ import AddStudent from "../pages/new-student";
 function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
 
-  const Private = ({Item}: any) => {
-    const Signed = true;
-    return Signed ? <Item /> : <Signin />;
+  const Private = ({Item}: any) => { 
+    return signed ? <Item /> : <Signin />;
   };
 
   return (

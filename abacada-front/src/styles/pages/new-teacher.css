@@ -1,118 +1,116 @@
-
+.background-new-teacher {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+}
   
-  .backgroundAddTeacher {
-    height: 100vh;
+.background-left-new-teacher {
+  height: 100vh;
+  width: 30vw;
+  background-color: #457B9D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.background-right-new-teacher {
+  height: 100vh;
+  width: 70vw;
+  background-color: #F0F2F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+  
+.logo-image {
+  width: 50%;
+}
+  
+.content-new-teacher {
+  width: 30%;
+  min-width: 280px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  filter: drop-shadow(0px 0px 6px darkgrey);
+  display: flex;
+  flex-direction: column;
+}
+  
+.input-new-teacher {
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #F0F2F5;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+  
+.label-title-new-teacher {
+  align-self: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+  
+.label-new-teacher {
+  margin-bottom: 0.5vh;
+}
+  
+.label-error-new-teacher {
+  font-size: 14px;
+  font-weight: 600;
+  color: red;
+  margin-bottom: 10px;
+}
+  
+.buttons-container-new-teacher {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+  
+.button-new-teacher, .button-go-back-new-teacher {
+  height: 100%;
+  line-height: 40px;
+  width: 100%;
+  align-self: center;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background: #1D3557;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+  
+  
+@media screen and (max-width: 480px) {
+  .background-new-teacher {
+    flex-direction: column;
+  }
+  .background-left-new-teacher {
+    height: 30vh;
     width: 100vw;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
   }
-  
-  .background-leftAddTeacher {
-    height: 100vh;
-    width: 30vw;
-    background-color: #457B9D;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .background-right-new-teacher {
+    height: 70vh;
+    width: 100vw;
   }
-  
-  .background-rightAddTeacher {
-    height: 100vh;
-    width: 70vw;
-    background-color: #F0F2F5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  .content-new-teacher {
+    min-width: 240px;
   }
-  
-  .logoImage {
-    width: 50%;
-  }
-  
-  .contentAddTeacher {
-    width: 30%;
-    min-width: 280px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: white;
-    filter: drop-shadow(0px 0px 6px darkgrey);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .inputAddTeacher {
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    width: 100%;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #F0F2F5;
-    margin-top: 5px;
-    margin-bottom: 15px;
-  }
-  
-  .labelTitleAddTeacher {
-    align-self: center;
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  
-  .labelAddTeacher {
-    margin-bottom: 0.5vh;
-  }
-  
-  .labelErrorAddTeacher {
-    font-size: 14px;
-    font-weight: 600;
-    color: red;
-    margin-bottom: 10px;
-  }
-  
-  .buttonsContainerAddTeacher {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
-  
-  .buttonAddTeacher, .buttonVoltarAddTeacher {
-    height: 100%;
-    line-height: 40px;
-    width: 100%;
-    align-self: center;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    background: #1D3557;
-    font-weight: 500;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  
-  @media screen and (max-width: 480px) {
-    .backgroundAddTeacher {
-      flex-direction: column;
-    }
-    .background-leftAddTeacher {
-      height: 30vh;
-      width: 100vw;
-    }
-    .background-rightAddTeacher {
-      height: 70vh;
-      width: 100vw;
-    }
-    .contentAddTeacher {
-      min-width: 240px;
-    }
-  }
+}

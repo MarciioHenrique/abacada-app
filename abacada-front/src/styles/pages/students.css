@@ -1,4 +1,4 @@
-.backgroundStudents {
+.background-students {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 
-.background-leftStudents {
+.background-left-students {
   height: 100vh;
   width: 30vw;
   background-color: #457B9D;
@@ -15,15 +15,7 @@
   justify-content: center;
 }
 
-.arrowBack {
-  height: 2vh;
-  width: 5vw;
-  position: absolute;
-  left: 2vw;
-  top: 2vh;
-}
-
-.background-rightStudents {
+.background-right-students {
   height: 100vh;
   width: 70vw;
   background-color: #F0F2F5;
@@ -32,11 +24,11 @@
   justify-content: center;
 }
 
-.logoImage {
+.logo-image {
   width: 50%;
 }
 
-.containerStudents {
+.container-students {
   min-height: 300px;
   max-height: 70vh;
   min-width: 250px;
@@ -51,7 +43,7 @@
 }
 
 
-.labelTitleStudents {
+.label-title-students {
   height: 5%;
   display: flex;
   align-items: center;
@@ -63,7 +55,7 @@
   margin-bottom: 0.5vh;
 }
 
-.contentStudents {
+.content-students {
   height: 80%;
   width: 100%;
   display: flex;
@@ -76,7 +68,7 @@
   margin-bottom: 30px;
 }
 
-.containerButtons {
+.container-buttons-students {
   position: fixed;
   width: 100%;
   display: flex;
@@ -84,28 +76,28 @@
   bottom: 0;
 }
 
-.contentStudents::-webkit-scrollbar {
+.content-students::-webkit-scrollbar {
   width: 8px;
 }
 
-.contentStudents::-webkit-scrollbar-thumb {
+.content-students::-webkit-scrollbar-thumb {
   background-color: #1D3557;
   border-radius: 20px;
 }
 
 @media screen and (max-width: 480px) {
-  .backgroundStudents {
+  .background-students {
     flex-direction: column;
   }
-  .background-leftStudents {
+  .background-left-students {
     height: 30vh;
     width: 100vw;
   }
-  .background-rightStudents {
+  .background-right-students {
     height: 70vh;
     width: 100vw;
   }
-  .containerStudents {
+  .container-students {
     min-width: 240px;
   }
 }

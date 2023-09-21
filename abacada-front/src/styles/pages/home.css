@@ -1,100 +1,24 @@
-.fundo {
+.background-home {
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
 }
 
-.barraLateralDireita {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-}
-
-.buttonsContainer {
-  width: 100%;
-  height: 15%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.buttonBox {
-  height: fit-content;
-  color: #1D3557;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 2vw;
-  margin-top: 2vh;
-  cursor: pointer;
-}
-
-.imagesHome {
-  width: 40px;
-  height: 40px;
-}
-
-.imagesDescription {
-  cursor: pointer;
-}
-
-.historicoContainer {
-  color: #F5F5F5;
-  height: 85%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.historico {
-  background: #1D3557;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  height: 80%;
-  width: 90%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 1vh;
-}
-
-.historicoTitle {
-  align-self: center;
-  font-weight: 500;
-  font-size: 25px;
-}
-
-.historicoList {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-}
-
-.historicoList::-webkit-scrollbar {
-  width: 10px;
-}
-
-.historicoList::-webkit-scrollbar-thumb {
-
-  background-color: #F5F5F5;
-  border-radius: 20px;
-}
-
-.tela {
+.background-left-home {
   width: 70%;
   display: flex;
   flex-direction: column;
 }
 
-.headerContainer {
+.header-container-home {
   height: 35vh;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.headerContainer .form {
+.header-card-home {
   background: #F5F5F5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
@@ -109,12 +33,12 @@
   gap: 1vw;
 }
 
-.banner {
+.banner-home {
   width: 150px;
   height: 150px;
 }
 
-.gamesContainer {
+.games-container-home {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -123,18 +47,18 @@
   justify-content: center;
 }
 
-.title {
+.label-section-title-home {
   font-weight: 500;
   font-size: 25px;
   margin-left: 1vw;
 }
 
-.games:hover .navigateBefore, 
-.games:hover .navigateNext {
+.games-home:hover .navigateBefore, 
+.games-home:hover .navigateNext {
   opacity: 1;
 }
 
-.games {
+.games-home {
   margin-left: 0.5vw;
   display: flex;
   flex-direction: row;
@@ -142,7 +66,7 @@
   transition: all ease 0.2s;
 }
 
-.footerContainer {
+.footer-container-home {
   height: 10vh;
   width: 100%;
   margin-bottom: 1.5vh;
@@ -151,7 +75,7 @@
   gap: 5vw;
 }
 
-.footerInputs {
+.footer-inputs-home {
   height: 100%;
   width: 40%;
   margin-left: 1.5vw;
@@ -162,7 +86,7 @@
   gap: 10px;
 }
 
-.footerSelects {
+.footer-selects-home {
   box-sizing: border-box;
   outline: none;
   border: none;
@@ -175,7 +99,7 @@
   background-color: #F0F2F5;
 }
 
-.footerContent {
+.footer-content-home {
   background-color: #1D3557;
   padding: 15px;
   border-radius: 10px;
@@ -183,4 +107,79 @@
   font-weight: 500;
   font-size: 25px;
   cursor: pointer;
+}
+
+.background-right-home {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.option-buttons-container-home {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.option-button-box-home {
+  height: fit-content;
+  color: #1D3557;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2vw;
+  margin-top: 2vh;
+  cursor: pointer;
+}
+
+.option-image-home {
+  width: 40px;
+  height: 40px;
+}
+
+.option-image-description {
+  cursor: pointer;
+}
+
+.history-container-home {
+  color: #F5F5F5;
+  height: 85%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-content-home {
+  background: #1D3557;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  height: 80%;
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.history-label-title-home {
+  align-self: center;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.history-list-home {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.history-list-home::-webkit-scrollbar {
+  width: 10px;
+}
+
+.history-list-home::-webkit-scrollbar-thumb {
+  background-color: #F5F5F5;
+  border-radius: 20px;
 }

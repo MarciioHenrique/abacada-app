@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/new-student.css";
 import { useTeacherData } from "../hooks/teacher/useTeacherData";
@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //pagina de cadastro de aluno
-export default function AddStudent() {
+export default function NewStudent() {
   const [nome, setNome] = useState("");
   const [heroi, setHeroi] = useState("");
   const [vogal, setVogal] = useState("");
@@ -31,7 +31,7 @@ export default function AddStudent() {
     navigate("/alunos");
   };
 
-  const handleAddStudent = () => {
+  const handleNewStudent = () => {
     if ( !heroi || !vogal || !estagio) {
       setError("Preencha todos os campos");
       return;
@@ -62,50 +62,50 @@ export default function AddStudent() {
   },[isError]);
 
   return (
-    <div className="backgroundAddStudent">
-      <div className="background-leftAddStudent">
-        <img src={require("../assets/Logo.png")} className="logoImage"/>
+    <div className="background-new-student">
+      <div className="background-left-new-student">
+        <img src={require("../assets/Logo.png")} className="logo-image"/>
       </div>
-      <div className="background-rightAddStudent">
-        <div className="contentAddStudent">
-          <label className="labelTitleAddStudent">Cadastro de Aluno</label>
+      <div className="background-right-new-student">
+        <div className="content-new-student">
+          <label className="label-title-new-student">Cadastro de Aluno</label>
 
-          <label className="labelAddStudent">Nome</label>
+          <label className="label-new-student">Nome</label>
           <input  type="text"
                   name="nome"
-                  className="inputAddStudent"
+                  className="input-new-student"
                   placeholder="Digite o Nome"
                   onChange={(e: React.FormEvent) => [setNome((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="labelAddStudent">Heroi</label>
-          <select className="inputAddStudent" required defaultValue="" onChange={(e) => setHeroi(e.target.value)}>
+          <label className="label-new-student">Heroi</label>
+          <select className="input-new-student" required defaultValue="" onChange={(e) => setHeroi(e.target.value)}>
             <option value="" disabled>Selecione...</option>
             {heroes?.map((heroi) => 
               <option key={heroi.id} value={heroi.id}>{heroi.nome}</option>
             )}
           </select>
 
-          <label className="labelAddStudent">Vogal</label>
-          <select className="inputAddStudent" required defaultValue="" onChange={(e) => setVogal(e.target.value)}>
+          <label className="label-new-student">Vogal</label>
+          <select className="input-new-student" required defaultValue="" onChange={(e) => setVogal(e.target.value)}>
             <option value="" disabled>Selecione...</option>
             {vogais.map((vogal) => 
               <option key={vogal} value={vogal}>{vogal}</option>
             )}
           </select>
 
-          <label className="labelAddStudent">Estagio</label>
-          <select className="inputAddStudent" required defaultValue="" onChange={(e) => setEstagio(e.target.value)}>
+          <label className="label-new-student">Estagio</label>
+          <select className="input-new-student" required defaultValue="" onChange={(e) => setEstagio(e.target.value)}>
             <option value="" disabled>Selecione...</option>
             {estagios.map((estagio) => 
               <option key={estagio} value={estagio}>{estagio}</option>
             )}
           </select>
 
-          <label className="labelErrorAddStudent">{error}</label>
-          <div className="buttonsContainerAddStudent">
-            <input type="submit" value="Voltar" className="buttonVoltarAddStudent" onClick={handleComeBack}></input>
-            <input type="submit" value="Cadastrar" className="buttonAddStudent" onClick={handleAddStudent}></input>
+          <label className="label-error-new-student">{error}</label>
+          <div className="buttons-container-new-student">
+            <input type="submit" value="Voltar" className="button-go-back-new-student" onClick={handleComeBack}></input>
+            <input type="submit" value="Cadastrar" className="button-new-student" onClick={handleNewStudent}></input>
           </div>
         </div>
       </div>

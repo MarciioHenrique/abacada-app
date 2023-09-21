@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "../components/person-card";
-import { studentType } from "../@types/types";
 import "../styles/pages/students.css";
-import { useNavigate, unstable_HistoryRouter } from "react-router-dom";
-import { MdArrowBack } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { useStudentsData } from "../hooks/student/useStudentsData";
 
 //pagina dos alunos
@@ -16,22 +14,21 @@ function Students() {
   const [isUpdateMode, setIsUpdateMode] = useState(false);
   
   return (
-    <div className="backgroundStudents">
-      <div className="background-leftStudents">
-        
-        <img src={require("../assets/Logo.png")} className="logoImage"/>
+    <div className="background-students">
+      <div className="background-left-students">
+        <img src={require("../assets/Logo.png")} className="logo-image"/>
       </div>
-      <div className="background-rightStudents">
-        <div className="containerStudents">
-          <div className="labelTitleStudents">
+      <div className="background-right-students">
+        <div className="container-students">
+          <div className="label-title-students">
             Alunos
           </div>
-          <div className="contentStudents">
+          <div className="content-students">
             {students?.map((student) =>
               <Card key={student.registro} id={student.registro} nome={student.nome} heroi={student.heroi} situation="Aluno" delete={isDeleteMode} update={isUpdateMode}/>
             )}
           </div>
-          <div className="containerButtons">
+          <div className="container-buttons-students">
             {/* <input type="submit" value="Excluir" className="button" onClick={() => setIsDeleteMode(!isDeleteMode)}></input>
             <input type="submit" value="Alterar" className="button" onClick={() => setIsUpdateMode(!isUpdateMode)}></input> */}
             <input type="submit" value="Cadastrar" className="button" onClick={() => navigate("/addAluno")}></input>

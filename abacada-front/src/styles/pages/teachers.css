@@ -1,4 +1,4 @@
-.backgroundTeachers {
+.background-teachers {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 
-.background-leftTeachers {
+.background-left-teachers {
   height: 100vh;
   width: 30vw;
   background-color: #457B9D;
@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-.background-rightTeachers {
+.background-right-teachers {
   height: 100vh;
   width: 70vw;
   background-color: #F0F2F5;
@@ -24,11 +24,11 @@
   justify-content: center;
 }
 
-.logoImage {
+.logo-image {
   width: 50%;
 }
 
-.containerTeachers {
+.container-teachers {
   min-height: 30vh;
   max-height: 70vh;
   max-width: 25vw;
@@ -40,7 +40,7 @@
   overflow: hidden;
 }
 
-.labelTitleTeacher {
+.label-title-teachers {
   height: 5vh;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@
   text-transform: uppercase;
 }
 
-.contentTeachers {
+.content-teachers {
   height: 80%;
   width: 100%;
   display: flex;
@@ -63,16 +63,16 @@
   margin-bottom: 30px;
 }
 
-.contentTeachers::-webkit-scrollbar {
+.content-teachers::-webkit-scrollbar {
   width: 8px;
 }
 
-.contentTeachers::-webkit-scrollbar-thumb {
+.content-teachers::-webkit-scrollbar-thumb {
   background-color: #1D3557;
   border-radius: 20px;
 }
 
-.containerButtons {
+.container-buttons-teachers {
   display: flex;
   justify-content: space-around;
   margin-top: 1vh;
@@ -93,18 +93,18 @@
 }
 
 @media screen and (max-width: 480px) {
-  .backgroundTeachers {
+  .background-teachers {
     flex-direction: column;
   }
-  .background-leftTeachers {
+  .background-left-teachers {
     height: 30vh;
     width: 100vw;
   }
-  .background-rightTeachers {
+  .background-right-teachers {
     height: 70vh;
     width: 100vw;
   }
-  .containerTeachers {
+  .container-teachers {
     min-width: 240px;
   }
 }

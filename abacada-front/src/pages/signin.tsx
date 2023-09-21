@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useAuth from "../hooks/auth/useAuth";
 import { AuthContextType } from "../@types/types";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/pages/signin.css";
 
 //pagina de login
@@ -19,6 +19,7 @@ export default function Signin() {
       return;
     }
 
+    //passar para o react query 
     signin(email, password)
       .then((res) => {
         sessionStorage.setItem("instituicao", JSON.stringify(res));
@@ -30,36 +31,36 @@ export default function Signin() {
   };
 
   return (
-    <div className="backgroundSignin">
-      <div className="background-leftSignin">
-        <img src={require("../assets/Logo.png")} className="logoImage"/>
+    <div className="background-signin">
+      <div className="background-left-signin">
+        <img src={require("../assets/Logo.png")} className="logo-image"/>
       </div>
-      <div className="background-rightSignin">
-        <div className="contentSignin">
-          <label className="labelTitleSignin">Login</label>
+      <div className="background-right-signin">
+        <div className="content-signin">
+          <label className="label-title-signin">Login</label>
 
-          <label className="labelSignin">Email</label>
+          <label className="label-signin">Email</label>
           <input  type="email"
                   name="email"
-                  className="inputSignin"
+                  className="input-signin"
                   placeholder="Digite seu E-mail"
                   onChange={(e: React.FormEvent) => [setEmail((e.target as HTMLInputElement).value), setError("")]}
           ></input>
 
-          <label className="labelSignin">Senha</label>
+          <label className="label-signin">Senha</label>
           <input  type="password"
                   name="senha"
-                  className="inputSignin"
+                  className="input-signin"
                   placeholder="Digite sua senha"
                   onChange={(e: React.FormEvent) => [setPassword((e.target as HTMLInputElement).value), setError("")]}
             ></input>
 
-          <label className="labelErrorSignin">{error}</label>
-          <input type="submit" value="Entrar" className="buttonSignin" onClick={handleLogin}></input>
+          <label className="label-error-signin">{error}</label>
+          <input type="submit" value="Entrar" className="button-signin" onClick={handleLogin}></input>
         </div>
 
-        {/* <div className="bottomContentSignin">
-          <label className="bottomLabelSignin">
+        {/* <div className="bottom-content-signin">
+          <label className="bottom-label-signin">
             Não possui cadastro? <Link to="/signup" style={{textDecoration: "none"}}>Clique aqui</Link>
           </label>
 
