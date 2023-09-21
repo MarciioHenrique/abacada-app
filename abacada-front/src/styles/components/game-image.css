@@ -1,9 +1,9 @@
-.imageContainerGameImage {
+.image-container-game-image {
     width: 150px;
     height: 150px;
 }
   
-.imageGameImage {
+.image-game-image {
     width: 100%;
     height: 100%;
     border-radius: 2px; 
@@ -12,6 +12,6 @@
     transition: all ease 0.2s;
 }
 
-.imageGameImage:hover {
+.image-game-image:hover {
     transform: scale(1);
 }

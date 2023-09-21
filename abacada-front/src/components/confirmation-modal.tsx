@@ -4,17 +4,17 @@ import { confirmationModalProps } from "../@types/types";
 
 export default function ConfirmationModal(props: confirmationModalProps) {
     return (
-        <div className="confirmationModalBackground">
-          <div className="confirmationModalContent">
-            <div className="confirmationModalTitle">
+        <div className="background-confirmation-modal">
+          <div className="content-confirmation-modal">
+            <div className="title-confirmation-modal">
               <h2>{props.title}</h2>
             </div>
-            <div className="confirmationModalMessage">
+            <div className="message-confirmation-modal">
               <p>{props.message}</p>
             </div>
-            <div className="confirmationModalButtons">
-              <button className="confirmationModalButtonConfirm" onClick={props.onConfirm}>CONFIRMAR</button>
-              <button className="confirmationModalButtonCancel" onClick={props.onCancel}>CANCELAR</button>
+            <div className="buttons-confirmation-modal">
+              <button className="button-confirm-confirmation-modal" onClick={props.onConfirm}>CONFIRMAR</button>
+              <button className="button-cancel-confirmation-modal" onClick={props.onCancel}>CANCELAR</button>
             </div>
           </div>
         </div>

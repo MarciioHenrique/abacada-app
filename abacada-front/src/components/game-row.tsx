@@ -26,14 +26,14 @@ export default function GameRow(props: {games: gameType[] | undefined}) {
   };
   
   return (
-    <div className="gameRow--listarea">
-      {/* <div className="navigateBefore" onClick={handleMoveLeft}>
+    <div className="list-area-game-row">
+      {/* <div className="navigate-before-game-row" onClick={handleMoveLeft}>
         <MdNavigateBefore/>
       </div>
-      <div className="navigateNext" onClick={handleMoveRight}>
+      <div className="navigate-next-game-row" onClick={handleMoveRight}>
         <MdNavigateNext/>
       </div> */}
-      <div className="gameRow--list">
+      <div className="list-game-row">
         {(props.games?.length || 0) > 0 && props.games?.map((game)=> (
           <GameImage key={game.id} id={game.id} nome={game.nome} image={game.image} url={game.url}/>
         ))}

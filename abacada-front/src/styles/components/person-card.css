@@ -1,4 +1,4 @@
-.contentCard {
+.content-person-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
 
 }
 
-.imageContainerCard {
+.image-container-person-card {
   display: flex;
   flex-direction: column;
   border-radius: 360px;
@@ -14,7 +14,7 @@
 
 }
 
-.optionsCard {
+.options-person-card {
   width: 100%;
   display: flex;
   flex-direction: row;

@@ -9,8 +9,8 @@ function Game({onClose = () => {console.log("vazia");}}): JSX.Element {
   const url = sessionStorage.getItem("url");
   const jogo = url+"?id="+idHistorico;
   return (
-    <div className="containerGame">
-      <img src={require("../assets/Fechar.png")} className="closeGame" onClick={onClose}/>
+    <div className="container-game">
+      <img src={require("../assets/Fechar.png")} className="close-game" onClick={onClose}/>
       <Iframe url={jogo}
               width="100%"
               height="100%"

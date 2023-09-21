@@ -1,0 +1,17 @@
+.containerAllGamesModal {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dataAllGamesModal {
+    background-color: aliceblue;
+    height: 60vh;
+    width: 35vw;
+    min-width: 500px;
+    border-radius: 10px;
+}

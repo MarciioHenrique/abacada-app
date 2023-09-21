@@ -3,7 +3,6 @@ import "../styles/components/game-modal.css";
 import { favoriteRequest, favoriteType, gameModalProps } from "../@types/types";
 import { AiOutlineStar, AiFillStar, AiOutlineCloseCircle } from "react-icons/ai";
 import { useGameData } from "../hooks/game/useGameData";
-import { useFavoriteData } from "../hooks/favorite/useFavoriteData";
 import { useStudentData } from "../hooks/student/useStudentData";
 import { useFavoriteMutate } from "../hooks/favorite/useFavoriteMutate";
 import { useDeleteFavoriteMutate } from "../hooks/favorite/useDeleteFavoriteMutate";
@@ -55,22 +54,22 @@ function GameModal(props: gameModalProps) {
   };
 
   return (
-    <div className="containerGameModal">
-        <div className="dataGameModal">
-          <AiOutlineCloseCircle className="closeGameModal" color="white" onClick={props.onClose}/>
-          <div className="imageContainerGameModal"> 
-          { game?.image ? <img src={require(`../assets/${game?.image}`)} alt="Imagem do Jogo" className="gameImageGameModal"/> : null }
+    <div className="container-game-modal">
+        <div className="data-game-modal">
+          <AiOutlineCloseCircle className="close-game-modal" color="white" onClick={props.onClose}/>
+          <div className="image-container-game-modal"> 
+          { game?.image ? <img src={require(`../assets/${game?.image}`)} alt="Imagem do Jogo" className="game-image-game-modal"/> : null }
            
           </div>
-          <div className="infoGameModal">
-            <div className="leftInfoGameModal">
-              <div className="titleGameModal">
+          <div className="info-game-modal">
+            <div className="left-info-game-modal">
+              <div className="title-game-modal">
                 {game?.nome}
               </div>
-              <div className="descriptionGameModal">
+              <div className="description-game-modal">
                 {game?.descricao}
               </div>
-              <div className="manualGameModal">
+              <div className="manual-game-modal">
                 <p style={{marginBottom: "1vh", fontSize: 16}}>Como jogar:</p>
                 <ol>
                   <li style={{fontSize: 14}}>Regra 1</li>
@@ -79,13 +78,13 @@ function GameModal(props: gameModalProps) {
                 </ol>
               </div>
             </div>
-            <div className="rightInfoGameModal">
-              <div className="itensGameModal"> 
-                <button className="buttonPlayGameModal" onClick={props.onClickPlay}>Jogar</button>
+            <div className="right-info-game-modal">
+              <div className="itens-game-modal"> 
+                <button className="button-play-game-modal" onClick={props.onClickPlay}>Jogar</button>
 
                 {isFavorite ?
-                  <AiFillStar size={40} color="#FFD700" className="buttonFavoriteGameModal" onClick={() => handleFavorite()}/> :
-                  <AiOutlineStar size={40} color="#FFD700" className="buttonFavoriteGameModal" onClick={() => handleFavorite()}/>
+                  <AiFillStar size={40} color="#FFD700" className="button-favorite-game-modal" onClick={() => handleFavorite()}/> :
+                  <AiOutlineStar size={40} color="#FFD700" className="button-favorite-game-modal" onClick={() => handleFavorite()}/>
                 }
               
               </div>

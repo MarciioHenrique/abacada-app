@@ -1,17 +1,17 @@
-.gameRow--listarea {
+.list-area-game-row {
     overflow: hidden;
     width: 100%;
     position: relative;
 }
 
-.gameRow--list {
+.list-game-row {
     width: 9999px;
     height: 150px;   
     display: flex;
     flex-direction: row;
 }
 
-.navigateBefore, .navigateNext {
+.navigate-before-game-row, .navigate-next-game-row {
     position: absolute;
     width: 35px;
     height: 150px;
@@ -27,10 +27,10 @@
     transition: all ease 0.5s;
   }
   
-  .navigateBefore {
+  .navigate-before-game-row {
     left: 0;
   }
   
-  .navigateNext {
+  .navigate-next-game-row {
     right: 0;
   }

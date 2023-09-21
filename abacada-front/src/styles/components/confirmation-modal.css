@@ -1,4 +1,4 @@
-.confirmationModalBackground {
+.background-confirmation-modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,34 +10,34 @@
     justify-content: center;
   }
   
-  .confirmationModalContent {
+  .content-confirmation-modal {
     background-color: #fff;
     border-radius: 4px;
     max-width: 400px;
     padding: 6px
   }
 
-  .confirmationModalTitle {
+  .title-confirmation-modal {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .confirmationModalMessage {
+  .message-confirmation-modal {
     display: flex;
     justify-content: center;
     margin-bottom: 18px;
     width: 100%;
   }
   
-  .confirmationModalButtons {
+  .buttons-confirmation-modal {
     display: flex;
     justify-content: center;
   }
   
-  .confirmationModalButtonConfirm,
-  .confirmationModalButtonCancel {
+  .button-confirm-confirmation-modal,
+  .button-cancel-confirmation-modal {
     padding: 8px 16px;
     margin: 0 10px;
     border: none;
@@ -45,12 +45,12 @@
     cursor: pointer;
   }
   
-  .confirmationModalButtonConfirm {
+  .button-confirm-confirmation-modal {
     background-color: #1D3557;
     color: #fff;
   }
   
-  .confirmationModalButtonCancel {
+  .button-cancel-confirmation-modal {
     background-color: #e74c3c;
     color: #fff;
   }

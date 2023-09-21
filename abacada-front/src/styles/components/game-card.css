@@ -1,4 +1,4 @@
-.backgroundGameCard {
+.background-game-card {
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -9,7 +9,7 @@
   margin-bottom: 2.5vh;
 }
 
-.upperContainer {
+.upper-container-game-card {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -17,18 +17,18 @@
   gap: 0.5vw;
 }
 
-.imageContainerGameCard {
+.image-container-game-card {
   width: 35%;
   height: 100%;
 }
 
-.imageGameCard {
+.image-game-card {
   width: 100%;
   height: 100%;
   border-radius: 16px;
 }
 
-.dataContainerGameCard {
+.data-container-game-card {
   width: 65%;
   display: flex;
   flex-direction: column;
@@ -37,16 +37,16 @@
   gap: 1vh;
 }
 
-.titleGameCard {
+.title-game-card {
   font-weight: 500;
   font-size: 18px;
 }
 
-.descriptionGameCard {
+.description-game-card {
   font-size: 14px;
 }
 
-.lowerContainer {
+.lower-container-game-card {
   height: 12%;
   display: flex;
   flex-direction: row;
@@ -54,7 +54,7 @@
   margin: 0vw 1vw 0vw 1vw;
 }
 
-.line {
+.line-game-card {
   align-self: center;
   width: 90%;
   border: 1px solid #FFF;

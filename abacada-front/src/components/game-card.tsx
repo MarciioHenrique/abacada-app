@@ -13,29 +13,29 @@ function GameCard(props: {nome: string, descricao: string, image: string, url: s
     }
 
   return (
-    <div className="backgroundGameCard">
-      <div className="upperContainer">
-        <div className="imageContainerGameCard">
-          <img src={require(`../assets/${props.image}`)} className="imageGameCard"/>
+    <div className="background-game-card">
+      <div className="upper-container-game-card">
+        <div className="image-container-game-card">
+          <img src={require(`../assets/${props.image}`)} className="image-game-card"/>
         </div>
-        <div className="dataContainerGameCard">
-          <div className="titleGameCard">
+        <div className="data-container-game-card">
+          <div className="title-game-card">
             {props.nome}
           </div>
-          <div className="descriptionGameCard">
+          <div className="description-game-card">
             {props.descricao}
           </div>
         </div>
       </div>
-      <div className="lowerContainer">
-        <div className="timeGameCard">
+      <div className="lower-container-game-card">
+        <div className="time-game-card">
           {tempo}
         </div>
-        <div className="conclusionGameCard">
+        <div className="conclusion-game-card">
           {props.concluido ? "Concluído: Sim" : "Concluído: Não"}
         </div>
       </div>
-      <div className="line"></div>
+      <div className="line-game-card"></div>
     </div>
   );
 }
