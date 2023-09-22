@@ -17,7 +17,7 @@ export default function NewTeacher() {
   const [error, setError] = useState("");
 
   const handleComeBack = () => {
-    navigate("/teachers");
+    navigate("/professores");
   };
 
   const handleNewTeacher = () => {

@@ -24,7 +24,7 @@ function RoutesApp() {
       <Fragment>
         <Routes>
           <Route path="/home" element={<Private Item={Home} />} />
-          <Route path="/teachers" element={<Private Item={Teachers} />} />
+          <Route path="/professores" element={<Private Item={Teachers} />} />
           <Route path="/alunos" element={<Private Item={Students} />} />
           <Route path="/addProfessor" element={<Private Item={AddTeacher} />} />
           <Route path="/addAluno" element={<Private Item={AddStudent} />} />

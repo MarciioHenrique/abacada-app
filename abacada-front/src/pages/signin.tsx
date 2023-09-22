@@ -23,7 +23,7 @@ export default function Signin() {
     signin(email, password)
       .then((res) => {
         sessionStorage.setItem("instituicao", JSON.stringify(res));
-        navigate("/teachers");
+        navigate("/professores");
       })
       .catch((error) => {
         setError(error);
