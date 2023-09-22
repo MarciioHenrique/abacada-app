@@ -51,21 +51,18 @@ function PersonCard(props: {id: string, nome: string, heroi: heroType | undefine
   }
 
   return (
-    <div>
       <div className="content-person-card" onClick={handleClick}>
         <div className="options-person-card">
           {props.update ? <BiPencil className="update-mode-person-card" onClick={handleClickUpdate} style={{visibility: "visible"}}/> : <BiPencil className="update-mode-person-card" onClick={handleClickUpdate} style={{visibility: "hidden"}}/>}
           {props.delete ? <AiOutlineDelete className="delete-mode-person-card" onClick={handleClickDelete} style={{visibility: "visible"}}/> : <AiOutlineDelete className="delete-mode-person-card" onClick={handleClickDelete} style={{visibility: "hidden"}}/>}
         </div>
         <div className="image-container-person-card">
-          {props.situation == "Professor" ? <img src={require("../assets/user1.png") }/> : <img src={require(`../assets/icons/${props.heroi?.icone}`)}/>}
+          {props.situation == "Professor" ? <img src={require("../assets/user7.png") }/> : <img src={require(`../assets/icons/${props.heroi?.icone}`)}/>}
         </div>
         <div className="name-person-card">
           {props.nome}
         </div>
       </div>
-    
-    </div>
   );
 }
 

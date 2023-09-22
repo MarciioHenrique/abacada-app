@@ -3,15 +3,14 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-
+  width: 28%;
 }
 
 .image-container-person-card {
   display: flex;
   flex-direction: column;
-  border-radius: 360px;
   overflow: hidden;
-
+  width: 100%;
 }
 
 .options-person-card {
