@@ -96,7 +96,8 @@ function Home() {
     <div className="background-home">
       <div className="background-left-home">
         <div className="header-container-home">
-          <div className="header-card-home">ABACADA
+          <div className="header-card-home">
+            <label>ABACADA</label>
             {student && <img src={require(`../assets/banners/${student?.heroi.banner}`)} className="banner-home" /> }
           </div>
         </div>
@@ -108,7 +109,7 @@ function Home() {
               <GameCard key={game.id} game={game.jogo} isAllGamesPage={false}/>
             )}
             </div> :
-            <div className="games-home" style={{width: "100%", height: "10vh"}} onClick={handleNovoHistorico}>
+            <div className="games-home" style={{width: "100%", height: "25vh"}} onClick={handleNovoHistorico}>
               <label style={{margin: 20}}> O aluno não possui jogos favoritos</label>
             </div>  
           }
@@ -119,8 +120,8 @@ function Home() {
                 <GameCard key={game.id} game={game} isAllGamesPage={false}/>
               ))} 
             </div> :
-            <div className="games-home" style={{width: "100%", height: "10vh"}} onClick={handleNovoHistorico}>
-              <label style={{margin: 20}}> Não foram encontrados jogos recomendados</label>
+            <div className="games-home" style={{width: "100%", height: "25vh"}} onClick={handleNovoHistorico}>
+              <label style={{margin: 20}}> Não foram encontrados jogos recomendados ao seu nível</label>
             </div>  
           }
         </div>

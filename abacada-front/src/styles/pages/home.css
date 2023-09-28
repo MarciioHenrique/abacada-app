@@ -3,6 +3,7 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
+  background-color: #F8F8F8;
 }
 
 .background-left-home {
@@ -31,6 +32,11 @@
   font-weight: 700;
   font-size: 50px;
   gap: 1vw;
+}
+
+.header-card-home label {
+  font-weight: 800;
+  font-size: 3.5rem;
 }
 
 .banner-home {
@@ -64,6 +70,7 @@
   flex-direction: row;
   margin-bottom: 1.5vh;
   transition: all ease 0.2s;
+  overflow: hidden;
 }
 
 .footer-container-home {
