@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import GameCard from "../components/game-card";
+import GameCardHistoric from "../components/game-card-historic";
 import Game from "../components/game";
 import "../styles/pages/home.css";
 import useAuth from "../hooks/auth/useAuth";
@@ -10,7 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { BsGear } from "react-icons/bs";
 import { BiExit } from "react-icons/bi";
 import { AiOutlineUserSwitch } from "react-icons/ai";
-import GameImage from "../components/game-image";
+import GameImage from "../components/game-card";
 import GameModal from "../components/game-modal";
 import { useGamesRecommendedData } from "../hooks/game/useGamesRecommendedData";
 import { useFavoriteData } from "../hooks/favorite/useFavoriteData";
@@ -105,7 +105,7 @@ function Home() {
           {(favorites?.length || 0) > 0 ? 
             <div className="games-home" style={{width:  (favorites?.length || 0) * 150}} onClick={handleNovoHistorico}>
             {favorites?.map((game) =>
-              <GameImage key={game.id} id={game.jogo.id} nome={game.jogo.nome} image={game.jogo.image} url={game.jogo.image}/>
+              <GameImage key={game.id} id={game.jogo.id} nome={game.jogo.nome} descricao={game.jogo.descricao} image={game.jogo.image} url={game.jogo.image}/>
             )}
             </div> :
             <div className="games-home" style={{width: "100%", height: "10vh"}} onClick={handleNovoHistorico}>
@@ -116,7 +116,7 @@ function Home() {
           {(games?.length || 0) > 0 ? 
             <div className="games-home" style={{width: (games?.length || 0) * 150}} onClick={handleNovoHistorico}>
               {(games?.length || 0) > 0 && games?.map((game)=> (
-                <GameImage key={game.id} id={game.id} nome={game.nome} image={game.image} url={game.url}/>
+                <GameImage key={game.id} id={game.id} nome={game.nome} descricao={game.descricao} image={game.image} url={game.url}/>
               ))} 
             </div> :
             <div className="games-home" style={{width: "100%", height: "10vh"}} onClick={handleNovoHistorico}>
@@ -166,7 +166,7 @@ function Home() {
             <label className="history-label-title-home">HISTÓRICO</label>
             <div className="history-list-home">
               {(historic?.length || 0) > 0 ? historic?.map((game) =>
-                  <GameCard key={game.id} nome={game.jogo.nome} descricao={game.jogo.descricao} image={game.jogo.image} url={game.jogo.url} tempoMin={game.tempoMin} tempoSeg={game.tempoSeg} concluido={game.concluido}/>
+                  <GameCardHistoric key={game.id} nome={game.jogo.nome} descricao={game.jogo.descricao} image={game.jogo.image} url={game.jogo.url} tempoMin={game.tempoMin} tempoSeg={game.tempoSeg} concluido={game.concluido}/>
               ) : <label style={{margin: 20}}> O aluno não possui histórico de jogos</label>}
             </div> 
           </div>
