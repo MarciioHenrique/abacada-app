@@ -51,12 +51,13 @@ public class HistoricoServices {
         return true;
     }
     
-    public void excluirHistoricoAluno(String id) {
+    public boolean excluirHistoricoAluno(String id) {
         Query query = new Query();
         query.addCriteria(Criteria.where("aluno.registro").is(id));
         List<Historico> historicos = mongoTemplate.find(query, Historico.class);
         for (int i = 0; i < historicos.size(); i++) {
             excluirHistorico(historicos.get(i).getId());
         }
+        return true;
     }
 }

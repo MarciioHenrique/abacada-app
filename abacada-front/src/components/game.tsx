@@ -8,6 +8,7 @@ function Game({onClose = () => {console.log("vazia");}}): JSX.Element {
   const idHistorico = sessionStorage.getItem("historico");
   const url = sessionStorage.getItem("url");
   const jogo = url+"?id="+idHistorico;
+  console.log(idHistorico);
   return (
     <div className="container-game">
       <img src={require("../assets/Fechar.png")} className="close-game" onClick={onClose}/>

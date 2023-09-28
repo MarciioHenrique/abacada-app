@@ -3,12 +3,12 @@ import api from "../../util/api";
 import { gameType } from "../../@types/types";
 import { useEffect } from "react";
 
-const fetchData = async (id: string): Promise<gameType> => {
+const fetchData = async (id?: string): Promise<gameType> => {
     const response = await api.get<gameType>("/jogo/"+id);
     return response.data;
 };
 
-export function useGameData(id: string) {
+export function useGameData(id?: string) {
     const query = useQuery({
         queryFn: () => fetchData(id),
         queryKey: ["game-data"],

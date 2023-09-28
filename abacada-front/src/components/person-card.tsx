@@ -9,7 +9,6 @@ import userServices from "../services/userServices";
 //Componente Card vai pegar as informações do aluno/professor e mostrar na tela
 function PersonCard(props: {id: string, nome: string, heroi: heroType | undefined , situation: string, delete: boolean, update: boolean}) {
   const navigate = useNavigate();
-  const [isConfirmationPopUpVisible, setIsConfirmationPorpUpVisible] = useState(false);
 
 
   function handleClick() {

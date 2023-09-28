@@ -118,7 +118,7 @@ export interface errorModalProps {
 }
 
 export interface gameModalProps {
-  game: string | null;
+  game: gameType | undefined;
   favorites: favoriteType[] | undefined;
   onClickPlay: () => void;
   onClose: () => void;

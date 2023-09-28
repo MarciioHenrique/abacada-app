@@ -12,6 +12,7 @@ export default function NewTeacher() {
   const navigate = useNavigate();
   const { mutate, isSuccess, isError } = useTeacherMutate();
 
+  const [selectedImage, setSelectedImage] = useState("addImage");
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
   const [error, setError] = useState("");
@@ -56,6 +57,9 @@ export default function NewTeacher() {
       <div className="background-right-new-teacher">
         <div className="content-new-teacher">
           <label className="label-title-new-teacher">Cadastro de Professor</label>
+          {/* <div className="conteiner-image-new-teacher">
+            <img src={require(`../assets/${selectedImage}.png`)} className="person-image-new-teacher"/>
+          </div> */}
 
           <label className="label-new-teacher">Nome</label>
           <input  type="text"

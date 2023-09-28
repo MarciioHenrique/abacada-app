@@ -3,7 +3,7 @@ import GameCardHistoric from "../components/game-card-historic";
 import Game from "../components/game";
 import "../styles/pages/home.css";
 import useAuth from "../hooks/auth/useAuth";
-import { AuthContextType } from "../@types/types";
+import { AuthContextType, gameType, historicRequest } from "../@types/types";
 import { useNavigate } from "react-router-dom";
 import userServices from "../services/userServices";
 import { CgProfile } from "react-icons/cg";
@@ -17,6 +17,9 @@ import { useHistoricData } from "../hooks/historic/useHistoricData";
 import { useStudentData } from "../hooks/student/useStudentData";
 import AllGamesModal from "../components/all-games-modal";
 import GameCard from "../components/game-card";
+import { useGameData } from "../hooks/game/useGameData";
+import { ToastContainer, toast } from "react-toastify";
+import { useHistoricMutate } from "../hooks/historic/useHistoricMutate";
 
 //pagina home
 function Home() {
@@ -25,6 +28,7 @@ function Home() {
 
   const registroAluno = sessionStorage.getItem("aluno");
   const idJogo = sessionStorage.getItem("jogo");
+  const [firstRender, setFirstRender] = useState(true);
   
   const { data: student } = useStudentData(registroAluno || undefined);
   const { data: favorites } = useFavoriteData(student?.registro || undefined);
@@ -33,7 +37,8 @@ function Home() {
   const [vogal, setVogal] = useState(student?.vogal);
   const [estagio, setEstagio] = useState(student?.estagio);
   const { data: games } = useGamesRecommendedData(vogal || undefined, estagio || undefined);
-  //const { mutate,  } = useHistoricMutate();
+  const { data: game } = useGameData(sessionStorage.getItem("jogo") || undefined);
+  const { mutate: mutateHistoric, data: dataHistoric, isSuccess  } = useHistoricMutate();
   
   const [isGameModalVisible, setIsGameModalVisible] = useState(false);
 
@@ -41,35 +46,24 @@ function Home() {
   const { signout } = useAuth() as AuthContextType;
   const [error, setError] = useState("");
   const [isGameVisible, setIsGameVisible] = useState(false);
-  const [isAllGamesModalVisible, setIsAllGamesModalVisible] = useState(false);
 
-  const handleNovoHistorico = () => {
+  const handleOnClickPlay = () => {
+    const data: historicRequest = {
+      aluno: student,
+      jogo: game,
+      tempoMin: "",
+      tempoSeg: "",
+      concluido: false
+    };
 
-    // const data: historicRequest = {
-    //   aluno: student,
-    //   jogo: game,
-    //   tempoMin: "",
-    //   tempoSeg: "",
-    //   concluido: false
-    // };
+    mutateHistoric(data);
+  };
 
-    // const response = mutate(data);
-    // console.log(response);
-    
-
-    userServices.getJogo(sessionStorage.getItem("jogo"))
-      .then(jogo => {
-        sessionStorage.setItem("url", jogo.url);
-        userServices.addHistorico(student, jogo)
-          .then(res => {
-            sessionStorage.setItem("historico", res.id);
-            setIsGameModalVisible(true);
-          })
-          .catch(error => console.log(error));
-      })
-      .catch(error => console.log(error));
-
-    sessionStorage.removeItem("url");  
+  const handleOnClose = () => {
+    setIsGameModalVisible(false);
+    sessionStorage.removeItem("jogo");
+    sessionStorage.removeItem("historico");
+    sessionStorage.removeItem("url");
   };
 
   const trocarAluno = () => {
@@ -92,6 +86,16 @@ function Home() {
     setVogal(student?.vogal);
   }, [student]);
 
+  useEffect(() => {
+    if (firstRender) {
+      setFirstRender(false);
+      return;
+    }
+    sessionStorage.setItem("url", game?.url || "");
+    dataHistoric?.data.id && sessionStorage.setItem("historico", dataHistoric.data.id);
+    dataHistoric?.data.id && setIsGameVisible(true);
+  }, [isSuccess]);
+
   return (
     <div className="background-home">
       <div className="background-left-home">
@@ -104,23 +108,23 @@ function Home() {
         <div className="games-container-home">
           <label className="label-section-title-home">FAVORITOS</label>
           {(favorites?.length || 0) > 0 ? 
-            <div className="games-home" style={{width:  (favorites?.length || 0) * 150}} onClick={handleNovoHistorico}>
+            <div className="games-home" style={{width:  (favorites?.length || 0) * 150}} onClick={() => setIsGameModalVisible(true)}>
             {favorites?.map((game) =>
               <GameCard key={game.id} game={game.jogo} isAllGamesPage={false}/>
             )}
             </div> :
-            <div className="games-home" style={{width: "100%", height: "25vh"}} onClick={handleNovoHistorico}>
+            <div className="games-home" style={{width: "100%", height: "25vh"}} onClick={() => setIsGameModalVisible(true)}>
               <label style={{margin: 20}}> O aluno não possui jogos favoritos</label>
             </div>  
           }
           <label className="label-section-title-home">JOGOS RECOMENDADOS</label>
           {(games?.length || 0) > 0 ? 
-            <div className="games-home" style={{width: (games?.length || 0) * 150}} onClick={handleNovoHistorico}>
+            <div className="games-home" style={{width: (games?.length || 0) * 150}} onClick={() => setIsGameModalVisible(true)}>
               {(games?.length || 0) > 0 && games?.map((game)=> (
                 <GameCard key={game.id} game={game} isAllGamesPage={false}/>
               ))} 
             </div> :
-            <div className="games-home" style={{width: "100%", height: "25vh"}} onClick={handleNovoHistorico}>
+            <div className="games-home" style={{width: "100%", height: "25vh"}} onClick={() => setIsGameModalVisible(true)}>
               <label style={{margin: 20}}> Não foram encontrados jogos recomendados ao seu nível</label>
             </div>  
           }
@@ -128,7 +132,8 @@ function Home() {
         <div className="footer-container-home">
           <div className="footer-inputs-home">
             <label> Selecione o nível dos jogos: </label>
-            <select className="footer-selects-home" required defaultValue={vogal} onChange={(e) => setVogal(e.target.value)}>
+            <select className="footer-selects-home" required defaultValue={vogal
+            } onChange={(e) => setVogal(e.target.value)}>
               {vogais?.map((vogal) => 
                 <option key={vogal} value={vogal}>{vogal}</option>
               )}
@@ -174,8 +179,8 @@ function Home() {
         </div>
 
       </div>
-      
-      {isGameModalVisible ? <GameModal game={sessionStorage.getItem("jogo")} favorites={favorites} onClickPlay={() => setIsGameVisible(true)} onClose={() => setIsGameModalVisible(false)}/> : null}
+      <ToastContainer />
+      {isGameModalVisible ? <GameModal game={game} favorites={favorites} onClickPlay={handleOnClickPlay} onClose={handleOnClose}/> : null}
       {isGameVisible ? <Game onClose={ () => setIsGameVisible(false)}/> : null}
     </div>
   );

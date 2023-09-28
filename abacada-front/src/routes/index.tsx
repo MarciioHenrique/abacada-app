@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import useAuth from "../hooks/auth/useAuth";
 import { AuthContextType } from "../@types/types";
 import Home from "../pages/home";
+import Games from "../pages/games";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import Teachers from "../pages/teachers";
@@ -14,9 +15,10 @@ import AddStudent from "../pages/new-student";
 //cria todas as rotas da aplicação
 function RoutesApp() {
   const { signed } = useAuth() as AuthContextType;
+  const SignedTrue = true;
 
   const Private = ({Item}: any) => { 
-    return signed ? <Item /> : <Signin />;
+    return SignedTrue ? <Item /> : <Signin />;
   };
 
   return (
@@ -24,6 +26,7 @@ function RoutesApp() {
       <Fragment>
         <Routes>
           <Route path="/home" element={<Private Item={Home} />} />
+          <Route path="/jogos" element={<Private Item={Games} />} />
           <Route path="/professores" element={<Private Item={Teachers} />} />
           <Route path="/alunos" element={<Private Item={Students} />} />
           <Route path="/addProfessor" element={<Private Item={AddTeacher} />} />

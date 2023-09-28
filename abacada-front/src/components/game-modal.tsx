@@ -9,7 +9,6 @@ import { useDeleteFavoriteMutate } from "../hooks/favorite/useDeleteFavoriteMuta
 
 function GameModal(props: gameModalProps) {
   const { data: student } = useStudentData(sessionStorage.getItem("aluno") || "");
-  const { data: game } = useGameData(props.game || "");
 
   let isFavorite = false;
   let favoriteID = "";
@@ -18,7 +17,7 @@ function GameModal(props: gameModalProps) {
   
   const tam = props.favorites?.length || 0;
   for (let index = 0; index < tam; index++) {
-    if (props.favorites?.[index].jogo.id === game?.id) {
+    if (props.favorites?.[index].jogo.id === props.game?.id) {
       favoriteID = props.favorites?.[index].id || "";
       isFavorite = true;
       break;
@@ -39,7 +38,7 @@ function GameModal(props: gameModalProps) {
     isFavorite = true;
     const data: favoriteRequest = {
       aluno: student || undefined,
-      jogo: game || undefined
+      jogo: props.game || undefined
     };
     
     favoriteMutate(data);
@@ -58,16 +57,16 @@ function GameModal(props: gameModalProps) {
         <div className="data-game-modal">
           <AiOutlineCloseCircle className="close-game-modal" color="white" onClick={props.onClose}/>
           <div className="image-container-game-modal"> 
-          { game?.image ? <img src={require(`../assets/${game?.image}`)} alt="Imagem do Jogo" className="game-image-game-modal"/> : null }
+          { props.game?.image ? <img src={require(`../assets/${props.game?.image}`)} alt="Imagem do Jogo" className="game-image-game-modal"/> : null }
            
           </div>
           <div className="info-game-modal">
             <div className="left-info-game-modal">
               <div className="title-game-modal">
-                {game?.nome}
+                {props.game?.nome}
               </div>
               <div className="description-game-modal">
-                {game?.descricao}
+                {props.game?.descricao}
               </div>
               <div className="manual-game-modal">
                 <p style={{marginBottom: "1vh", fontSize: 16}}>Como jogar:</p>

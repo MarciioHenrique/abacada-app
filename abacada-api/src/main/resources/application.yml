@@ -1,6 +1,6 @@
 spring:
     data:
         mongodb:
-            database: Abacada
-            host: mongodb
+            database: abacada
+            host: localhost
             port: 27017

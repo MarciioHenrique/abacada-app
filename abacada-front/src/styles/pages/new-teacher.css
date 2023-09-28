@@ -62,6 +62,16 @@
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+.conteiner-image-new-teacher {
+  align-self: center;
+  width: 40%;
+}
+
+.person-image-new-teacher {
+  width: 100%;
+  cursor: pointer;
+}
   
 .label-new-teacher {
   margin-bottom: 0.5vh;
