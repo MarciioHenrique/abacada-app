@@ -10,13 +10,13 @@ import { CgProfile } from "react-icons/cg";
 import { BsGear } from "react-icons/bs";
 import { BiExit } from "react-icons/bi";
 import { AiOutlineUserSwitch } from "react-icons/ai";
-import GameImage from "../components/game-card";
 import GameModal from "../components/game-modal";
 import { useGamesRecommendedData } from "../hooks/game/useGamesRecommendedData";
 import { useFavoriteData } from "../hooks/favorite/useFavoriteData";
 import { useHistoricData } from "../hooks/historic/useHistoricData";
 import { useStudentData } from "../hooks/student/useStudentData";
 import AllGamesModal from "../components/all-games-modal";
+import GameCard from "../components/game-card";
 
 //pagina home
 function Home() {
@@ -105,7 +105,7 @@ function Home() {
           {(favorites?.length || 0) > 0 ? 
             <div className="games-home" style={{width:  (favorites?.length || 0) * 150}} onClick={handleNovoHistorico}>
             {favorites?.map((game) =>
-              <GameImage key={game.id} id={game.jogo.id} nome={game.jogo.nome} descricao={game.jogo.descricao} image={game.jogo.image} url={game.jogo.image}/>
+              <GameCard key={game.id} game={game.jogo} isAllGamesPage={false}/>
             )}
             </div> :
             <div className="games-home" style={{width: "100%", height: "10vh"}} onClick={handleNovoHistorico}>
@@ -116,7 +116,7 @@ function Home() {
           {(games?.length || 0) > 0 ? 
             <div className="games-home" style={{width: (games?.length || 0) * 150}} onClick={handleNovoHistorico}>
               {(games?.length || 0) > 0 && games?.map((game)=> (
-                <GameImage key={game.id} id={game.id} nome={game.nome} descricao={game.descricao} image={game.image} url={game.url}/>
+                <GameCard key={game.id} game={game} isAllGamesPage={false}/>
               ))} 
             </div> :
             <div className="games-home" style={{width: "100%", height: "10vh"}} onClick={handleNovoHistorico}>
@@ -139,7 +139,7 @@ function Home() {
             </select>
           </div>
 
-          <div className="footer-content-home" onClick={() => setIsAllGamesModalVisible(true)}>MOSTRAR JOGOS</div>
+          <div className="footer-content-home" onClick={() => navigate("/jogos")}>MOSTRAR JOGOS</div>
         </div>
       </div>
       <div className="background-right-home">
@@ -173,7 +173,7 @@ function Home() {
         </div>
 
       </div>
-      {isAllGamesModalVisible ? <AllGamesModal /> : null}
+      
       {isGameModalVisible ? <GameModal game={sessionStorage.getItem("jogo")} favorites={favorites} onClickPlay={() => setIsGameVisible(true)} onClose={() => setIsGameModalVisible(false)}/> : null}
       {isGameVisible ? <Game onClose={ () => setIsGameVisible(false)}/> : null}
     </div>
