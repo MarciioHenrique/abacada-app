@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/components/game-row.css";
 import { favoriteType, gameType } from "../@types/types";
-import GameImage from "./game-image";
+import GameImage from "./game-card";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 export default function GameRow(props: {games: gameType[] | undefined}) {
@@ -35,7 +35,7 @@ export default function GameRow(props: {games: gameType[] | undefined}) {
       </div> */}
       <div className="list-game-row">
         {(props.games?.length || 0) > 0 && props.games?.map((game)=> (
-          <GameImage key={game.id} id={game.id} nome={game.nome} image={game.image} url={game.url}/>
+          <GameImage key={game.id} game={game} isAllGamesPage={false}/>
         ))}
       </div>       
     </div>

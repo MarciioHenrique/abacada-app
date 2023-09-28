@@ -1,28 +1,27 @@
 import React from "react";
 import "../styles/components/game-card.css";
+import { gameType } from "../@types/types";
 
 interface GameCardProps {
-  id: string;
-  nome: string;
-  descricao: string;
-  image: string;
-  url: string;
+  game: gameType,
+  isAllGamesPage: boolean
 }
 
 //O componente Game pega os dados dos jogos e os renderiza na tela
 function GameCard(props: GameCardProps) {
   const handleClick = () => {
-    sessionStorage.setItem("jogo", props.id);
+    sessionStorage.setItem("jogo", props.game.id);
   };
 
   return (
-    <div className="background-game-card">
-      <div className="image-conteiner-game-card">
-        <img src={require(`../assets/${props.image}`)} className="image-game-card" onClick={handleClick}/>
+    <div className={props.isAllGamesPage ? "background-game-card" : "background-game-card-small"}>
+      <div className={props.isAllGamesPage ? "image-conteiner-game-card" : "image-conteiner-game-card-small"}>
+        <img src={require(`../assets/${props.game.image}`)} className={props.isAllGamesPage ? "image-game-card" : "image-game-card-small"} onClick={handleClick}/>
       </div>
-      <div className="data-conteiner-game-card">
-        <div className="name-game-card">{props.nome}</div>
-        <div className="description-game-card">{props.descricao}</div>
+      <div className={props.isAllGamesPage ? "data-conteiner-game-card" : "data-conteiner-game-card-small"}>
+        <div className={props.isAllGamesPage ? "name-game-card" : "name-game-card-small"}>{props.game.nome}</div>
+        <div className={props.isAllGamesPage ? "description-game-card" : "description-game-card-small"}>{props.game.descricao} mais texto para testar</div>
+        <div className={props.isAllGamesPage ? "level-game-card" : "level-game-card-small"}>{props.game.vogal} - {props.game.estagio}</div>
       </div>  
     </div>
   );
