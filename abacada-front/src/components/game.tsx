@@ -15,6 +15,7 @@ function Game({onClose = () => {console.log("vazia");}}): JSX.Element {
       <Iframe url={jogo}
               width="100%"
               height="100%"
+              className="iframe-game"
       />
     </div>
   );
