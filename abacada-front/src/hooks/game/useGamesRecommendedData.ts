@@ -11,7 +11,7 @@ const fetchData = async (vogal?: string, estagio?: string): Promise<gameType[]> 
 export function useGamesRecommendedData(vogal?: string, estagio?: string) {
     const query = useQuery({
         queryFn: () => fetchData(vogal, estagio),
-        queryKey: ["games-data"],
+        queryKey: ["games-recommended-data"],
         enabled: !!vogal && !!estagio
     });
 
