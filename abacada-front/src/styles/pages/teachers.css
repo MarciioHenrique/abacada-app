@@ -58,9 +58,7 @@
   flex-direction: row;
   justify-content: center;
   gap: 1vw;
-  padding-bottom: 2vh;
   overflow: auto;
-  margin-bottom: 30px;
 }
 
 .content-teachers::-webkit-scrollbar {
