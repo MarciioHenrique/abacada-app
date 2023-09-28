@@ -63,6 +63,8 @@ export interface gameType {
   id: string,
   nome: string,
   descricao: string,
+  vogal: string,
+  estagio: string,
   image: string,
   url: string,
   interno: boolean
@@ -97,7 +99,6 @@ export interface historicRequest {
 }
 
 export interface confirmationModalProps {
-  isOpen: boolean;
   title: string;
   message: string;
   onConfirm: () => void;
@@ -105,14 +106,12 @@ export interface confirmationModalProps {
 }
 
 export interface successModalProps {
-  isOpen: boolean;
   title: string;
   message: string;
   onOK: () => void;
 }
 
 export interface errorModalProps {
-  isOpen: boolean;
   title: string;
   message: string;
   onOK: () => void;
