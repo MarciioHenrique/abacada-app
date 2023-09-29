@@ -6,7 +6,7 @@ services:
     ports:
       - 27017:27017
   springboot:
-    image: springboot
+    image: marcioh/springboot:latest
     container_name: "springboot"
     ports:
       - 8080:8080
