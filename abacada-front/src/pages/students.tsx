@@ -24,9 +24,13 @@ function Students() {
             Alunos
           </div>
           <div className="content-students">
-            {students?.map((student) =>
-              <Card key={student.registro} id={student.registro} nome={student.nome} heroi={student.heroi} situation="Aluno" delete={isDeleteMode} update={isUpdateMode}/>
-            )}
+            {(students?.length || 0) > 0 ? 
+              students?.map((student) =>
+                <Card key={student.registro} id={student.registro} nome={student.nome} heroi={student.heroi} situation="Aluno" delete={isDeleteMode} update={isUpdateMode}/>
+              ) : 
+              <div className="label-students">Nenhum aluno cadastrado</div>
+            }
+            
           </div>
           <div className="container-buttons-students">
             {/* <input type="submit" value="Excluir" className="button" onClick={() => setIsDeleteMode(!isDeleteMode)}></input>
@@ -35,8 +39,6 @@ function Students() {
           </div>  
         </div>
       </div>
-
-
     </div>
   );
 }

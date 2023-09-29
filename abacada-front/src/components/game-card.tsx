@@ -20,8 +20,8 @@ function GameCard(props: GameCardProps) {
       </div>
       <div className={props.isAllGamesPage ? "data-conteiner-game-card" : "data-conteiner-game-card-small"}>
         <div className={props.isAllGamesPage ? "name-game-card" : "name-game-card-small"}>{props.game.nome}</div>
-        <div className={props.isAllGamesPage ? "description-game-card" : "description-game-card-small"}>{props.game.descricao}</div>
         <div className={props.isAllGamesPage ? "level-game-card" : "level-game-card-small"}>{props.game.vogal} - {props.game.estagio}</div>
+        <div className={props.isAllGamesPage ? "description-game-card" : "description-game-card-small"}>{props.game.descricao}</div>
       </div>  
     </div>
   );
